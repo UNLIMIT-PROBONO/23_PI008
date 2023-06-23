@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignUpInputField from '../components/organisms/auth/SignUpInputField';
+import SignUpInputBox from '../components/organisms/auth/SignUpInputBox';
 import TogetherLogo from '../components/molecules/TogetherLogo'
 import { checkIdVerification, sendSignUpForm } from '../services/AuthService';
 import { isBlank } from '../utils/validator';
@@ -65,7 +65,7 @@ function SignUpPage() {
     return (
         <div>
             <TogetherLogo />
-            <SignUpInputField 
+            <SignUpInputBox 
                 values={userData}
                 idLock={idLock}
                 userDataHandler={userDataHandler}
