@@ -2,7 +2,9 @@ import { URI } from '../utils/config';
 import RestAPI from '../utils/AxiosApi';
 
 export async function tryLogin(data) {
-    await RestAPI.post(URI.LOGIN, data)
+    var result = false;
+    
+    result = await RestAPI.post(URI.LOGIN, data)
     .then((res)=> {
         if(res.status===200){
             console.log(data.login_id + "님이 로그인 했습니다.");
@@ -11,19 +13,24 @@ export async function tryLogin(data) {
             return false;
         }
     }).catch((error)=> console.log(error));
+
+    return result;
 };
 
 export async function checkIdVerification(loginId) {
     var uri = URI.CHECK_ID;
-
-    await RestAPI.get(uri, {
+    var result = false;
+    
+    result = await RestAPI.get(uri, {
         params : {login_id : loginId}
     })
     .then((response)=>{
         if(response.status === 200) return true;
         else if(response.status === 409) return false;
     }).catch((error)=> console.log(error));
-}
+
+    return result;
+}        
 
 export async function sendSignUpForm(userData) {
     var uri = URI.SIGNUP;
