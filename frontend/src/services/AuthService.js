@@ -1,7 +1,7 @@
 import { URI } from '../utils/config';
 import RestAPI from '../utils/AxiosApi';
 
-export async function tryLogin(data) {
+export async function sendLoginForm(data) {
     var result = false;
     
     result = await RestAPI.post(URI.LOGIN, data)

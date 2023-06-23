@@ -1,6 +1,6 @@
 import React from 'react';
-import InputField from '../atoms/InputField';
-import "../css/InputField.css";
+import InputField from '../../atoms/InputField';
+import "../../css/InputField.css";
 
 const TaggedInputField=(props) => {
     return (

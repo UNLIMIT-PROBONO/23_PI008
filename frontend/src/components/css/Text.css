@@ -1,0 +1,16 @@
+.text-href:link{
+    color:black;
+    text-decoration: none;
+}
+.text-href:visited {
+    color:darkblue;
+    text-decoration: none;
+}
+.text-href:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.text-href:active {
+    color: cornflowerblue;
+    text-decoration: none;
+}

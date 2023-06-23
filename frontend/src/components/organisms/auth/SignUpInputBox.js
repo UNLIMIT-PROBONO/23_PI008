@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import TaggedInputField from '../molecules/TaggedInputField';
-import SubmitButton from '../../components/atoms/SubmitButton';
-import IdInputField from '../molecules/IdInputField';
-import '../css/AlignCenter.css'
+import TaggedInputField from '../../molecules/auth/TaggedInputField';
+import SubmitButton from '../../atoms/SubmitButton';
+import IdInputField from '../../molecules/auth/IdInputField';
+import '../../css/AlignCenter.css'
 
-const SignUpInputField=(props)=>{
+const SignUpInputBox=(props)=>{
     const [userData, setUserData] = useState(props.values);
     var handleParent = props.userDataHandler;
 
@@ -61,4 +61,4 @@ const SignUpInputField=(props)=>{
     )
 }
 
-export default SignUpInputField;
+export default SignUpInputBox;
