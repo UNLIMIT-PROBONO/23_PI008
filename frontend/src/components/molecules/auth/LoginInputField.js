@@ -1,5 +1,5 @@
 import React from 'react';
-import InputField from '../atoms/InputField';
+import InputField from '../../atoms/InputField';
 
 export function LoginInputField(props) {
     return (

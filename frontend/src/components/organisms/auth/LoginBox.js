@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { LoginInputField } from '../molecules/LoginInputField';
-import SubmitButton from '../atoms/SubmitButton';
-import { Text, HrefText } from '../atoms/Text'
+import { LoginInputField } from '../../molecules/auth/LoginInputField';
+import SubmitButton from '../../atoms/SubmitButton';
+import { Text, HrefText } from '../../atoms/Text'
 
 export function LoginBox(props) {
     const [loginData, setLoginData] = useState(props.values);

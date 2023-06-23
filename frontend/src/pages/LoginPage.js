@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LoginBox } from '../components/organisms/LoginBox';
+import { LoginBox } from '../components/organisms/auth/LoginBox';
 import { sendLoginForm } from '../services/AuthService';
 import { toasting } from '../hook/UseToast';
 import { ToastContainer } from 'react-toastify';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignUpInputField from '../components/organisms/SignUpInputField';
+import SignUpInputField from '../components/organisms/auth/SignUpInputField';
 import TogetherLogo from '../components/molecules/TogetherLogo'
 import { checkIdVerification, sendSignUpForm } from '../services/AuthService';
 import { isBlank } from '../utils/validator';
