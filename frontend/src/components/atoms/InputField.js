@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-function InputField({inputType, holder}) {
-    const [inputValue, setInputValue] = useState("");
-
+function InputField(props) {
     return (
         <div>
             <input 
                 class="inputField"
                 style={{paddingLeft: '15px', paddingRight : '15px'}}
-                type={inputType}
-                placeholder={holder}
-                value={inputValue}
-                onChange={(e)=> setInputValue(e.target.value)}
+                type={props.inputType}
+                placeholder={props.holder}
+                value={props.value}
+                onChange={props.onChange}
                 />
         </div>
     );

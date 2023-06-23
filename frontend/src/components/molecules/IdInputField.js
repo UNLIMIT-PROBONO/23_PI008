@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/InputField.css'
 
 const IdInputField = (props) => {
@@ -8,22 +8,26 @@ const IdInputField = (props) => {
             <span>{props.label}</span>
             <div>
                 <input 
-                class="inputField"
-                style={{
-                    width: "220px",
-                    height: "40px",
-                    marginRight: "20px"
-                }}
-                onChange={(e)=>{setValue(e.target.value)}}
-                />
+                    class="inputField"
+                    style={{
+                        width: "195px",
+                        height: "40px",
+                        marginRight: "20px",
+                        paddingLeft: '15px', 
+                        paddingRight : '15px'
+                    }}
+                    onChange={props.onChange}
+                    disabled={props.lock ? true : false}
+                    />
                 <button
                     class="btn-outline-primary"
                     style={{
                         width:"90px",
-                        height: "45px",
+                        height: "47px",
                         fontSize: "14px",
                     }}
-                    onClick={clickEvent}
+                    onClick={props.onClick}
+                    disabled={props.lock ? true : false}
                     >
                     <span>중복 확인</span>
                 </button>
