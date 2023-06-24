@@ -1,0 +1,13 @@
+.btn-outline-primary {
+    height: 45px;
+    width: 300px;
+    background-color: #DAEBFF;
+    border: 2px solid rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+    font-size: 20px;
+    align-content: center;
+    text-align: center;
+}
+.btn-outline-primary:hover {
+    background-color: #b0d5ff;
+}
