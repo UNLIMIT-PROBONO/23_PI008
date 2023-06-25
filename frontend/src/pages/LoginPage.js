@@ -3,6 +3,7 @@ import { LoginBox } from '../components/organisms/auth/LoginBox';
 import { sendLoginForm } from '../services/AuthService';
 import { toasting } from '../hook/UseToast';
 import { ToastContainer } from 'react-toastify';
+import { Col, Row } from 'antd';
 
 export function LoginPage() {
     const [loginData, setLoginData] = useState({
@@ -27,18 +28,19 @@ export function LoginPage() {
     }
 
     return (
-        <div class="row">
+        <Row>
             <ToastContainer/>
-            <div class="col">
+            <Col>
                 <LoginBox
                     values={loginData}
                     loginDataHandler={loginDataHandler}
                     onClickLoginBtn={onClickLoginBtn}
                     />
-            </div>
-            <div class="col">
-                사진
-            </div>
-        </div>
+            </Col>
+            <Col>
+                홍보 사진
+            </Col>
+        </Row>
     )
 }
+//https://ant.design/components/grid

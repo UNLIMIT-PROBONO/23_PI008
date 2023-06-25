@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LoginInputField } from '../../molecules/auth/LoginInputField';
 import SubmitButton from '../../atoms/SubmitButton';
-import { Text, HrefText } from '../../atoms/Text'
+import { TextToSignUp } from '../../molecules/auth/TextToSignUp';
 
 export function LoginBox(props) {
     const [loginData, setLoginData] = useState(props.values);
@@ -34,10 +34,7 @@ export function LoginBox(props) {
                     onClick={props.onClickLoginBtn}
                     />
             </div>
-            <div>
-                <Text label="회원이 아니십니까?"/>
-                <HrefText label="회원가입 하기"/>
-            </div>
+            <TextToSignUp />
         </div>
     )
 }
