@@ -18,7 +18,7 @@ export function BasicFrame(props){
                         setCollapsed={setCollapsed}  
                     />
                     <Layout>
-                        {props.content}
+                        {props.content()}
                     </Layout>
                     {/* Footer */}
                 </Layout>
