@@ -9,3 +9,8 @@ export function getOriginalAge(birth) {
     }
     return age;
 }
+
+export function returnComparisonRatio(value, avg) {
+    // (사용량-평균)/평균, 양수%면 증가, 음수%면 감소
+    return Math.round((value-avg)*100/avg,2);
+}
