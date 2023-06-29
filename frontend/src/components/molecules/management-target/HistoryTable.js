@@ -9,10 +9,10 @@ export function HistoryTable(props) {
     const colums = [
         {
             title: "일시",
-            dataIndex: "start_date",
-            key: "start_date",
-            render: (start_date)=>{
-                return dateFormatting(start_date)
+            dataIndex: "startDate",
+            key: "startDate",
+            render: (startDate)=>{
+                return dateFormatting(startDate)
             }
         },
         {

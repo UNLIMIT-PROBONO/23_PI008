@@ -4,7 +4,7 @@ import { Col, Row } from 'antd';
 import { Age } from '../../molecules/management-target/Age';
 
 export function PrivacyInformation(props) {
-    var {name, birth, address, phone_number} = props.data;
+    var {name, birth, address, phoneNumber} = props.data;
     
     return (
         <>
@@ -20,7 +20,7 @@ export function PrivacyInformation(props) {
             <Information label="주소" content={address}/>
         </Row>
         <Row>    
-            <Information label="번호" content={phone_number}/>
+            <Information label="번호" content={phoneNumber}/>
         </Row>
         </>
     )
