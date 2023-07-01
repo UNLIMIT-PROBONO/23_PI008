@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Text.css'
+import '../css/Text.css';
 
 export function Text(props) {
     return (
