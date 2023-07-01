@@ -1,4 +1,46 @@
-import React from 'react';
+import { URI } from '../utils/config';
+import RestAPI from '../utils/AxiosApi';
+import { jsonToHistoryOfSchedule, jsonToTargetInfomation, jsonToUsageForm } from '../utils/mapper';
+
+export async function getTargetInfo(targetId) {
+    var result = await RestAPI.get(URI.MANAGEMENT_TARGET+`/${targetId}`)
+    .then((res)=> {
+        if(res.status===200){
+            return jsonToTargetInfomation(res.data);
+        }
+    }).catch((error)=> console.log(error));
+
+    return result
+}
+
+export async function getTargetUsage(targetId) {
+    var result = await RestAPI.get(URI.MANAGEMENT_TARGET+`/${targetId}/usage`)
+    .then((res)=>{
+        if(res.status===200){
+            return jsonToUsageForm(res.data);
+        }
+    }).catch((error)=>{
+        console.log(error);
+    });
+
+    return result;
+}
+
+export async function getHistoryOfSchedule(targetId){
+    var result = await RestAPI.get(URI.SCHEDULE_HISTORY, {
+        params:{
+            user_id: targetId,
+        }
+    })
+    .then((res) => {
+        if(res.status===200){
+            return jsonToHistoryOfSchedule(res.data);
+        }
+    })
+    .catch((e)=>{console.log(e)});
+
+    return result;
+}
 
 export function getOriginalAge(birth) {
     const today = new Date();

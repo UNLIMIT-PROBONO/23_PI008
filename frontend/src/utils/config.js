@@ -8,6 +8,10 @@ export const URI = {
     LOGIN: `manager/login`,
     SIGNUP: `manager/signup`,
     CHECK_ID: `manager/signup/id`,
+
+    MANAGEMENT_TARGET: `user`,
+
+    SCHEDULE_HISTORY: `schedule/history`,
 };
 
 // 페이지 라우팅 URI 관리
