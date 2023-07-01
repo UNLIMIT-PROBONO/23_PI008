@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 import React from 'react';
-import { dateFormatting } from '../../../utils/mapper';
+import { dateFormatting } from '../../../mapper/simpleMapper';
 
 export function HistoryTable(props) {
     const dataSource=props.history;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { dateFormatting } from '../../../utils/mapper';
+import { dateFormatting } from '../../../mapper/simpleMapper';
 import { getOriginalAge } from '../../../services/TargetService';
 import { Text } from '../../atoms/Text';
 

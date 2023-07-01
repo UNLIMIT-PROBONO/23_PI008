@@ -1,5 +1,3 @@
-import React from 'react';
-
 // react object name : json name
 export function jsonToTargetInfomation(data){
     return {
@@ -62,11 +60,4 @@ export function jsonToUsageForm(data){
 
 function jsonToDatetime(str){
     return new Date(str);
-}
-
-export function dateFormatting(source) {
-    const year = source.getFullYear();
-    const month = (source.getMonth() + 1);
-    const day = (source.getDate());
-    return year+"년 "+month+"월 "+day+"일";
 }

@@ -1,6 +1,6 @@
 import { URI } from '../utils/config';
 import RestAPI from '../utils/AxiosApi';
-import { jsonToHistoryOfSchedule, jsonToTargetInfomation, jsonToUsageForm } from '../utils/mapper';
+import { jsonToHistoryOfSchedule, jsonToTargetInfomation, jsonToUsageForm } from '../mapper/managementTargetMapper';
 
 export async function getTargetInfo(targetId) {
     var result = await RestAPI.get(URI.MANAGEMENT_TARGET+`/${targetId}`)
