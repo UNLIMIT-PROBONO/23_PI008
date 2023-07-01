@@ -4,13 +4,13 @@ import { Col, Row } from 'antd';
 import { Age } from '../../molecules/management-target/Age';
 
 export function PrivacyInformation(props) {
-    var {name, birth, address, phoneNumber} = props.data;
+    var {tgName, birth, address, phoneNumber} = props.data;
     
     return (
         <>
         <Row>
             <Col>
-                <Information content={name}/>
+                <Information content={tgName}/>
             </Col>
             <Col>
                 <Age birth={birth} />
