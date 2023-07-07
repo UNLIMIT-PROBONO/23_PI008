@@ -25,10 +25,14 @@ public class Water {
     @Column(name = "user_id", nullable = false)
     private Long userId ;
 
-    @Column(name = "date", nullable = false)
-    private Date date ;
+//    @Column(name = "date", nullable = false)
+//    private Date date ;
 
     @Column(name = "usage", nullable = false)
     private int usage ;
+
+    @Getter
+    @Column(updatable = false)
+    private String createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
 
 }
