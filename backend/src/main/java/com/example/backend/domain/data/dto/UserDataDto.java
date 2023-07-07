@@ -12,11 +12,8 @@ import lombok.NoArgsConstructor;
 public class UserDataDto {
 
     private Long userId;
-
     private int call;
-
     private int electricity;
-
     private int water;
 
 }

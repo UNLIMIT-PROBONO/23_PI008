@@ -20,8 +20,6 @@ public class DataResponseDto {
 
     private int waterData ;
 
-    private String createdAt;
-
-
+    private Date date ;  // 어떻게 해야할지 모르겠어
 
 }
