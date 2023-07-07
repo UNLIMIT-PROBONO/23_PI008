@@ -41,7 +41,7 @@ public class DataController {
 
 
     // 유저 리스트로 한번에 데이터 저장
-    @PostMapping("/save")
+    @PostMapping("/list")
     public ResponseEntity<Void> saveDataList(@RequestBody List<DataRequestDto> dataRequestDtoList) {
         dataService.saveDataList(dataRequestDtoList);
         return ResponseEntity.ok().build();
