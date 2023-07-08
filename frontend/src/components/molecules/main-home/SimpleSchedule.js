@@ -4,6 +4,7 @@ import { Text } from '../../atoms/Text';
 
 export function SimpleSchedule(props) {
     const index = props.index;
+    const scheduleId = props.scheduleId;
     const content = props.content;
     const activated = props.activated;
 
