@@ -11,24 +11,24 @@ export function UsageComparison(props) {
         "weekAvg"
     ];
 
-    return(
+    return (
         <>
-        <Text label="전주 대비 사용량 증감"/>
-        <Row>
-            <Col>
-                <UsageBarChart data={data.call} />
-            </Col>
-            <Col>
-                <UsageBarChart data={data.water} />
-            </Col>
-            <Col>
-                <UsageBarChart 
-                    data={data.elec} 
-                    keys={chartKeys} 
-                    groupMode={groupMode}
-                    showLegends={true}/>
-            </Col>
-        </Row>
+            <Text label="전주 대비 사용량 증감" />
+            <Row>
+                <Col>
+                    <UsageBarChart data={data.call} />
+                </Col>
+                <Col>
+                    <UsageBarChart data={data.water} />
+                </Col>
+                <Col>
+                    <UsageBarChart
+                        data={data.elec}
+                        keys={chartKeys}
+                        groupMode={groupMode}
+                        showLegends={true} />
+                </Col>
+            </Row>
         </>
     )
 }

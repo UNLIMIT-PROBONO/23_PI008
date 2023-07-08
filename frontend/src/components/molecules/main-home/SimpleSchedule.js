@@ -11,13 +11,13 @@ export function SimpleSchedule(props) {
     return (
         <Row>
             <Col>
-                <Text label={index}/>
+                <Text label={index} />
             </Col>
             <Col>
-                <Checkbox defaultChecked={activated} disabled/>
+                <Checkbox defaultChecked={activated} disabled />
             </Col>
             <Col>
-                <Text label={content}/>
+                <Text label={content} />
             </Col>
         </Row>
     );

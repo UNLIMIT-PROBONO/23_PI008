@@ -4,14 +4,14 @@ import { Row } from 'antd';
 import { HistoryTable } from '../../molecules/management-target/HistoryTable';
 
 export function ManagementHistory(props) {
-    return(
+    return (
         <>
-        <Row>
-            <Text label="과거 관리 내역"/> 
-        </Row>
-        <Row>
-            <HistoryTable history={props.data}/>
-        </Row>
+            <Row>
+                <Text label="과거 관리 내역" />
+            </Row>
+            <Row>
+                <HistoryTable history={props.data} />
+            </Row>
         </>
     );
 }

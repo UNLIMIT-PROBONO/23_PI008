@@ -1,5 +1,5 @@
 // react object name : json name
-export function jsonToTargetInfomation(data){
+export function jsonToTargetInfomation(data) {
     return {
         "targetId": data.userId,
         "tgName": data.name,
@@ -14,13 +14,13 @@ export function jsonToTargetInfomation(data){
     };
 }
 
-export function jsonToHistoryOfSchedule(data){
+export function jsonToHistoryOfSchedule(data) {
     return data.map(d => mapToScheduleObject(d));
 }
 
 function mapToScheduleObject(data) {
     return {
-        "scheduleId" : data.schedulId,
+        "scheduleId": data.schedulId,
         "title": data.title,
         "content": data.content,
         "startDate": jsonToDatetime(data.startDate),
@@ -31,7 +31,7 @@ function mapToScheduleObject(data) {
     }
 }
 
-export function jsonToUsageForm(data){
+export function jsonToUsageForm(data) {
     return {
         "today": jsonToDatetime(data.date),
         "call": [
@@ -58,6 +58,6 @@ export function jsonToUsageForm(data){
     };
 }
 
-function jsonToDatetime(str){
+function jsonToDatetime(str) {
     return new Date(str);
 }
