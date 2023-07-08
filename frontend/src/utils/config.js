@@ -7,7 +7,7 @@ export const URI = {
 
     LOGIN: `manager/login`,
     SIGNUP: `manager/signup`,
-    CHECK_ID: `manager/signup/id`,
+    CHECK_ID: `manager/signup/`,
 
     MANAGEMENT_TARGET: `user`,
 

@@ -21,9 +21,7 @@ export async function checkIdVerification(loginId) {
     var uri = URI.CHECK_ID;
     var result = false;
     
-    result = await RestAPI.get(uri, {
-        params : {login_id : loginId}
-    })
+    result = await RestAPI.get(uri+`${loginId}`)
     .then((response)=>{
         if(response.status === 200) return true;
         else if(response.status === 409) return false;
