@@ -4,6 +4,9 @@ import { ResponsiveBar } from '@nivo/bar';
 
 export function UsageBarChart(props) {
     var showLegends= props.showLegends;
+    const keys = props.keys;
+    const data = props.data;
+
     var ratio = returnComparisonRatio(props.value, props.weekAvg);
     var color = (ratio > 0) ? "blue" : "red";
     var tag = "오늘 사용량 : "+props.value+" / 전주 사용량 평균 : "+props.weekAvg;
@@ -11,14 +14,11 @@ export function UsageBarChart(props) {
     return (
         <div style={{width: 350, height:300}}>
             <ResponsiveBar
-                data={props.data}
-                keys={[
-                    "todayUsage",
-                    "weekAvg"
-                ]}
+                data={data}
+                keys={keys}
                 margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
                 padding={0.3}
-                groupMode="grouped"
+                groupMode={props.groupMode}
                 valueScale={{type:'linear'}}
                 indexScale={{type:'band', round:true}}
                 axisTop={null}

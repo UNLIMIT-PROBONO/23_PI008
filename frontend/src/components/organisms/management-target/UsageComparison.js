@@ -5,6 +5,11 @@ import { Text } from '../../atoms/Text';
 
 export function UsageComparison(props) {
     const data = props.data;
+    const groupMode = "grouped";
+    const chartKeys = [
+        "todayUsage",
+        "weekAvg"
+    ];
 
     return(
         <>
@@ -17,7 +22,11 @@ export function UsageComparison(props) {
                 <UsageBarChart data={data.water} />
             </Col>
             <Col>
-                <UsageBarChart data={data.elec} showLegends={true}/>
+                <UsageBarChart 
+                    data={data.elec} 
+                    keys={chartKeys} 
+                    groupMode={groupMode}
+                    showLegends={true}/>
             </Col>
         </Row>
         </>
