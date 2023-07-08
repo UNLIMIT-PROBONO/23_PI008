@@ -5,13 +5,15 @@ const SERVER_PORT = "8080";
 export const URI = {
     BASE_URL: `http://${SERVER_HOST}:${SERVER_PORT}/api/`,
 
-    LOGIN: `manager/login`,
-    SIGNUP: `manager/signup`,
-    CHECK_ID: `manager/signup/`,
+    MANAGER: "manager",
+    LOGIN: MANAGER + "/login",
+    SIGNUP: MANAGER + "/signup",
+    CHECK_ID: MANAGER + "/signup/",
 
-    MANAGEMENT_TARGET: `user`,
+    MANAGEMENT_TARGET: "user",
 
-    SCHEDULE_HISTORY: `schedule/history`,
+    SCHEDULE: "schedule",
+    SCHEDULE_HISTORY: SCHEDULE + "/history",
 };
 
 // 페이지 라우팅 URI 관리
