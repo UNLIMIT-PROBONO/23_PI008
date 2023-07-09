@@ -20,6 +20,9 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
 
     private final CorsFilter corsFilter;
+
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+
     private final ManagerRepository managerRepository;
 
     @Bean
@@ -40,7 +43,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         requests -> requests.antMatchers("/api/manager/signup/**", "/api/manager/login").permitAll()
                                 .anyRequest().authenticated() //회원가입, 로그인 이외에는 권한 필요
-                );
+                )
+                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint);
 
         return http.build();
     }
