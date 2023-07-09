@@ -1,6 +1,6 @@
 import { URI } from '../utils/config';
 import RestAPI from '../utils/AxiosApi';
-import { jsonToHistoryOfSchedule, jsonToTargetInfomation, jsonToUsageForm } from '../mapper/managementTargetMapper';
+import { jsonToTargetInfomation, jsonToUsageForm } from '../mapper/managementTargetMapper';
 
 export async function getTargetInfo(targetId) {
     var result = await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}`)
@@ -22,22 +22,6 @@ export async function getTargetUsage(targetId) {
         }).catch((error) => {
             console.log(error);
         });
-
-    return result;
-}
-
-export async function getHistoryOfSchedule(targetId) {
-    var result = await RestAPI.get(URI.SCHEDULE_HISTORY, {
-        params: {
-            user_id: targetId,
-        }
-    })
-        .then((res) => {
-            if (res.status === 200) {
-                return jsonToHistoryOfSchedule(res.data);
-            }
-        })
-        .catch((e) => { console.log(e) });
 
     return result;
 }

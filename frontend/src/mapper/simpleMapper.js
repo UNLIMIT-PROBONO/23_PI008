@@ -4,3 +4,6 @@ export function dateFormatting(source) {
     const day = (source.getDate());
     return year + "년 " + month + "월 " + day + "일";
 }
+export function jsonToDatetime(str) {
+    return new Date(str);
+}

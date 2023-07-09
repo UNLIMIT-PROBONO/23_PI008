@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BasicFrame } from '../components/organisms/layout/BasicFrame';
 import { TargetDetailTemplate } from './templates/TargetDetailTemplate';
-import { getHistoryOfSchedule, getTargetInfo, getTargetUsage } from '../services/TargetService';
+import { getTargetInfo, getTargetUsage } from '../services/TargetService';
+import { getHistoryOfSchedule } from '../services/ScheduleService';
 
 export function TargetDetailPage(props) {
     const targetId = props.targetId;
