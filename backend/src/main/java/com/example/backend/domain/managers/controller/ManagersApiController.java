@@ -29,6 +29,11 @@ public class ManagersApiController {
         return managersApiService.login(loginRequestDto);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<?> getManager(@RequestHeader("Authorization") String token) {
+        return managersApiService.getManager(token);
+    }
+
     @GetMapping("/test")
     public String test() {
         return "test";
