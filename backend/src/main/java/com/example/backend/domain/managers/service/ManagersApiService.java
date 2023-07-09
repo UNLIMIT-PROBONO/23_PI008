@@ -1,17 +1,22 @@
 package com.example.backend.domain.managers.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
+import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 import com.example.backend.domain.managers.dto.response.SignupResponseDto;
 import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.managers.mapper.ManagersMapper;
 import com.example.backend.domain.managers.repository.ManagerRepository;
+import com.example.backend.global.jwt.JwtProperties;
 import com.example.backend.global.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,9 +39,9 @@ public class ManagersApiService {
         signupRequestDto.setPassword(password);
 
         //회원정보 저장
-        Managers managerEntity = managerRepository.save(managersMapper.dtoToEntity(signupRequestDto));
+        Managers managerEntity = managerRepository.save(managersMapper.signupRequestDtoToEntity(signupRequestDto));
 
-        SignupResponseDto signupResponseDto = managersMapper.entityToDto(managerEntity);
+        SignupResponseDto signupResponseDto = managersMapper.entityToSignupResponseDto(managerEntity);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(signupResponseDto);
     }
@@ -74,5 +79,23 @@ public class ManagersApiService {
                 .build();
 
         return ResponseEntity.status(HttpStatus.OK).body(loginResponseDto);
+    }
+
+    public ResponseEntity<?> getManager(String token) {
+
+        //토큰 값만 남기기
+        token = token.replace(JwtProperties.TOKEN_PREFIX, "");
+
+        //토큰 값 중 로그인 아이디 추출
+        String loginId = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
+                .getClaim("loginId").asString();
+
+        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
+        );
+
+        ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);
+
+        return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
     }
 }
