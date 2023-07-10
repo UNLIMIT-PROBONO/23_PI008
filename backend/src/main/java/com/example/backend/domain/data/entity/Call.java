@@ -25,9 +25,6 @@ public class Call {
     @Column(name = "user_id", nullable = false)
     private Long userId ;
 
-//    @Column(name = "date", nullable = false)
-//    private Date date ;
-
     @Column(name = "usage", nullable = false)
     private int usage ;
 

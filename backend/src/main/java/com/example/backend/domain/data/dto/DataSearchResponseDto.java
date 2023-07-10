@@ -5,21 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AverageResponseDto {
+public class DataSearchResponseDto {
 
-    private String userId;
+    private Long userId ;
 
-    private int callAverage;
-    private int waterAverage;
-    private int elecAverage;
+    private String date ;
 
-    private String startDate;
-    private String endDate;
+    private int call ;
 
+    private int electricity ;
+
+    private int water;
 
 }

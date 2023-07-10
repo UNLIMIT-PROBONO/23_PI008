@@ -1,6 +1,6 @@
 package com.example.backend.domain.data.mapper;
 
-import com.example.backend.domain.data.dto.AverageRequestDto;
+import com.example.backend.domain.data.dto.UsageResponseDto;
 import com.example.backend.domain.data.dto.DataRequestDto;
 import com.example.backend.domain.data.dto.DataResponseDto;
 import com.example.backend.domain.data.entity.Electricity;
@@ -25,15 +25,6 @@ public class ElectricityMapper {
                 .userId(String.valueOf(entity.getUserId()))
                 .electricityData(entity.getUsage())
                 .createdAt(entity.getCreatedAt())
-                .build();
-    }
-
-
-    public AverageRequestDto toAverageDataDto(double callAverage, double electricityAverage, double waterAverage) {
-        return AverageRequestDto.builder()
-                .callAverage(callAverage)
-                .electricityAverage(electricityAverage)
-                .waterAverage(waterAverage)
                 .build();
     }
 

@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AverageRequestDto {
+public class DataSearchRequestDto {
 
-    private Double callAverage;
+    private String startDate ;
 
-    private Double electricityAverage;
+    private String endDate ;
 
-    private Double waterAverage;
 
 }
-
