@@ -4,13 +4,13 @@ import { getOriginalAge } from '../../../services/TargetService';
 import { Text } from '../../atoms/Text';
 
 export function Age(props) {
-    var age=getOriginalAge(props.birth);
+    var age = getOriginalAge(props.birth);
     var formatted = dateFormatting(props.birth);
-    const result = formatted+" (만 "+age+"세)";
+    const result = formatted + " (만 " + age + "세)";
 
     return (
         <>
-            <Text label={result}/>
+            <Text label={result} />
         </>
     )
 }

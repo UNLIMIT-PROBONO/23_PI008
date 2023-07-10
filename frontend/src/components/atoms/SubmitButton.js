@@ -4,7 +4,7 @@ import '../css/SubmitButton.css';
 const SubmitButton = (props) => {
     return (
         <div>
-            <button 
+            <button
                 class="btn-outline-primary"
                 type='submit'
                 onClick={props.onClick}>

@@ -8,10 +8,10 @@ export function TargetDetailTemplate(props) {
     const targetInfomation = props.data.targetInfomation;
     const targetUsage = props.data.targetUsage;
 
-    return(
+    return (
         <>
-            <PrivacyInformation data={targetInfomation}/>
-            <UsageComparison data={targetUsage}/>
+            <PrivacyInformation data={targetInfomation} />
+            <UsageComparison data={targetUsage} />
             <ManagementHistory data={managementHistory} />
         </>
     )

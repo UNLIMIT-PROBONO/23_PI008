@@ -3,7 +3,7 @@ import React from 'react';
 import { dateFormatting } from '../../../mapper/simpleMapper';
 
 export function HistoryTable(props) {
-    const dataSource=props.history;
+    const dataSource = props.history;
 
     // 일시, 제목, 상세 내용 , 수행여부(Activated)
     const colums = [
@@ -11,7 +11,7 @@ export function HistoryTable(props) {
             title: "일시",
             dataIndex: "startDate",
             key: "startDate",
-            render: (startDate)=>{
+            render: (startDate) => {
                 return dateFormatting(startDate)
             }
         },
@@ -30,14 +30,14 @@ export function HistoryTable(props) {
             dataIndex: "activated",
             key: "activated",
             render: (activated) => {
-                return (activated==="ACTIVATED")? "Y":"N"
+                return (activated === "ACTIVATED") ? "Y" : "N"
             }
         }
     ]
 
-    return(
+    return (
         <>
-        <Table dataSource={dataSource} columns={colums}/>
+            <Table dataSource={dataSource} columns={colums} />
         </>
     )
 }

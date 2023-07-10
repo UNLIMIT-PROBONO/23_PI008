@@ -11,13 +11,13 @@ export function LoginPage() {
         password: '',
     });
 
-    const loginDataHandler= (data)=>{
+    const loginDataHandler = (data) => {
         setLoginData(data);
     }
 
-    const onClickLoginBtn= async () => {
+    const onClickLoginBtn = async () => {
         var loginSuccess = await sendLoginForm(loginData);
-        if(loginSuccess){
+        if (loginSuccess) {
             console.log(loginData.login_id + "님이 로그인 했습니다.");
             toasting("로그인 성공!", "success");
             // 메인 화면으로 라우팅
@@ -29,13 +29,13 @@ export function LoginPage() {
 
     return (
         <Row>
-            <ToastContainer/>
+            <ToastContainer />
             <Col>
                 <LoginBox
                     values={loginData}
                     loginDataHandler={loginDataHandler}
                     onClickLoginBtn={onClickLoginBtn}
-                    />
+                />
             </Col>
             <Col>
                 홍보 사진

@@ -2,7 +2,7 @@ import React from 'react';
 import InputField from '../../atoms/InputField';
 import "../../css/InputField.css";
 
-const TaggedInputField=(props) => {
+const TaggedInputField = (props) => {
     return (
         <div class="signUp">
             <div class="tag">
@@ -11,10 +11,10 @@ const TaggedInputField=(props) => {
             <div class="row">
                 <InputField
                     value={props.value}
-                    inputType={props.inputType} 
+                    inputType={props.inputType}
                     holder={props.holder}
                     onChange={props.onChange}
-                    />
+                />
             </div>
         </div>
     );

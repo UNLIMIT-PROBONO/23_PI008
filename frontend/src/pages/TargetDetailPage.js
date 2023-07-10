@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BasicFrame } from '../components/organisms/layout/BasicFrame';
 import { TargetDetailTemplate } from './templates/TargetDetailTemplate';
-import { getHistoryOfSchedule, getTargetInfo, getTargetUsage } from '../services/TargetService';
+import { getTargetInfo, getTargetUsage } from '../services/TargetService';
+import { getHistoryOfSchedule } from '../services/ScheduleService';
 
 export function TargetDetailPage(props) {
     const targetId = props.targetId;
@@ -14,21 +15,21 @@ export function TargetDetailPage(props) {
     }
 
     async function fetchTargetUsage() {
-        const targetUsage= await getTargetUsage(targetId);
+        const targetUsage = await getTargetUsage(targetId);
         data["targetUsage"] = targetUsage;
     }
-    
-    async function fetchHistory(){
+
+    async function fetchHistory() {
         const history = await getHistoryOfSchedule(targetId);
         data["managementHistory"] = history;
     }
 
-    var fetchData = ()=>{
+    var fetchData = () => {
         fetchTargetInfomation();
         fetchTargetUsage();
         fetchHistory();
     }
-    
+
     // 생성한 함수를 컴포넌트가 mount 됐을 때 실행
     useEffect(async () => {
         setLoading(true);
@@ -36,13 +37,13 @@ export function TargetDetailPage(props) {
         setLoading(false);
     }, []);
 
-    return( 
+    return (
         <>
             {
                 loading ? (<div>로딩중</div>) :
-                (
-                    <BasicFrame content={() => <TargetDetailTemplate data={data} />}/>
-                )
+                    (
+                        <BasicFrame content={() => <TargetDetailTemplate data={data} />} />
+                    )
             }
         </>
     )

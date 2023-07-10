@@ -1,5 +1,7 @@
+import { jsonToDatetime } from "./simpleMapper";
+
 // react object name : json name
-export function jsonToTargetInfomation(data){
+export function jsonToTargetInfomation(data) {
     return {
         "targetId": data.userId,
         "tgName": data.name,
@@ -14,24 +16,7 @@ export function jsonToTargetInfomation(data){
     };
 }
 
-export function jsonToHistoryOfSchedule(data){
-    return data.map(d => mapToScheduleObject(d));
-}
-
-function mapToScheduleObject(data) {
-    return {
-        "scheduleId" : data.schedulId,
-        "title": data.title,
-        "content": data.content,
-        "startDate": jsonToDatetime(data.startDate),
-        "endDate": jsonToDatetime(data.endDate),
-        "createdAt": jsonToDatetime(data.createdAt),
-        "updatedAt": jsonToDatetime(data.updatedAt),
-        "activated": data.activated,
-    }
-}
-
-export function jsonToUsageForm(data){
+export function jsonToUsageForm(data) {
     return {
         "today": jsonToDatetime(data.date),
         "call": [
@@ -56,8 +41,4 @@ export function jsonToUsageForm(data){
             }
         ]
     };
-}
-
-function jsonToDatetime(str){
-    return new Date(str);
 }

@@ -6,10 +6,10 @@ export function Information(props) {
     return (
         <Row>
             <Col>
-                <Text label={props.label}/>
+                <Text label={props.label} />
             </Col>
             <Col>
-                <Text label={props.content}/>
+                <Text label={props.content} />
             </Col>
         </Row>
     )
