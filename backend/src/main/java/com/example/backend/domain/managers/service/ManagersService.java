@@ -126,6 +126,23 @@ public class ManagersService {
         return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
     }
 
+    //회원탈퇴
+    @Transactional
+    public ResponseEntity<?> deleteManager(String token) {
+
+        //토큰 값 중 로그인 아이디 추출
+        String loginId = extractLoginId(token);
+
+        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
+        );
+
+        managerEntity.setActivated(false);
+        managerRepository.save(managerEntity);
+
+        return ResponseEntity.ok().build();
+    }
+
     //토큰 값 중 로그인 아이디 추출
     public String extractLoginId(String token) {
 
