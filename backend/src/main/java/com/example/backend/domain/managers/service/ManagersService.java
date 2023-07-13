@@ -3,6 +3,7 @@ package com.example.backend.domain.managers.service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
+import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
@@ -24,13 +25,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ManagersApiService {
+public class ManagersService {
 
     private final ManagerRepository managerRepository;
     private final ManagersMapper managersMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
 
+    //회원가입
     @Transactional
     public ResponseEntity<?> signUp(SignupRequestDto signupRequestDto) {
 
@@ -46,6 +48,7 @@ public class ManagersApiService {
         return ResponseEntity.status(HttpStatus.CREATED).body(signupResponseDto);
     }
 
+    //아이디 중복 확인
     public ResponseEntity<?> duplicateId(String loginId) {
 
         //아이디 중복 확인
@@ -56,6 +59,7 @@ public class ManagersApiService {
         return ResponseEntity.status(HttpStatus.OK).body("등록 가능한 아이디입니다.");
     }
 
+    //로그인
     public ResponseEntity<?> login(LoginRequestDto loginRequestDto) {
 
         //등록된 아이디인지 확인
@@ -81,14 +85,11 @@ public class ManagersApiService {
         return ResponseEntity.status(HttpStatus.OK).body(loginResponseDto);
     }
 
+    //매니저 정보 조회
     public ResponseEntity<?> getManager(String token) {
 
-        //토큰 값만 남기기
-        token = token.replace(JwtProperties.TOKEN_PREFIX, "");
-
         //토큰 값 중 로그인 아이디 추출
-        String loginId = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
-                .getClaim("loginId").asString();
+        String loginId = extractLoginId(token);
 
         Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
@@ -97,5 +98,42 @@ public class ManagersApiService {
         ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);
 
         return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
+    }
+
+    //매니저 정보 수정
+    @Transactional
+    public ResponseEntity<?> updateManager(String token, ManagerRequestDto managerRequestDto) {
+
+        //토큰 값 중 로그인 아이디 추출
+        String loginId = extractLoginId(token);
+
+        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
+        );
+
+        //비밀번호 암호화
+        String password = passwordEncoder.encode(managerRequestDto.getPassword());
+        managerRequestDto.setPassword(password);
+
+        //정보 수정
+        managerEntity.setPassword(managerRequestDto.getPassword());
+        managerEntity.setAdminArea(managerRequestDto.getAdminArea());
+        managerEntity.setPhoneNum(managerRequestDto.getPhoneNum());
+        managerRepository.save(managerEntity);
+
+        ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);
+
+        return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
+    }
+
+    //토큰 값 중 로그인 아이디 추출
+    public String extractLoginId(String token) {
+
+        //토큰 값만 남기기
+        String value = token.replace(JwtProperties.TOKEN_PREFIX, "");
+
+        //토큰 값 중 로그인 아이디 추출
+        return JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(value)
+                .getClaim("loginId").asString();
     }
 }
