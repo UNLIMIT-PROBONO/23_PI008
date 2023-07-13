@@ -1,16 +1,16 @@
 // react object name : json name
 export function jsonToTargetInfomation(data){
     return {
-        "targetId": data.user_id,
+        "targetId": data.userId,
         "tgName": data.name,
-        "phoneNumber": data.phone_number,
+        "phoneNumber": data.phoneNumber,
         "address": data.address,
         "birth": jsonToDatetime(data.birth),
         "gender": data.gender,
         "health": data.health,
         "check": data.check,
-        "createdAt": jsonToDatetime(data.created_at),
-        "updatedAt": jsonToDatetime(data.updated_at),
+        "createdAt": jsonToDatetime(data.createdAt),
+        "updatedAt": jsonToDatetime(data.updatedAt),
     };
 }
 
@@ -20,13 +20,13 @@ export function jsonToHistoryOfSchedule(data){
 
 function mapToScheduleObject(data) {
     return {
-        "scheduleId" : data.schedule_id,
+        "scheduleId" : data.schedulId,
         "title": data.title,
         "content": data.content,
-        "startDate": jsonToDatetime(data.start_date),
-        "endDate": jsonToDatetime(data.end_date),
-        "createdAt": jsonToDatetime(data.created_at),
-        "updatedAt": jsonToDatetime(data.updated_at),
+        "startDate": jsonToDatetime(data.startDate),
+        "endDate": jsonToDatetime(data.endDate),
+        "createdAt": jsonToDatetime(data.createdAt),
+        "updatedAt": jsonToDatetime(data.updatedAt),
         "activated": data.activated,
     }
 }
@@ -38,21 +38,21 @@ export function jsonToUsageForm(data){
             {
                 "id": "call",
                 "todayUsage": data.call,
-                "weekAvg": data.call_avg,
+                "weekAvg": data.callAvg,
             }
         ],
         "water": [
             {
                 "id": "water",
                 "todayUsage": data.water,
-                "weekAvg": data.water_avg,
+                "weekAvg": data.waterAvg,
             }
         ],
         "elec": [
             {
                 "id": "elec",
                 "todayUsage": data.elec,
-                "weekAvg": data.elec_avg,
+                "weekAvg": data.elecAvg,
             }
         ]
     };

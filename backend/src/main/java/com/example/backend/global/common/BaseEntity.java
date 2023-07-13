@@ -1,7 +1,6 @@
 package com.example.backend.global.common;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,15 +14,16 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-
 public class BaseEntity {
+
     @CreatedDate
-    @Column(updatable = false)
-    protected String created_at = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+    @Column(name = "created_at", updatable = false)
+    private String createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @LastModifiedDate
-    protected String updated_at = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+    @Column(name = "updated_at")
+    private String updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    @Column(name = "activated", nullable = false)
-    protected boolean activated = Boolean.TRUE;
+    @Column(name = "is_activated", nullable = false)
+    private boolean isActivated = true;
 }
