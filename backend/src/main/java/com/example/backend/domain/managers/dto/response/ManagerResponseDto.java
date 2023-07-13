@@ -17,4 +17,5 @@ public class ManagerResponseDto {
 
     private String updatedAt;
 
+    private boolean isActivated;
 }

@@ -44,4 +44,10 @@ public class ManagersController {
     public ResponseEntity<?> updateManager(@RequestHeader("Authorization") String token, @RequestBody ManagerRequestDto managerRequestDto) {
         return managersService.updateManager(token, managerRequestDto);
     }
+
+    //회원탈퇴
+    @DeleteMapping("/")
+    public ResponseEntity<?> deleteManager(@RequestHeader("Authorization") String token) {
+        return managersService.deleteManager(token);
+    }
 }
