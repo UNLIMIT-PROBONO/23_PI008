@@ -1,6 +1,7 @@
 package com.example.backend.domain.managers.mapper;
 
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
+import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 import com.example.backend.domain.managers.dto.response.SignupResponseDto;
 import com.example.backend.domain.managers.entity.Managers;
 import org.mapstruct.Mapper;
@@ -10,7 +11,9 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.WARN)
 public interface ManagersMapper {
 
-    Managers dtoToEntity(SignupRequestDto signupRequestDto);
+    Managers signupRequestDtoToEntity(SignupRequestDto signupRequestDto);
 
-    SignupResponseDto entityToDto(Managers manager);
+    SignupResponseDto entityToSignupResponseDto(Managers manager);
+
+    ManagerResponseDto entityToManagerResponseDto(Managers manager);
 }
