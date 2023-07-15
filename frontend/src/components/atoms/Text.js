@@ -14,5 +14,5 @@ export function HrefText(props) {
         <div class="text-href">
             <a href="#"> {props.label} </a>
         </div>
-    )   
+    )
 }

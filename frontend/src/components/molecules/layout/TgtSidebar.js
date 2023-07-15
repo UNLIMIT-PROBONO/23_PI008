@@ -31,8 +31,8 @@ export function TgtSidebar(props) {
             key: 'target',
             icon: <TeamOutlined />,
             label: '관리 대상자',
-            children : [
-                {   
+            children: [
+                {
                     key: "target-all",
                     icon: <BarsOutlined />,
                     label: "전체 보기",
@@ -51,13 +51,13 @@ export function TgtSidebar(props) {
         },
     ];
 
-    return(
+    return (
         <div>
-            <Sider 
-                trigger={null} 
-                collapsible 
-                collapsed={collapsed} 
-                style={{height:"100%"}}
+            <Sider
+                trigger={null}
+                collapsible
+                collapsed={collapsed}
+                style={{ height: "100%" }}
             >
                 <div className="demo-logo-vertical" />
                 <Menu
@@ -65,7 +65,7 @@ export function TgtSidebar(props) {
                     defaultSelectedKeys={['1']}
                     items={sideItems}
                 />
-                </Sider>
+            </Sider>
         </div>
     );
 }

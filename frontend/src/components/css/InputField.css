@@ -1,4 +1,4 @@
-.inputField { 
+.inputField {
     background-color: transparent;
     height: 40px;
     width: 300px;
@@ -10,8 +10,9 @@
 .inputField:hover {
     border: 2px solid black;
 }
-.inputField:focus-visible  {
-    outline: none!important;
+
+.inputField:focus-visible {
+    outline: none !important;
     border: 2px solid #1976d2;
 }
 
@@ -19,12 +20,14 @@
     margin: 25px;
     font-size: 16px;
 }
+
 .signup~span {
     font-size: 18px;
     transition: all ease-in-out 0.5s;
     /* align-items: center; */
 }
-.signUp:focus ~ span {
+
+.signUp:focus~span {
     z-index: 10;
     font-size: 18px;
     transition: all ease-in-out 0.5s;
@@ -32,5 +35,5 @@
 
 .tag {
     align-items: start;
-    
+
 }
