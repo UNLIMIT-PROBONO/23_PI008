@@ -11,5 +11,5 @@ export const useModal = (initValue) => {
     setOpen(false);
   };
 
-  return [ open, openModal, closeModal ];
+  return [open, openModal, closeModal];
 };
