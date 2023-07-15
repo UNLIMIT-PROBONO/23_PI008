@@ -4,7 +4,12 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import { ScheduleModal } from "../../organisms/calendar/ScheduleModal";
 import { useModal } from "../../../hook/useModal";
+import styled from "styled-components";
 
+const CalendarWrap = styled.div`
+  width: 100vw;
+  height: 100vw;
+`
 export function TgtCalendar(props) {
   var [data, setData] = useState({});
   var [isModalOpen, openModal, closeModal] = useModal(false);
@@ -25,7 +30,7 @@ export function TgtCalendar(props) {
   // TODO dateClick -> 일정 추가 폼 나오게
 
   return (
-    <>
+    <CalendarWrap>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -34,7 +39,7 @@ export function TgtCalendar(props) {
       />
 
       <ScheduleModal isOpen={isModalOpen} closeModal={closeModal} />
-    </>
+    </CalendarWrap>
   );
 }
 // https://fullcalendar.io/docs/react
