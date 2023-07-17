@@ -10,7 +10,7 @@ function mapToSimpleScheduleObject(data) {
         "tgName": data.userName,
         "content": data.title,
         "activated": data.activated,
-    } 
+    }
 }
 
 export function jsonToHistoryOfSchedule(jsonArray) {
