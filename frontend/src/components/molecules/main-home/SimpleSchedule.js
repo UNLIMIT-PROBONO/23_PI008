@@ -5,7 +5,7 @@ import { Text } from "../../atoms/Text";
 export function SimpleSchedule(props) {
   const index = props.index;
   const scheduleId = props.scheduleId;
-  const content = props.content;
+  const title = props.title;
   const activated = props.activated;
 
   return (
@@ -17,7 +17,7 @@ export function SimpleSchedule(props) {
         <Checkbox defaultChecked={activated} disabled />
       </Col>
       <Col>
-        <Text label={content} />
+        <Text label={title} />
       </Col>
     </Row>
   );
