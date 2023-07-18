@@ -1,5 +1,6 @@
 package com.example.backend.domain.data.entity;
 
+import com.example.backend.domain.users.entity.Users;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -8,10 +9,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Getter
 @AllArgsConstructor
 @Entity
-@Setter
 @Builder
 @NoArgsConstructor
 @Table(name="water")
@@ -22,17 +24,21 @@ public class Water {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId ;
-
-//    @Column(name = "date", nullable = false)
-//    private Date date ;
-
     @Column(name = "usage", nullable = false)
     private int usage ;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+    private Users users;
+
     @Getter
     @Column(updatable = false)
+    @Builder.Default
     private String createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }

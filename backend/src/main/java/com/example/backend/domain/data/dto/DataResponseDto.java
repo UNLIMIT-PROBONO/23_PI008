@@ -3,16 +3,18 @@ package com.example.backend.domain.data.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
 @Builder
+@Setter
 @AllArgsConstructor
 public class DataResponseDto {
 
-    private String userId;
+    private Long userId;
 
     private int callData ;
 
@@ -21,7 +23,5 @@ public class DataResponseDto {
     private int waterData ;
 
     private String createdAt;
-
-
 
 }

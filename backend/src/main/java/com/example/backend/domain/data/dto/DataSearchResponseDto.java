@@ -7,13 +7,15 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDataDto {
+public class DataSearchResponseDto {
 
-    private Long userId;
+    private Long userId ;
 
-    private int call;
+    private String date ;
 
-    private int electricity;
+    private int call ;
+
+    private int electricity ;
 
     private int water;
 

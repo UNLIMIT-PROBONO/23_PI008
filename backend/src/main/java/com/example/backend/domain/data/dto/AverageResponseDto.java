@@ -1,20 +1,20 @@
 package com.example.backend.domain.data.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data
 @Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AverageResponseDto {
 
-    private String userId;
+    private Long userId;
 
-    private Double callAverage;
+    private double callAverage;
+    private double waterAverage;
+    private double elecAverage;
 
     private Double electricityAverage;
 
@@ -23,6 +23,5 @@ public class AverageResponseDto {
     private String startDate;
 
     private String endDate;
-
 
 }

@@ -7,14 +7,16 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDataDto {
+public class UsageResponseDto {
 
     private Long userId;
-
     private int call;
-
-    private int electricity;
-
+    private double callAvg;
     private int water;
+    private double waterAvg;
+    private int electricity;
+    private double electricityAvg;
+    private String date;
 
 }
+
