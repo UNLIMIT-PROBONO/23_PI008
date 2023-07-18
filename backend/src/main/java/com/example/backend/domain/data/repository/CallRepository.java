@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public interface CallRepository extends JpaRepository<Call, Long> {
     @Query("SELECT AVG(c.usage) FROM Call c WHERE c.users.id = :userId AND c.createdAt BETWEEN :startDate AND :endDate")

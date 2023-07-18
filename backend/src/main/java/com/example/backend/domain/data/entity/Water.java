@@ -2,12 +2,10 @@ package com.example.backend.domain.data.entity;
 
 import com.example.backend.domain.users.entity.Users;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static javax.persistence.FetchType.LAZY;
 

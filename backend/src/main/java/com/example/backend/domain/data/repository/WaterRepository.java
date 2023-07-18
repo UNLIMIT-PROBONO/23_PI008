@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public interface WaterRepository extends JpaRepository<Water, Long> {
     @Query("SELECT AVG(w.usage) FROM Water w WHERE w.users.id = :userId AND w.createdAt BETWEEN :startDate AND :endDate")
