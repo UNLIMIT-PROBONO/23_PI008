@@ -20,6 +20,6 @@ public class UsageResponseDto {
     private double callAvg;
     private double electricityAvg;
     private double waterAvg;
-    
+
 }
 

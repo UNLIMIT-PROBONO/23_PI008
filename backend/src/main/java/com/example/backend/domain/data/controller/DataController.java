@@ -1,18 +1,14 @@
 package com.example.backend.domain.data.controller;
 
-import com.example.backend.domain.data.dto.AverageRequestDto;
-import com.example.backend.domain.data.dto.AverageResponseDto;
-import com.example.backend.domain.data.dto.DataRequestDto;
-import com.example.backend.domain.data.dto.DataResponseDto;
-import com.example.backend.domain.data.mapper.CallMapper;
-import com.example.backend.domain.data.mapper.ElectricityMapper;
-import com.example.backend.domain.data.mapper.WaterMapper;
+import com.example.backend.domain.data.dto.*;
 import com.example.backend.domain.data.service.DataService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,17 +16,11 @@ import java.util.List;
 public class DataController {
 
     private final DataService dataService;
-    private final CallMapper callMapper;
-    private final ElectricityMapper electricityMapper;
-    private final WaterMapper waterMapper;
 
     // 유저 1명별 데이터 자료 저장
     @PostMapping
     public DataResponseDto saveData(@RequestBody DataRequestDto dataRequestDto) {
-        // 데이터 저장
         dataService.saveData(dataRequestDto);
-
-        // 저장 후 응답으로 반환할 DataResponseDto 생성
         DataResponseDto responseDto = dataService.createResponseDto(dataRequestDto);
 
         return responseDto;
@@ -48,13 +38,46 @@ public class DataController {
     }
 
 
-    // 유저별 평균값 조회
-    @GetMapping("/{userId}")
-    public ResponseEntity<AverageResponseDto> getAverageData(@PathVariable Long userId) { // AverageRequestDto 대신 AverageResponseDto로 수정
-        AverageResponseDto averageData = dataService.calculateAverageData(userId);
-        return ResponseEntity.ok(averageData);
+
+    // 유저의 오늘 이용량 + 평균값 조회
+    @GetMapping("/usage/{userId}")
+    public ResponseEntity<UsageResponseDto> getUsage(@PathVariable Long userId) {
+        try {
+            UsageResponseDto usageResponseDto = dataService.getUsage(userId);
+            return ResponseEntity.ok(usageResponseDto);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
+
+
+    // 유저의 일주일 평균값만 조회
+    @GetMapping("/avg/{userId}")
+    public ResponseEntity<AverageResponseDto> getAverageData(@PathVariable Long userId) {
+        try {
+            AverageResponseDto averageData = dataService.getAverageData(userId);
+            return ResponseEntity.ok(averageData) ;
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
+
+    // 유저의 데이터 전체 조회
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<DataSearchResponseDto>> getUserData(@PathVariable Long userId, @RequestBody DataSearchRequestDto requestDto) {
+        try {
+            List<DataSearchResponseDto> responseData = dataService.getUserData(userId, requestDto.getStartDate(), requestDto.getEndDate());
+            if (responseData.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(responseData);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 }
