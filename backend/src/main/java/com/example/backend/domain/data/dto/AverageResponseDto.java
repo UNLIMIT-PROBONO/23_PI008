@@ -16,12 +16,7 @@ public class AverageResponseDto {
     private double waterAverage;
     private double electricityAverage;
 
-    private Double electricityAverage;
-
-    private Double waterAverage;
-
     private String startDate;
-
     private String endDate;
 
 }

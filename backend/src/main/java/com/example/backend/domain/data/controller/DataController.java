@@ -22,11 +22,8 @@ public class DataController {
     public DataResponseDto saveData(@RequestBody DataRequestDto dataRequestDto) {
         dataService.saveData(dataRequestDto);
         DataResponseDto responseDto = dataService.createResponseDto(dataRequestDto);
-
         return responseDto;
     }
-
-
 
 
 

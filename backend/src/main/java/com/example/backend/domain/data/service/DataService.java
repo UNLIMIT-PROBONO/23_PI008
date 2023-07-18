@@ -1,15 +1,10 @@
 package com.example.backend.domain.data.service;
 
-import com.example.backend.domain.data.dto.AverageRequestDto;
-import com.example.backend.domain.data.dto.AverageResponseDto;
-import com.example.backend.domain.data.dto.DataRequestDto;
-import com.example.backend.domain.data.dto.DataResponseDto;
+import com.example.backend.domain.data.dto.*;
 import com.example.backend.domain.data.entity.Call;
 import com.example.backend.domain.data.entity.Electricity;
 import com.example.backend.domain.data.entity.Water;
-import com.example.backend.domain.data.mapper.CallMapper;
-import com.example.backend.domain.data.mapper.ElectricityMapper;
-import com.example.backend.domain.data.mapper.WaterMapper;
+import com.example.backend.domain.data.mapper.*;
 import com.example.backend.domain.data.repository.CallRepository;
 import com.example.backend.domain.data.repository.ElectricityRepository;
 import com.example.backend.domain.data.repository.WaterRepository;
@@ -113,8 +108,6 @@ public class DataService {
         Users user = userRepository.findById(userId)
                 .orElseThrow(NoSuchElementException::new);     // 해당 사용자를 찾을 수 없는 경우
 
-    @Transactional
-    public AverageResponseDto calculateAverageData(Long userId) {
         LocalDateTime endDate = LocalDateTime.now();
         LocalDateTime startDate = endDate.minusDays(7);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
