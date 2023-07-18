@@ -10,13 +10,16 @@ import lombok.*;
 public class UsageResponseDto {
 
     private Long userId;
-    private int call;
-    private double callAvg;
-    private int water;
-    private double waterAvg;
-    private int electricity;
-    private double electricityAvg;
+
     private String date;
 
+    private int call;
+    private int electricity;
+    private int water;
+
+    private double callAvg;
+    private double electricityAvg;
+    private double waterAvg;
+    
 }
 

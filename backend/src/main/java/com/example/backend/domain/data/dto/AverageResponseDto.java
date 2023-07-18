@@ -14,7 +14,7 @@ public class AverageResponseDto {
 
     private double callAverage;
     private double waterAverage;
-    private double elecAverage;
+    private double electricityAverage;
 
     private Double electricityAverage;
 

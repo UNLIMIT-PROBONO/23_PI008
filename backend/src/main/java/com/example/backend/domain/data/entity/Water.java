@@ -32,7 +32,7 @@ public class Water {
     private Users users;
 
     @Getter
-    @Column(updatable = false)
+    @Column(name = "created_at" , updatable = false)
     @Builder.Default
     private String createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
 
