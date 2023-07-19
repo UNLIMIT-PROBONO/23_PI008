@@ -12,8 +12,4 @@ public class LoginResponseDto {
     private String loginId;
 
     private String name;
-
-    private String grantType; //JWT 인증 타입, 이후 토큰에 prefix로 붙여줘야함
-
-    private String token;
 }
