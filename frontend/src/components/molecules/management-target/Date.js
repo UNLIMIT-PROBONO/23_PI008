@@ -5,7 +5,7 @@ import { Text } from '../../atoms/Text';
 
 export function LabeledDate(props) {
     var formatted = dateFormatting(props.date);
-    return(
+    return (
         <Row>
             <Col>
                 <Text label={props.label} />

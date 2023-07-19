@@ -2,7 +2,7 @@ import React from 'react';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-  } from '@ant-design/icons';
+} from '@ant-design/icons';
 import { Button, theme } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import { Text } from '../../atoms/Text';
@@ -18,12 +18,12 @@ export function TgtHeader(props) {
     } = theme.useToken();
     // 로그아웃 왜 안 뜸?
 
-    return(
+    return (
         <div>
-            <Header style={{ padding: 0, background: colorBgContainer, width:"100%" }}>
+            <Header style={{ padding: 0, background: colorBgContainer, width: "100%" }}>
                 <Button
                     type="text"
-                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} 
+                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                     onClick={handleCollapsing}
                     style={{
                         fontSize: '16px',
@@ -31,7 +31,7 @@ export function TgtHeader(props) {
                         height: 64,
                     }}
                 />
-                <Text label="로그아웃"/> 
+                <Text label="로그아웃" />
             </Header>
         </div>
     )
