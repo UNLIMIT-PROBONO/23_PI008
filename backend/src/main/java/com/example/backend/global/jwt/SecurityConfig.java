@@ -2,6 +2,9 @@ package com.example.backend.global.jwt;
 
 import com.example.backend.domain.managers.repository.ManagerRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.LegacyCookieProcessor;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -57,5 +60,11 @@ public class SecurityConfig {
                     .addFilter(corsFilter)
                     .addFilter(new JwtAuthorizationFilter(authenticationManager, managerRepository));
         }
+    }
+
+    @Bean
+    public WebServerFactoryCustomizer<TomcatServletWebServerFactory> cookieProcessorCustomizer() {
+        return (factory) -> factory
+                .addContextCustomizers((context) -> context.setCookieProcessor(new LegacyCookieProcessor()));
     }
 }
