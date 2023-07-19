@@ -13,9 +13,13 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -30,15 +34,23 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        String header = request.getHeader(JwtProperties.HEADER_STRING);
-
-        if (header == null || !header.startsWith(JwtProperties.TOKEN_PREFIX)) {
+        if (request.getCookies() == null) {
             chain.doFilter(request, response);
             return;
         }
 
-        String token = request.getHeader(JwtProperties.HEADER_STRING)
-                .replace(JwtProperties.TOKEN_PREFIX, "");
+        //쿠키 추출
+        String cookie = Arrays.stream(request.getCookies())
+                .filter(c -> c.getName().equals("accessToken"))
+                .findFirst().map(Cookie::getValue)
+                .orElse(null);
+
+        if (cookie == null || !cookie.startsWith(JwtProperties.TOKEN_PREFIX)) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String token = cookie.replace(JwtProperties.TOKEN_PREFIX, "");
 
         //토큰 검증
         String loginId = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
