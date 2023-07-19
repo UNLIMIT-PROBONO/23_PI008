@@ -3,10 +3,14 @@ package com.example.backend.domain.managers.controller;
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
 import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
+import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.service.ManagersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/manager")
@@ -29,8 +33,8 @@ public class ManagersController {
 
     //로그인
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
-        return managersService.login(loginRequestDto);
+    public ResponseEntity<LoginResponseDto> login(HttpServletResponse response, @RequestBody LoginRequestDto loginRequestDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(managersService.login(response, loginRequestDto));
     }
 
     //매니저 정보 조회

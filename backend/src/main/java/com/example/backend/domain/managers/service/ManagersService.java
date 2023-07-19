@@ -22,6 +22,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -60,7 +63,7 @@ public class ManagersService {
     }
 
     //로그인
-    public ResponseEntity<?> login(LoginRequestDto loginRequestDto) {
+    public LoginResponseDto login(HttpServletResponse response, LoginRequestDto loginRequestDto) {
 
         //등록된 아이디인지 확인
         Managers manager = managerRepository.findByLoginId(loginRequestDto.getLoginId()).orElseThrow(
@@ -75,14 +78,20 @@ public class ManagersService {
         //토큰 생성
         String token = jwtProvider.createToken(manager.getLoginId(), manager.getName());
 
+        //쿠키 생성
+        Cookie cookie = new Cookie("accessToken", "Bearer " + token);
+        cookie.setMaxAge(60 * 60 * 6); //유효시간 6시간
+        cookie.setPath("/"); //모든 경로에서 접근 가능
+        cookie.setHttpOnly(true); //서버만 쿠키에 접근 가능
+
+        response.addCookie(cookie);
+
         LoginResponseDto loginResponseDto = LoginResponseDto.builder()
                 .loginId(manager.getLoginId())
                 .name(manager.getName())
-                .grantType("Bearer")
-                .token(token)
                 .build();
 
-        return ResponseEntity.status(HttpStatus.OK).body(loginResponseDto);
+        return loginResponseDto;
     }
 
     //매니저 정보 조회
