@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5635d2c-6cb4-4e46-8acd-f1a1b648eaf0" name="Changes" comment="(TG-11)스케줄 전체/단일 조회 구현">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/23_PI008" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/service/ScheduleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/controller/ScheduleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/dto/request/ScheduleRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/dto/response/ScheduleResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/entity/Schedule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/mapper/ScheduleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/repository/ScheduleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23_PI008/backend/src/main/java/com/example/backend/domain/schedule/service/ScheduleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/23_PI008" beforeDir="false" afterPath="$PROJECT_DIR$/23_PI008" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +27,7 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/23_PI008" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -73,7 +78,10 @@
       <workItem from="1688843041337" duration="7246000" />
       <workItem from="1688850389354" duration="190000" />
       <workItem from="1688850658984" duration="198000" />
-      <workItem from="1688886194932" duration="904000" />
+      <workItem from="1688886194932" duration="1722000" />
+      <workItem from="1689087289829" duration="34000" />
+      <workItem from="1689515420692" duration="3177000" />
+      <workItem from="1689868951541" duration="611000" />
     </task>
     <task id="LOCAL-00001" summary="(TG-11)스케줄 전체/단일 조회 구현">
       <option name="closed" value="true" />
