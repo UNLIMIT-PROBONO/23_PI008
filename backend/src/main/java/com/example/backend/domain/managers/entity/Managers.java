@@ -29,5 +29,5 @@ public class Managers extends BaseEntity {
     private String adminArea;
 
     @Column(name = "phone_num", nullable = false)
-    private String phoneNum;
+    private String phoneNumber;
 }

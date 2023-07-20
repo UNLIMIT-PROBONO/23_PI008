@@ -11,5 +11,5 @@ public class ManagerRequestDto {
 
     private String adminArea;
 
-    private String phoneNum;
+    private String phoneNumber;
 }

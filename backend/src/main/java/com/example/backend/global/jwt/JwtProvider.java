@@ -9,7 +9,7 @@ import java.util.Date;
 @Component
 public class JwtProvider {
 
-    public String createToken(String loginId, String name) {
+    public String createAccessToken(String loginId, String name) {
 
         return JWT.create()
                 .withSubject(loginId)

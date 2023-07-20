@@ -48,10 +48,10 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             return;
         }
 
-        String token = cookie.replace(JwtProperties.TOKEN_PREFIX, "");
+        String accessToken = cookie.replace(JwtProperties.TOKEN_PREFIX, "");
 
         //토큰 검증
-        String loginId = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
+        String loginId = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(accessToken)
                 .getClaim("loginId").asString();
 
         if (loginId != null) {

@@ -76,10 +76,10 @@ public class ManagersService {
         }
 
         //토큰 생성
-        String token = jwtProvider.createToken(manager.getLoginId(), manager.getName());
+        String accessToken = jwtProvider.createAccessToken(manager.getLoginId(), manager.getName());
 
         //쿠키 생성
-        Cookie cookie = new Cookie("accessToken", "Bearer " + token);
+        Cookie cookie = new Cookie("accessToken", "Bearer " + accessToken);
         cookie.setMaxAge(60 * 60 * 6); //유효시간 6시간
         cookie.setPath("/"); //모든 경로에서 접근 가능
         cookie.setHttpOnly(true); //서버만 쿠키에 접근 가능
@@ -127,7 +127,7 @@ public class ManagersService {
         //정보 수정
         managerEntity.setPassword(managerRequestDto.getPassword());
         managerEntity.setAdminArea(managerRequestDto.getAdminArea());
-        managerEntity.setPhoneNum(managerRequestDto.getPhoneNum());
+        managerEntity.setPhoneNumber(managerRequestDto.getPhoneNumber());
         managerRepository.save(managerEntity);
 
         ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);

@@ -14,7 +14,7 @@ public class SignupResponseDto {
 
     private String adminArea;
 
-    private String phoneNum;
+    private String phoneNumber;
 
     private String createdAt;
 
