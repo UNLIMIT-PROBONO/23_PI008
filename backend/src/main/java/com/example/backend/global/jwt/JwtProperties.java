@@ -7,6 +7,4 @@ public interface JwtProperties {
     int EXPIRATION_TIME = 60000 * 60 * 3; // 3시간
 
     String TOKEN_PREFIX = "Bearer ";
-
-    String HEADER_STRING = "Authorization";
 }
