@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.backend.domain.managers.service.ManagersService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/api/manager")
 @RequiredArgsConstructor
@@ -26,8 +21,9 @@ public class ManagersController {
 
     //회원가입
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody SignupRequestDto signupRequestDto) {
-        return managersService.signUp(signupRequestDto);
+    public ResponseEntity<Void> signUp(@RequestBody SignupRequestDto signupRequestDto) {
+        managersService.signUp(signupRequestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     //아이디 중복 확인

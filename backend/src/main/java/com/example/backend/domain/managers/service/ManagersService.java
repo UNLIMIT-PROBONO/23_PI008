@@ -7,7 +7,6 @@ import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
-import com.example.backend.domain.managers.dto.response.SignupResponseDto;
 import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.managers.mapper.ManagersMapper;
 import com.example.backend.domain.managers.repository.ManagerRepository;
@@ -37,18 +36,14 @@ public class ManagersService {
 
     //회원가입
     @Transactional
-    public ResponseEntity<?> signUp(SignupRequestDto signupRequestDto) {
+    public void signUp(SignupRequestDto signupRequestDto) {
 
         //비밀번호 암호화
         String password = passwordEncoder.encode(signupRequestDto.getPassword());
         signupRequestDto.setPassword(password);
 
         //회원정보 저장
-        Managers managerEntity = managerRepository.save(managersMapper.signupRequestDtoToEntity(signupRequestDto));
-
-        SignupResponseDto signupResponseDto = managersMapper.entityToSignupResponseDto(managerEntity);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(signupResponseDto);
+        managerRepository.save(managersMapper.toEntity(signupRequestDto));
     }
 
     //아이디 중복 확인
@@ -104,7 +99,7 @@ public class ManagersService {
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
-        ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);
+        ManagerResponseDto managerResponseDto = managersMapper.fromEntity(managerEntity);
 
         return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
     }
@@ -125,12 +120,12 @@ public class ManagersService {
         managerRequestDto.setPassword(password);
 
         //정보 수정
-        managerEntity.setPassword(managerRequestDto.getPassword());
-        managerEntity.setAdminArea(managerRequestDto.getAdminArea());
-        managerEntity.setPhoneNumber(managerRequestDto.getPhoneNumber());
+//        managerEntity.setPassword(managerRequestDto.getPassword());
+//        managerEntity.setAdminArea(managerRequestDto.getAdminArea());
+//        managerEntity.setPhoneNumber(managerRequestDto.getPhoneNumber());
         managerRepository.save(managerEntity);
 
-        ManagerResponseDto managerResponseDto = managersMapper.entityToManagerResponseDto(managerEntity);
+        ManagerResponseDto managerResponseDto = managersMapper.fromEntity(managerEntity);
 
         return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
     }
