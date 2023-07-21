@@ -1,13 +1,12 @@
 package com.example.backend.domain.managers.entity;
 
 import com.example.backend.global.common.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity
 public class Managers extends BaseEntity {
 
@@ -30,4 +29,13 @@ public class Managers extends BaseEntity {
 
     @Column(name = "phone_num", nullable = false)
     private String phoneNumber;
+
+    @Builder
+    public Managers(String loginId, String password, String name, String adminArea, String phoneNumber) {
+        this.loginId = loginId;
+        this.password = password;
+        this.name = name;
+        this.adminArea = adminArea;
+        this.phoneNumber = phoneNumber;
+    }
 }
