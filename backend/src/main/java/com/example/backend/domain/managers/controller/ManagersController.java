@@ -23,19 +23,24 @@ public class ManagersController {
     @PostMapping("/signup")
     public ResponseEntity<Void> signUp(@RequestBody SignupRequestDto signupRequestDto) {
         managersService.signUp(signupRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(null);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     //아이디 중복 확인
     @GetMapping("/signup/{id}")
-    public ResponseEntity<?> duplicateId(@PathVariable("id") String id) {
-        return managersService.duplicateId(id);
+    public ResponseEntity<Void> duplicateId(@PathVariable("id") String id) {
+
+        if (managersService.duplicateId(id)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
+        return ResponseEntity.ok().build();
     }
 
     //로그인
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(HttpServletResponse response, @RequestBody LoginRequestDto loginRequestDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(managersService.login(response, loginRequestDto));
+        return ResponseEntity.ok(managersService.login(response, loginRequestDto));
     }
 
     //매니저 정보 조회

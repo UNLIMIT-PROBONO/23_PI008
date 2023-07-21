@@ -47,14 +47,8 @@ public class ManagersService {
     }
 
     //아이디 중복 확인
-    public ResponseEntity<?> duplicateId(String loginId) {
-
-        //아이디 중복 확인
-        if (managerRepository.existsByLoginId(loginId)) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 아이디입니다.");
-        }
-
-        return ResponseEntity.status(HttpStatus.OK).body("등록 가능한 아이디입니다.");
+    public boolean duplicateId(String loginId) {
+        return managerRepository.existsByLoginId(loginId);
     }
 
     //로그인
