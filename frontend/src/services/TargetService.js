@@ -1,9 +1,21 @@
 import { URI } from "../utils/config";
 import RestAPI from "../utils/AxiosApi";
 import {
+  jsonToAllTaregetInfomation,
   jsonToTargetInfomation,
   jsonToUsageForm,
 } from "../mapper/managementTargetMapper";
+
+export async function getAllInfo() {
+  var result = await RestAPI.get(URI.MANAGEMENT_TARGET)
+  .then((res) => {
+    if(res.status === 200) {
+      jsonToAllTaregetInfomation(res.data);
+    }
+  })
+  .catch((error) => console.log(error));
+  return result;
+}
 
 export async function getTargetInfo(targetId) {
   var result = await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}`)

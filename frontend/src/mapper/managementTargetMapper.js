@@ -16,6 +16,10 @@ export function jsonToTargetInfomation(data) {
   };
 }
 
+export function jsonToAllTaregetInfomation(jsonArray) {
+  return jsonArray.map((json) => jsonToTargetInfomation(json));
+}
+
 export function jsonToUsageForm(data) {
   return {
     today: jsonToDatetime(data.date),
