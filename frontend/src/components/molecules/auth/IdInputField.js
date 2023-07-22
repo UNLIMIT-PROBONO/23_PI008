@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/InputField.css";
 
-const IdInputField = (props) => {
+export const IdInputField = (props) => {
   return (
     <div style={{ margin: "10px" }}>
       <span>{props.label}</span>
@@ -34,5 +34,3 @@ const IdInputField = (props) => {
     </div>
   );
 };
-
-export default IdInputField;

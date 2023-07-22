@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputField(props) {
+export const InputField = (props) => {
   return (
     <div>
       <input
@@ -13,11 +13,9 @@ function InputField(props) {
       />
     </div>
   );
-}
+};
 
 InputField.defaultProps = {
   inputType: "text",
   holder: "",
 };
-
-export default InputField;

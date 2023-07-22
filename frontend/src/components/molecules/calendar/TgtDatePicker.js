@@ -3,7 +3,7 @@ import { DatePicker, Space } from "antd";
 
 const { RangePicker } = DatePicker;
 
-export function TgtDatePicker(props) {
+export const TgtDatePicker = (props) => {
   return (
     <>
       <RangePicker />

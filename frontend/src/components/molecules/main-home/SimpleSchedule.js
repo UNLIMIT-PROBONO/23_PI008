@@ -2,7 +2,7 @@ import { Checkbox, Col, Row } from "antd";
 import React from "react";
 import { Text } from "../../atoms/Text";
 
-export function SimpleSchedule(props) {
+export const SimpleSchedule = (props) => {
   const index = props.index;
   const scheduleId = props.scheduleId;
   const title = props.title;
@@ -21,4 +21,4 @@ export function SimpleSchedule(props) {
       </Col>
     </Row>
   );
-}
+};

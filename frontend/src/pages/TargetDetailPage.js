@@ -4,25 +4,25 @@ import { TargetDetailTemplate } from "./templates/TargetDetailTemplate";
 import { getTargetInfo, getTargetUsage } from "../services/TargetService";
 import { getHistoryOfSchedule } from "../services/ScheduleService";
 
-export function TargetDetailPage(props) {
+export const TargetDetailPage = (props) => {
   const targetId = props.targetId;
   var [loading, setLoading] = useState(true);
   var [data, setData] = useState({});
 
-  async function fetchTargetInfomation() {
+  const fetchTargetInfomation = async () => {
     const targetInfo = await getTargetInfo(targetId);
     data["targetInfomation"] = targetInfo;
-  }
+  };
 
-  async function fetchTargetUsage() {
+  const fetchTargetUsage = async () => {
     const targetUsage = await getTargetUsage(targetId);
     data["targetUsage"] = targetUsage;
-  }
+  };
 
-  async function fetchHistory() {
+  const fetchHistory = async () => {
     const history = await getHistoryOfSchedule(targetId);
     data["managementHistory"] = history;
-  }
+  };
 
   var fetchData = () => {
     fetchTargetInfomation();
@@ -46,4 +46,4 @@ export function TargetDetailPage(props) {
       )}
     </>
   );
-}
+};

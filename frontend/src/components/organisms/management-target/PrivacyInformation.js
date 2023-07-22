@@ -3,7 +3,7 @@ import { Information } from "../../molecules/management-target/Information";
 import { Col, Row } from "antd";
 import { Age } from "../../molecules/management-target/Age";
 
-export function PrivacyInformation(props) {
+export const PrivacyInformation = (props) => {
   var { tgName, birth, address, phoneNumber } = props.data;
 
   return (
@@ -24,4 +24,4 @@ export function PrivacyInformation(props) {
       </Row>
     </>
   );
-}
+};

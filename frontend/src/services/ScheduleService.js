@@ -2,7 +2,7 @@ import { jsonToHistoryOfSchedule } from "../mapper/scheduleMapper";
 import RestAPI from "../utils/AxiosApi";
 import { URI } from "../utils/config";
 
-export async function getAfterTodaysSchedules() {
+export const getAfterTodaysSchedules = async () => {
   const result = await RestAPI.get(URI.SCHEDULE)
     .then((res) => {
       if (res.status === 200) {
@@ -11,9 +11,9 @@ export async function getAfterTodaysSchedules() {
     })
     .catch((e) => console.log(e));
   return result;
-}
+};
 
-export async function getHistoryOfSchedule(targetId) {
+export const getHistoryOfSchedule = async (targetId) => {
   var result = await RestAPI.get(URI.SCHEDULE_HISTORY, {
     params: {
       user_id: targetId,
@@ -29,4 +29,6 @@ export async function getHistoryOfSchedule(targetId) {
     });
 
   return result;
-}
+};
+
+export function getScheduleOfMonth() {}

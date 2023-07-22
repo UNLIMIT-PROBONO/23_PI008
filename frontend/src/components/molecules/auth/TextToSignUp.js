@@ -2,7 +2,7 @@ import React from "react";
 import { HrefText, Text } from "../../atoms/Text";
 import { Col, Row } from "antd";
 
-export function TextToSignUp() {
+export const TextToSignUp = () => {
   return (
     <Row>
       <Col>

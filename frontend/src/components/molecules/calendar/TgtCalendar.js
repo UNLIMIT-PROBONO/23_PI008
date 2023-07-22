@@ -10,7 +10,7 @@ const CalendarWrap = styled.div`
   width: 100vw;
   height: 100vw;
 `
-export function TgtCalendar(props) {
+export const TgtCalendar = (props) => {
   var [data, setData] = useState({});
   var [isModalOpen, openModal, closeModal] = useModal(false);
 

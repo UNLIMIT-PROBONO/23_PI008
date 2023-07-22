@@ -1,7 +1,7 @@
 import { jsonToDatetime } from "./simpleMapper";
 
 // react object name : json name
-export function jsonToTargetInfomation(data) {
+export const jsonToTargetInfomation = (data) => {
   return {
     targetId: data.userId,
     tgName: data.name,
@@ -14,13 +14,13 @@ export function jsonToTargetInfomation(data) {
     createdAt: jsonToDatetime(data.createdAt),
     updatedAt: jsonToDatetime(data.updatedAt),
   };
-}
+};
 
-export function jsonToAllTaregetInfomation(jsonArray) {
+export const jsonToAllTaregetInfomation = (jsonArray) => {
   return jsonArray.map((json) => jsonToTargetInfomation(json));
-}
+};
 
-export function jsonToUsageForm(data) {
+export const jsonToUsageForm = (data) => {
   return {
     today: jsonToDatetime(data.date),
     call: [
@@ -45,4 +45,4 @@ export function jsonToUsageForm(data) {
       },
     ],
   };
-}
+};

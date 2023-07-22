@@ -1,3 +1,3 @@
-export function isBlank(value) {
+export const isBlank = (value) => {
   return value === "";
-}
+};

@@ -3,7 +3,7 @@ import React from "react";
 import { dateFormatting } from "../../../utils/mapper";
 import { Text } from "../../atoms/Text";
 
-export function LabeledDate(props) {
+export const LabeledDate = (props) => {
   var formatted = dateFormatting(props.date);
   return (
     <Row>
@@ -15,4 +15,4 @@ export function LabeledDate(props) {
       </Col>
     </Row>
   );
-}
+};

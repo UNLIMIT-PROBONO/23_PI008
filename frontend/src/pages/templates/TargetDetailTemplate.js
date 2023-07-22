@@ -3,7 +3,7 @@ import { PrivacyInformation } from "../../components/organisms/management-target
 import { ManagementHistory } from "../../components/organisms/management-target/ManagementHistory";
 import { UsageComparison } from "../../components/organisms/management-target/UsageComparison";
 
-export function TargetDetailTemplate(props) {
+export const TargetDetailTemplate = (props) => {
   const managementHistory = props.data.managementHistory;
   const targetInfomation = props.data.targetInfomation;
   const targetUsage = props.data.targetUsage;
@@ -15,4 +15,4 @@ export function TargetDetailTemplate(props) {
       <ManagementHistory data={managementHistory} />
     </>
   );
-}
+};

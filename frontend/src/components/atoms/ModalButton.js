@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 
-export function ModalButton(props) {
+export const ModalButton = (props) => {
   return (
     <>
       <Button type={props.type} onClick={props.onClick}>

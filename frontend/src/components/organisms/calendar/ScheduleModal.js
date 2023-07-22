@@ -39,7 +39,7 @@ const ModalContainer = styled.div`
   z-index: 10000;
 `;
 
-export function ScheduleModal(props) {
+export const ScheduleModal = (props) => {
   var isOpen = props.isOpen;
   const closeModal = props.closeModal;
   const sendForm = props.sendForm;
@@ -72,4 +72,4 @@ export function ScheduleModal(props) {
       )}
     </>
   );
-}
+};

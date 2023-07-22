@@ -3,7 +3,7 @@ import { MainBarChart } from "../../components/organisms/main-home/MainBarChart"
 import { Col, Row } from "antd";
 import { AfterTodaysSchedule } from "../../components/organisms/main-home/AfterTodaysSchedule";
 
-export function MainHomeTemplate(props) {
+export const MainHomeTemplate = (props) => {
   const dangerousTargetUsage = props.dangerousTargetUsage;
   const afterTodaysSchedules = props.afterTodaysSchedules;
 
@@ -21,4 +21,4 @@ export function MainHomeTemplate(props) {
       </Row>
     </>
   );
-}
+};

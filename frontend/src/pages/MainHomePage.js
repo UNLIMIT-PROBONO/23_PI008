@@ -3,18 +3,18 @@ import { BasicFrame } from "../components/organisms/layout/BasicFrame";
 import { MainHomeTemplate } from "./templates/MainHomeTemplate";
 import { getAfterTodaysSchedules } from "../services/ScheduleService";
 
-export function MainHomePage(props) {
+export const MainHomePage = (props) => {
   var [data, setData] = useState({});
   var [loading, setLoading] = useState(true);
 
-  async function fetchDangerousTargetsUsage() {
+  const fetchDangerousTargetsUsage = async () => {
     data["dangerousTargetUsage"] = {};
-  }
+  };
 
-  async function fetchAfterTodaysSchedules() {
+  const fetchAfterTodaysSchedules = async () => {
     const afterTodaysSchedules = await getAfterTodaysSchedules();
     data["afterTodaysSchedules"] = afterTodaysSchedules;
-  }
+  };
 
   var fetchData = () => {
     fetchAfterTodaysSchedules();
@@ -36,4 +36,4 @@ export function MainHomePage(props) {
       )}
     </>
   );
-}
+};

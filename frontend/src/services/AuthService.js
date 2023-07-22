@@ -1,7 +1,7 @@
 import { URI } from "../utils/config";
 import RestAPI from "../utils/AxiosApi";
 
-export async function sendLoginForm(data) {
+export const sendLoginForm = async (data) => {
   var result = false;
 
   result = await RestAPI.post(URI.LOGIN, data)
@@ -16,9 +16,9 @@ export async function sendLoginForm(data) {
     .catch((error) => console.log(error));
 
   return result;
-}
+};
 
-export async function checkIdVerification(loginId) {
+export const checkIdVerification = async (loginId) => {
   var uri = URI.CHECK_ID;
   var result = false;
 
@@ -30,9 +30,9 @@ export async function checkIdVerification(loginId) {
     .catch((error) => console.log(error));
 
   return result;
-}
+};
 
-export async function sendSignUpForm(userData) {
+export const sendSignUpForm = async (userData) => {
   var uri = URI.SIGNUP;
 
   await RestAPI.post(uri, userData)
@@ -42,4 +42,4 @@ export async function sendSignUpForm(userData) {
       }
     })
     .catch((error) => console.log(error));
-}
+};

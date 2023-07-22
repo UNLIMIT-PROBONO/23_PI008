@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "../../atoms/Text";
 import { Col, Row } from "antd";
 
-export function Information(props) {
+export const Information = (props) => {
   return (
     <Row>
       <Col>
@@ -13,4 +13,4 @@ export function Information(props) {
       </Col>
     </Row>
   );
-}
+};

@@ -4,7 +4,7 @@ import SubmitButton from "../../atoms/SubmitButton";
 import IdInputField from "../../molecules/auth/IdInputField";
 import "../../css/AlignCenter.css";
 
-const SignUpInputBox = (props) => {
+export const SignUpInputBox = (props) => {
   const [userData, setUserData] = useState(props.values);
   var handleParent = props.userDataHandler;
 
@@ -58,5 +58,3 @@ const SignUpInputBox = (props) => {
     </div>
   );
 };
-
-export default SignUpInputBox;

@@ -8,7 +8,7 @@ const ListBox = styled.div`
   flex-wrap: wrap;
 `
 
-export function ScheduleList(props) {
+export const ScheduleList = (props) => {
   const dataList = props.data;
   const headText = (<Text label={props.label}/>);
 

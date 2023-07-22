@@ -3,7 +3,7 @@ import { SimpleSchedule } from "../../molecules/main-home/SimpleSchedule";
 import { Text } from "../../atoms/Text";
 import { Col, Divider, Row } from "antd";
 
-export function AfterTodaysSchedule(props) {
+export const AfterTodaysSchedule = (props) => {
   const data = props.data; // 배열
 
   const dummy = [
@@ -54,4 +54,4 @@ export function AfterTodaysSchedule(props) {
       </Row>
     </>
   );
-}
+};

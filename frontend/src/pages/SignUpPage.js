@@ -4,7 +4,7 @@ import TogetherLogo from "../components/molecules/TogetherLogo";
 import { checkIdVerification, sendSignUpForm } from "../services/AuthService";
 import { isBlank } from "../utils/validator";
 
-function SignUpPage() {
+export const SignUpPage = () => {
   var [idLock, setIdLock] = useState(false);
 
   const [userData, setUserData] = useState({
@@ -74,6 +74,4 @@ function SignUpPage() {
       />
     </div>
   );
-}
-
-export default SignUpPage;
+};

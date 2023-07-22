@@ -3,7 +3,7 @@ import { LoginInputField } from "../../molecules/auth/LoginInputField";
 import SubmitButton from "../../atoms/SubmitButton";
 import { TextToSignUp } from "../../molecules/auth/TextToSignUp";
 
-export function LoginBox(props) {
+export const LoginBox = (props) => {
   const [loginData, setLoginData] = useState(props.values);
   var handleParent = props.loginDataHandler;
 
@@ -34,4 +34,4 @@ export function LoginBox(props) {
       <TextToSignUp />
     </div>
   );
-}
+};

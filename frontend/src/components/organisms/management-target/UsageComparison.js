@@ -3,7 +3,7 @@ import React from "react";
 import { UsageBarChart } from "../../molecules/management-target/UsageBarChart";
 import { Text } from "../../atoms/Text";
 
-export function UsageComparison(props) {
+export const UsageComparison = (props) => {
   const data = props.data;
   const groupMode = "grouped";
   const chartKeys = ["todayUsage", "weekAvg"];
@@ -29,4 +29,4 @@ export function UsageComparison(props) {
       </Row>
     </>
   );
-}
+};

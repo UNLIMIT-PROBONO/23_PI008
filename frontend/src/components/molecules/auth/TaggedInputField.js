@@ -2,7 +2,7 @@ import React from "react";
 import InputField from "../../atoms/InputField";
 import "../../css/InputField.css";
 
-const TaggedInputField = (props) => {
+export const TaggedInputField = (props) => {
   return (
     <div class="signUp">
       <div class="tag">
@@ -19,5 +19,3 @@ const TaggedInputField = (props) => {
     </div>
   );
 };
-
-export default TaggedInputField;

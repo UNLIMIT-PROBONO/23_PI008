@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import SignUpPage from './pages/SignUpPage';
 import { LoginPage } from './pages/LoginPage';
+import {ScheduleCalendarPage } from './pages/ScheduleCalendarPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <div>
-      <LoginPage/>
+      <ScheduleCalendarPage />
     </div>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

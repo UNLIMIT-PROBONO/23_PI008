@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TgtSidebar } from "../../molecules/layout/TgtSidebar";
 import { TgtHeader } from "../../molecules/layout/TgtHeader";
 
-export function BasicFrame(props) {
+export const BasicFrame = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -18,4 +18,4 @@ export function BasicFrame(props) {
       </Layout>
     </div>
   );
-}
+};

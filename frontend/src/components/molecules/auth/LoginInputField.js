@@ -1,7 +1,7 @@
 import React from "react";
 import InputField from "../../atoms/InputField";
 
-export function LoginInputField(props) {
+export const LoginInputField = (props) => {
   return (
     <div>
       {props.label}
@@ -13,4 +13,4 @@ export function LoginInputField(props) {
       />
     </div>
   );
-}
+};

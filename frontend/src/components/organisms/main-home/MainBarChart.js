@@ -2,7 +2,7 @@ import React from "react";
 import { UsageBarChart } from "../../molecules/management-target/UsageBarChart";
 import { SoundFilled } from "@ant-design/icons";
 
-export function MainBarChart(props) {
+export const MainBarChart = (props) => {
   const managementTargets = props.managementTargets;
 
   const groupMode = "linear";
@@ -38,4 +38,4 @@ export function MainBarChart(props) {
       />
     </>
   );
-}
+};

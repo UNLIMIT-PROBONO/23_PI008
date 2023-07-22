@@ -2,7 +2,7 @@ import { Row } from "antd";
 import React from "react";
 import TaggedInputField from "../../auth/TaggedInputField";
 
-export function ScheduleInformation(props) {
+export const ScheduleInformation = (props) => {
   return (
     <>
       <Row>

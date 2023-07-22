@@ -5,7 +5,7 @@ import { toasting } from "../hook/UseToast";
 import { ToastContainer } from "react-toastify";
 import { Col, Row } from "antd";
 
-export function LoginPage() {
+export const LoginPage = () => {
   const [loginData, setLoginData] = useState({
     login_id: "",
     password: "",
@@ -40,5 +40,5 @@ export function LoginPage() {
       <Col>홍보 사진</Col>
     </Row>
   );
-}
+};
 //https://ant.design/components/grid

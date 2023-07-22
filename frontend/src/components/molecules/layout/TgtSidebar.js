@@ -10,7 +10,7 @@ import { Menu, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
 
-export function TgtSidebar(props) {
+export const TgtSidebar = (props) => {
   var collapsed = props.collapsed;
   const {
     token: { colorBgContainer },
@@ -64,4 +64,4 @@ export function TgtSidebar(props) {
       </Sider>
     </div>
   );
-}
+};

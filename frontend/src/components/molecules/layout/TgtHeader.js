@@ -4,7 +4,7 @@ import { Button, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { Text } from "../../atoms/Text";
 
-export function TgtHeader(props) {
+export const TgtHeader = (props) => {
   var collapsed = props.collapsed;
   var setCollapsed = props.setCollapsed;
   var handleCollapsing = () => {
@@ -34,4 +34,4 @@ export function TgtHeader(props) {
       </Header>
     </div>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export function toasting(message, type) {
+export const toasting = (message, type) => {
   // 1. 커스텀 훅을 import 했을 때 실행될 함수를 만든다.
   // 1-1. 해당 함수의 매개변수로 message와 type을 지정한다.
   const config = {
@@ -37,6 +37,6 @@ export function toasting(message, type) {
       toast(message, config);
   }
   // 3-1. 성공, 실패, 경고, default 케이스마다 토스트 메세지의 마크가 다르게 표시된다.
-}
+};
 
 // https://velog.io/@hailey199535/React-3

@@ -1,19 +1,20 @@
-import { Col, Row } from 'antd';
-import React from 'react';
-import { ScheduleList } from '../../molecules/calendar/ScheduleList';
+import { Col, Row } from "antd";
+import React from "react";
+import { ScheduleList } from "../../molecules/calendar/ScheduleList";
 
-export function WeekSchedule(props) {
+export const WeekSchedule = (props) => {
+  const schedules = props.schedules;
   const todaySchedule = props.todaySchedule;
   const thisWeekSchedule = props.thisWeekSchedule;
 
   return (
     <Row>
       <Col>
-        <ScheduleList label="Today" data={todaySchedule}/>
+        <ScheduleList label="Today" data={todaySchedule} />
       </Col>
       <Col>
-        <ScheduleList label="This Week" data={thisWeekSchedule}/>
+        <ScheduleList label="This Week" data={thisWeekSchedule} />
       </Col>
     </Row>
-  )
-}
+  );
+};

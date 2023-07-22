@@ -2,7 +2,7 @@ import React from "react";
 import { returnComparisonRatio } from "../../../services/TargetService";
 import { ResponsiveBar } from "@nivo/bar";
 
-export function UsageBarChart(props) {
+export const UsageBarChart = (props) => {
   var showLegends = props.showLegends;
   const keys = props.keys;
   const data = props.data;
@@ -74,5 +74,5 @@ export function UsageBarChart(props) {
       />
     </div>
   );
-}
+};
 // axis 축, legend 라벨(?), data 차트 값,

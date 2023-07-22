@@ -2,7 +2,7 @@ import { Table } from "antd";
 import React from "react";
 import { dateFormatting } from "../../../mapper/simpleMapper";
 
-export function HistoryTable(props) {
+export const HistoryTable = (props) => {
   const dataSource = props.history;
 
   // 일시, 제목, 상세 내용 , 수행여부(Activated)
@@ -40,4 +40,4 @@ export function HistoryTable(props) {
       <Table dataSource={dataSource} columns={colums} />
     </>
   );
-}
+};

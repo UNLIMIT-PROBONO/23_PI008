@@ -3,7 +3,7 @@ import { Text } from "../../atoms/Text";
 import { Row } from "antd";
 import { HistoryTable } from "../../molecules/management-target/HistoryTable";
 
-export function ManagementHistory(props) {
+export const ManagementHistory = (props) => {
   return (
     <>
       <Row>
@@ -14,4 +14,4 @@ export function ManagementHistory(props) {
       </Row>
     </>
   );
-}
+};
