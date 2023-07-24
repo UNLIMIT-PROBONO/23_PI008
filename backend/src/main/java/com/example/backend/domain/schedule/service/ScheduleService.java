@@ -2,7 +2,6 @@ package com.example.backend.domain.schedule.service;
 
 import com.example.schedulemanagement.dto.request.ScheduleRequest;
 import com.example.schedulemanagement.dto.response.ScheduleResponse;
-
 import java.util.List;
 
 public interface ScheduleService {

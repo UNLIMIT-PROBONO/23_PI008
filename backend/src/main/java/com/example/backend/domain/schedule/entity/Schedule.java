@@ -3,6 +3,7 @@ package com.example.backend.domain.schedule.entity;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
 @Table(name = "schedules")
 public class Schedule {

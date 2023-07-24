@@ -13,4 +13,3 @@ public class ScheduleResponse {
     private Date updatedAt;
     private String activated;
 }
-

@@ -6,7 +6,6 @@ import com.example.backend.domain.schedule.dto.request.ScheduleRequest;
 import com.example.backend.domain.schedule.dto.response.ScheduleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

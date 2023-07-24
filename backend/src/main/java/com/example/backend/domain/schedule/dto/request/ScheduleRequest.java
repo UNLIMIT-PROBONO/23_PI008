@@ -8,5 +8,6 @@ public class ScheduleRequest {
     private String content;
     private Date startDate;
     private Date endDate;
+    
 }
 

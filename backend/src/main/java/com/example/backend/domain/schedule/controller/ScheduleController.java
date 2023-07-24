@@ -59,4 +59,3 @@ public class ScheduleController {
         return ResponseEntity.noContent().build();
     }
 }
-
