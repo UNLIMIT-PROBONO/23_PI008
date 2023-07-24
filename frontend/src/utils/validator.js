@@ -1,3 +1,3 @@
 export function isBlank(value) {
-    return value==='';
+    return value === '';
 }
