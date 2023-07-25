@@ -5,6 +5,7 @@ const SERVER_PORT = "8080";
 const MANAGER = "manager";
 const SCHEDULE = "schedule";
 const MANAGEMENT_TARGET = "user";
+const CALENDAR = "calendar";
 
 export const URI = {
   BASE_URL: `http://${SERVER_HOST}:${SERVER_PORT}/api/`,
@@ -18,6 +19,9 @@ export const URI = {
 
   SCHEDULE: `${SCHEDULE}`,
   SCHEDULE_HISTORY: `${SCHEDULE}/history`,
+
+  CALENDAR: `${CALENDAR}`,
+  THIS_WEEK: `${CALENDAR}/week`,
 };
 
 // 페이지 라우팅 URI 관리

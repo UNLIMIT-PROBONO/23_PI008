@@ -8,6 +8,7 @@ export const MainHomePage = (props) => {
   var [loading, setLoading] = useState(true);
 
   const fetchDangerousTargetsUsage = async () => {
+    // TODO 위험한 대상자들 api
     data["dangerousTargetUsage"] = {};
   };
 

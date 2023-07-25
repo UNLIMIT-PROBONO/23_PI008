@@ -1,11 +1,15 @@
 import React from "react";
 import { TgtCalendar } from "../../components/molecules/calendar/TgtCalendar";
-import { TgtDatePicker } from "../../components/molecules/calendar/TgtDatePicker";
+import { WeekSchedule } from "../../components/organisms/calendar/WeekSchedule";
 
-export function ScheduleCalendarTemplate(props) {
+export const ScheduleCalendarTemplate = (props) => {
+  const scheduleOfMonth = props.scheduleOfMonth;
+  const scheduleOfThisWeek = props.scheduleOfThisWeek;
+
   return (
     <>
-      <TgtCalendar />
+      <TgtCalendar schedules={scheduleOfMonth} />
+      <WeekSchedule schedules={scheduleOfThisWeek} />
     </>
   );
-}
+};
