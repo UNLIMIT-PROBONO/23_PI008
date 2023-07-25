@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SignUpInputBox from "../components/organisms/auth/SignUpInputBox";
-import TogetherLogo from "../components/molecules/TogetherLogo";
+import { SignUpInputBox } from "../components/organisms/auth/SignUpInputBox";
+import { TogetherLogo } from "../components/molecules/TogetherLogo";
 import { checkIdVerification, sendSignUpForm } from "../services/AuthService";
 import { isBlank } from "../utils/validator";
 

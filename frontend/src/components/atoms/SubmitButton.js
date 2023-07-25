@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/SubmitButton.css";
 
-const SubmitButton = (props) => {
+export const SubmitButton = (props) => {
   return (
     <div>
       <button class="btn-outline-primary" type="submit" onClick={props.onClick}>
@@ -10,5 +10,3 @@ const SubmitButton = (props) => {
     </div>
   );
 };
-
-export default SubmitButton;

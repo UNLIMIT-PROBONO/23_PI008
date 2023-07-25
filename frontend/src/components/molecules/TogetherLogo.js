@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/logo.svg";
 import "../css/Logo.css";
 
-const TogetherLogo = () => {
+export const TogetherLogo = () => {
   // 임시 로고 사용중
   return (
     <div class="centeredLogo">
@@ -11,5 +11,3 @@ const TogetherLogo = () => {
     </div>
   );
 };
-
-export default TogetherLogo;

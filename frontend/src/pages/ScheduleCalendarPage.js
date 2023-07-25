@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { ScheduleCalendarTemplate } from "./templates/ScheduleCalendarTemplate";
 import { BasicFrame } from "../components/organisms/layout/BasicFrame";
+import { getScheduleOfMonth } from "../services/ScheduleService";
 
-export function ScheduleCalendarPage(props) {
+export const ScheduleCalendarPage=(props)=> {
   var [loading, setLoading] = useState(false);
   var [data, setData] = useState({});
+  var [selectedMonth, setSelectedMonth] = useState(new Date());
+
+  const fetchCalendar = async () => {
+    await getScheduleOfMonth()
+  }
 
   return (
     <>

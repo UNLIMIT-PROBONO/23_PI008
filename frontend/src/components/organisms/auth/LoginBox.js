@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LoginInputField } from "../../molecules/auth/LoginInputField";
-import SubmitButton from "../../atoms/SubmitButton";
+import { SubmitButton } from "../../atoms/SubmitButton";
 import { TextToSignUp } from "../../molecules/auth/TextToSignUp";
 
 export const LoginBox = (props) => {

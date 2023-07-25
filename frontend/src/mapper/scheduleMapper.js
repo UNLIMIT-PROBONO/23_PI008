@@ -13,7 +13,7 @@ const mapToSimpleScheduleObject = (data) => {
   };
 };
 
-export const jsonToHistoryOfSchedule = (jsonArray) => {
+export const jsonArrayToSchedule = (jsonArray) => {
   return jsonArray.map((json) => mapToScheduleObject(json));
 };
 

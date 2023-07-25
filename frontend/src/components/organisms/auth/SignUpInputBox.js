@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import TaggedInputField from "../../molecules/auth/TaggedInputField";
-import SubmitButton from "../../atoms/SubmitButton";
-import IdInputField from "../../molecules/auth/IdInputField";
+import { TaggedInputField } from "../../molecules/auth/TaggedInputField";
+import { SubmitButton } from "../../atoms/SubmitButton";
+import { IdInputField } from "../../molecules/auth/IdInputField";
 import "../../css/AlignCenter.css";
 
 export const SignUpInputBox = (props) => {

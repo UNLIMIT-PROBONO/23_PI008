@@ -1,6 +1,6 @@
 import { Row } from "antd";
 import React from "react";
-import TaggedInputField from "../../auth/TaggedInputField";
+import { TaggedInputField } from "../../auth/TaggedInputField";
 
 export const ScheduleInformation = (props) => {
   return (
@@ -28,4 +28,4 @@ export const ScheduleInformation = (props) => {
       </Row>
     </>
   );
-}
+};
