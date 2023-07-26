@@ -1,154 +1,25 @@
 package com.example.backend.domain.managers.service;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
 import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
-import com.example.backend.domain.managers.entity.Managers;
-import com.example.backend.domain.managers.mapper.ManagersMapper;
-import com.example.backend.domain.managers.repository.ManagerRepository;
-import com.example.backend.global.jwt.JwtProperties;
-import com.example.backend.global.jwt.JwtProvider;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Service
-@Transactional(readOnly = true)
-@RequiredArgsConstructor
-public class ManagersService {
+public interface ManagersService {
 
-    private final ManagerRepository managerRepository;
-    private final ManagersMapper managersMapper;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtProvider jwtProvider;
+    void signUp(SignupRequestDto signupRequestDto);
 
-    //회원가입
-    @Transactional
-    public void signUp(SignupRequestDto signupRequestDto) {
+    boolean duplicateId(String loginId);
 
-        //비밀번호 암호화
-        String password = passwordEncoder.encode(signupRequestDto.getPassword());
-        signupRequestDto.setPassword(password);
+    LoginResponseDto login(HttpServletResponse response, LoginRequestDto loginRequestDto);
 
-        //회원정보 저장
-        managerRepository.save(managersMapper.toEntity(signupRequestDto));
-    }
+    ManagerResponseDto getManager(HttpServletRequest request);
 
-    //아이디 중복 확인
-    public boolean duplicateId(String loginId) {
-        return managerRepository.existsByLoginId(loginId);
-    }
+    ManagerResponseDto updateManager(HttpServletRequest request, ManagerRequestDto managerRequestDto);
 
-    //로그인
-    public LoginResponseDto login(HttpServletResponse response, LoginRequestDto loginRequestDto) {
-
-        //등록된 아이디인지 확인
-        Managers manager = managerRepository.findByLoginId(loginRequestDto.getLoginId()).orElseThrow(
-                () -> new BadCredentialsException("로그인에 실패하였습니다.")
-        );
-
-        //비밀번호가 맞는지 확인
-        if (!passwordEncoder.matches(loginRequestDto.getPassword(), manager.getPassword())) {
-            throw new BadCredentialsException("로그인에 실패하였습니다.");
-        }
-
-        //토큰 생성
-        String accessToken = jwtProvider.createAccessToken(manager.getLoginId(), manager.getName());
-
-        //쿠키 생성
-        Cookie cookie = new Cookie("accessToken", "Bearer " + accessToken);
-        cookie.setMaxAge(60 * 60 * 6); //유효시간 6시간
-        cookie.setPath("/"); //모든 경로에서 접근 가능
-        cookie.setHttpOnly(true); //서버만 쿠키에 접근 가능
-
-        response.addCookie(cookie);
-
-        LoginResponseDto loginResponseDto = LoginResponseDto.builder()
-                .loginId(manager.getLoginId())
-                .name(manager.getName())
-                .build();
-
-        return loginResponseDto;
-    }
-
-    //매니저 정보 조회
-    public ResponseEntity<?> getManager(String token) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(token);
-
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
-
-        ManagerResponseDto managerResponseDto = managersMapper.fromEntity(managerEntity);
-
-        return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
-    }
-
-    //매니저 정보 수정
-    @Transactional
-    public ResponseEntity<?> updateManager(String token, ManagerRequestDto managerRequestDto) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(token);
-
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
-
-        //비밀번호 암호화
-        String password = passwordEncoder.encode(managerRequestDto.getPassword());
-        managerRequestDto.setPassword(password);
-
-        //정보 수정
-//        managerEntity.setPassword(managerRequestDto.getPassword());
-//        managerEntity.setAdminArea(managerRequestDto.getAdminArea());
-//        managerEntity.setPhoneNumber(managerRequestDto.getPhoneNumber());
-        managerRepository.save(managerEntity);
-
-        ManagerResponseDto managerResponseDto = managersMapper.fromEntity(managerEntity);
-
-        return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
-    }
-
-    //회원탈퇴
-    @Transactional
-    public ResponseEntity<?> deleteManager(String token) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(token);
-
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
-
-        managerEntity.setActivated(false);
-        managerRepository.save(managerEntity);
-
-        return ResponseEntity.ok().build();
-    }
-
-    //토큰 값 중 로그인 아이디 추출
-    public String extractLoginId(String token) {
-
-        //토큰 값만 남기기
-        String value = token.replace(JwtProperties.TOKEN_PREFIX, "");
-
-        //토큰 값 중 로그인 아이디 추출
-        return JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(value)
-                .getClaim("loginId").asString();
-    }
+    void deleteManager(HttpServletRequest request);
 }
