@@ -4,12 +4,14 @@ import com.example.backend.domain.managers.dto.request.LoginRequestDto;
 import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
+import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 import com.example.backend.domain.managers.service.ManagersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -45,8 +47,8 @@ public class ManagersController {
 
     //매니저 정보 조회
     @GetMapping("/")
-    public ResponseEntity<?> getManager(@RequestHeader("Authorization") String token) {
-        return managersService.getManager(token);
+    public ResponseEntity<ManagerResponseDto> getManager(HttpServletRequest request) {
+        return ResponseEntity.ok(managersService.getManager(request));
     }
 
     //매니저 정보 수정
