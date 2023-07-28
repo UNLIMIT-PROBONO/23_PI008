@@ -59,7 +59,8 @@ public class ManagersController {
 
     //회원탈퇴
     @DeleteMapping("/")
-    public ResponseEntity<?> deleteManager(@RequestHeader("Authorization") String token) {
-        return managersService.deleteManager(token);
+    public ResponseEntity<Void> deleteManager(HttpServletRequest request) {
+        managersService.deleteManager(request);
+        return ResponseEntity.ok().build();
     }
 }

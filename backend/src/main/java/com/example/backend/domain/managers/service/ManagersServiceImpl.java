@@ -120,19 +120,16 @@ public class ManagersServiceImpl implements ManagersService{
 
     //회원탈퇴
     @Transactional
-    public ResponseEntity<?> deleteManager(String token) {
+    public void deleteManager(HttpServletRequest request) {
 
         //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(token);
+        String loginId = extractLoginId(request);
 
         Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
         managerEntity.setActivated(false);
-        managerRepository.save(managerEntity);
-
-        return ResponseEntity.ok().build();
     }
 
     //토큰 값 중 로그인 아이디 추출
