@@ -100,10 +100,10 @@ public class ManagersServiceImpl implements ManagersService{
 
     //매니저 정보 수정
     @Transactional
-    public ResponseEntity<?> updateManager(String token, ManagerRequestDto managerRequestDto) {
+    public ManagerResponseDto updateManager(HttpServletRequest request, ManagerRequestDto managerRequestDto) {
 
         //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(token);
+        String loginId = extractLoginId(request);
 
         Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
@@ -111,17 +111,11 @@ public class ManagersServiceImpl implements ManagersService{
 
         //비밀번호 암호화
         String password = passwordEncoder.encode(managerRequestDto.getPassword());
-        managerRequestDto.setPassword(password);
 
         //정보 수정
-//        managerEntity.setPassword(managerRequestDto.getPassword());
-//        managerEntity.setAdminArea(managerRequestDto.getAdminArea());
-//        managerEntity.setPhoneNumber(managerRequestDto.getPhoneNumber());
-        managerRepository.save(managerEntity);
+        managerEntity.update(password, managerRequestDto.getAdminArea(), managerRequestDto.getPhoneNumber());
 
-        ManagerResponseDto managerResponseDto = managersMapper.fromEntity(managerEntity);
-
-        return ResponseEntity.status(HttpStatus.OK).body(managerResponseDto);
+        return managersMapper.fromEntity(managerEntity);
     }
 
     //회원탈퇴

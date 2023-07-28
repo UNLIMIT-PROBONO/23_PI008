@@ -53,8 +53,8 @@ public class ManagersController {
 
     //매니저 정보 수정
     @PutMapping("/")
-    public ResponseEntity<?> updateManager(@RequestHeader("Authorization") String token, @RequestBody ManagerRequestDto managerRequestDto) {
-        return managersService.updateManager(token, managerRequestDto);
+    public ResponseEntity<ManagerResponseDto> updateManager(HttpServletRequest request, @RequestBody ManagerRequestDto managerRequestDto) {
+        return ResponseEntity.ok(managersService.updateManager(request, managerRequestDto));
     }
 
     //회원탈퇴

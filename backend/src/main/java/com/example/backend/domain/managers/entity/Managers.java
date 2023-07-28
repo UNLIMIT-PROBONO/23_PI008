@@ -30,6 +30,12 @@ public class Managers extends BaseEntity {
     @Column(name = "phone_num", nullable = false)
     private String phoneNumber;
 
+    public void update(String password, String adminArea, String phoneNumber) {
+        this.password = password;
+        this.adminArea = adminArea;
+        this.phoneNumber = phoneNumber;
+    }
+
     @Builder
     public Managers(String loginId, String password, String name, String adminArea, String phoneNumber) {
         this.loginId = loginId;
