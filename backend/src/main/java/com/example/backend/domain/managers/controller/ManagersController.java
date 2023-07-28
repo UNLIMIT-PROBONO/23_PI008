@@ -1,7 +1,7 @@
 package com.example.backend.domain.managers.controller;
 
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
-import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
+import com.example.backend.domain.managers.dto.request.UpdateRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
@@ -53,8 +53,8 @@ public class ManagersController {
 
     //매니저 정보 수정
     @PutMapping("/")
-    public ResponseEntity<ManagerResponseDto> updateManager(HttpServletRequest request, @RequestBody ManagerRequestDto managerRequestDto) {
-        return ResponseEntity.ok(managersService.updateManager(request, managerRequestDto));
+    public ResponseEntity<ManagerResponseDto> updateManager(HttpServletRequest request, @RequestBody UpdateRequestDto updateRequestDto) {
+        return ResponseEntity.ok(managersService.updateManager(request, updateRequestDto));
     }
 
     //회원탈퇴

@@ -1,7 +1,7 @@
 package com.example.backend.domain.managers.service;
 
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
-import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
+import com.example.backend.domain.managers.dto.request.UpdateRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
@@ -19,7 +19,7 @@ public interface ManagersService {
 
     ManagerResponseDto getManager(HttpServletRequest request);
 
-    ManagerResponseDto updateManager(HttpServletRequest request, ManagerRequestDto managerRequestDto);
+    ManagerResponseDto updateManager(HttpServletRequest request, UpdateRequestDto updateRequestDto);
 
     void deleteManager(HttpServletRequest request);
 }

@@ -1,11 +1,9 @@
 package com.example.backend.domain.managers.dto.request;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
-public class ManagerRequestDto {
+public class UpdateRequestDto {
 
     private String password;
 
