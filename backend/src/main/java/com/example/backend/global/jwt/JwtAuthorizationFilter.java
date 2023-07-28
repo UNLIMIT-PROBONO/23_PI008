@@ -56,7 +56,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         if (loginId != null) {
 
-            Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+            Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
                     () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
             );
 

@@ -57,7 +57,7 @@ public class ManagersServiceImpl implements ManagersService{
     public LoginResponseDto login(HttpServletResponse response, LoginRequestDto loginRequestDto) {
 
         //등록된 아이디인지 확인
-        Managers manager = managerRepository.findByLoginId(loginRequestDto.getLoginId()).orElseThrow(
+        Managers manager = managerRepository.findByLoginIdAndIsActivated(loginRequestDto.getLoginId(), true).orElseThrow(
                 () -> new BadCredentialsException("로그인에 실패하였습니다.")
         );
 
@@ -91,7 +91,7 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
@@ -105,7 +105,7 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
@@ -125,7 +125,7 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginId(loginId).orElseThrow(
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
