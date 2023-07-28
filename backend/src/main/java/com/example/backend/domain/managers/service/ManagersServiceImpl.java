@@ -13,8 +13,6 @@ import com.example.backend.domain.managers.repository.ManagerRepository;
 import com.example.backend.global.jwt.JwtProperties;
 import com.example.backend.global.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -143,9 +141,6 @@ public class ManagersServiceImpl implements ManagersService{
 
         //토큰 값만 남기기
         String accessToken = cookie.replace(JwtProperties.TOKEN_PREFIX, "");
-
-//        //토큰 값만 남기기
-//        String value = token.replace(JwtProperties.TOKEN_PREFIX, "");
 
         //토큰 값 중 로그인 아이디 추출
         return JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(accessToken)
