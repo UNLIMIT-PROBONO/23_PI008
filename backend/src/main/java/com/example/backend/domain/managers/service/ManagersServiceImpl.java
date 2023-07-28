@@ -3,7 +3,7 @@ package com.example.backend.domain.managers.service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.backend.domain.managers.dto.request.LoginRequestDto;
-import com.example.backend.domain.managers.dto.request.ManagerRequestDto;
+import com.example.backend.domain.managers.dto.request.UpdateRequestDto;
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
@@ -75,12 +75,7 @@ public class ManagersServiceImpl implements ManagersService{
 
         response.addCookie(cookie);
 
-        LoginResponseDto loginResponseDto = LoginResponseDto.builder()
-                .loginId(manager.getLoginId())
-                .name(manager.getName())
-                .build();
-
-        return loginResponseDto;
+        return managersMapper.fromEntityToLoginResponse(manager);
     }
 
     //매니저 정보 조회
@@ -93,12 +88,12 @@ public class ManagersServiceImpl implements ManagersService{
                 () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
         );
 
-        return managersMapper.fromEntity(managerEntity);
+        return managersMapper.fromEntityToManagerResponse(managerEntity);
     }
 
     //매니저 정보 수정
     @Transactional
-    public ManagerResponseDto updateManager(HttpServletRequest request, ManagerRequestDto managerRequestDto) {
+    public ManagerResponseDto updateManager(HttpServletRequest request, UpdateRequestDto updateRequestDto) {
 
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
@@ -108,12 +103,12 @@ public class ManagersServiceImpl implements ManagersService{
         );
 
         //비밀번호 암호화
-        String password = passwordEncoder.encode(managerRequestDto.getPassword());
+        String password = passwordEncoder.encode(updateRequestDto.getPassword());
 
         //정보 수정
-        managerEntity.update(password, managerRequestDto.getAdminArea(), managerRequestDto.getPhoneNumber());
+        managerEntity.update(password, updateRequestDto.getAdminArea(), updateRequestDto.getPhoneNumber());
 
-        return managersMapper.fromEntity(managerEntity);
+        return managersMapper.fromEntityToManagerResponse(managerEntity);
     }
 
     //회원탈퇴

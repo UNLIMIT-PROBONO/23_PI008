@@ -1,6 +1,7 @@
 package com.example.backend.domain.managers.mapper;
 
 import com.example.backend.domain.managers.dto.request.SignupRequestDto;
+import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 import com.example.backend.domain.managers.entity.Managers;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,14 @@ public class ManagersMapper {
                 .build();
     }
 
-    public ManagerResponseDto fromEntity(Managers manager) {
+    public LoginResponseDto fromEntityToLoginResponse(Managers managers) {
+        return LoginResponseDto.builder()
+                .loginId(managers.getLoginId())
+                .name(managers.getName())
+                .build();
+    }
+
+    public ManagerResponseDto fromEntityToManagerResponse(Managers manager) {
         return ManagerResponseDto.builder()
                 .name(manager.getName())
                 .adminArea(manager.getAdminArea())
