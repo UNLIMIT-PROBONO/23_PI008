@@ -15,19 +15,7 @@ export const TgtCalendar = (props) => {
   var [isModalOpen, openModal, closeModal] = useModal(false);
 
   const renderEventContent = props.renderEventContent; // 월이 바뀌었을 때
-  const schedules = [
-    {
-      title: "내용",
-      start: new Date(2023, 6, 3),
-      end: new Date(2023, 6, 6),
-    },
-    {
-      title: "내용11",
-      start: new Date(2023, 6, 3),
-      end: new Date(2023, 6, 6),
-    },
-  ];
-  // TODO dateClick -> 일정 추가 폼 나오게
+  const schedules = props.schedules;
 
   return (
     <CalendarWrap>
@@ -42,4 +30,3 @@ export const TgtCalendar = (props) => {
     </CalendarWrap>
   );
 }
-// https://fullcalendar.io/docs/react
