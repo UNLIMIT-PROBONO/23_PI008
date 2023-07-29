@@ -8,13 +8,13 @@ import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 import com.example.backend.domain.managers.entity.Managers;
+import com.example.backend.domain.managers.exception.ManagersNotFoundException;
 import com.example.backend.domain.managers.mapper.ManagersMapper;
 import com.example.backend.domain.managers.repository.ManagerRepository;
 import com.example.backend.global.jwt.JwtProperties;
 import com.example.backend.global.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -84,9 +84,8 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
+                .orElseThrow(ManagersNotFoundException::new);
 
         return managersMapper.fromEntityToManagerResponse(managerEntity);
     }
@@ -98,9 +97,8 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
+                .orElseThrow(ManagersNotFoundException::new);
 
         //비밀번호 암호화
         String password = passwordEncoder.encode(updateRequestDto.getPassword());
@@ -118,9 +116,8 @@ public class ManagersServiceImpl implements ManagersService{
         //토큰 값 중 로그인 아이디 추출
         String loginId = extractLoginId(request);
 
-        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
-                () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-        );
+        Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
+                .orElseThrow(ManagersNotFoundException::new);
 
         managerEntity.setActivated(false);
     }

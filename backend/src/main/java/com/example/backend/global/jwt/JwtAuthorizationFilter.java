@@ -3,12 +3,12 @@ package com.example.backend.global.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.backend.domain.managers.entity.Managers;
+import com.example.backend.domain.managers.exception.ManagersNotFoundException;
 import com.example.backend.domain.managers.repository.ManagerRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -56,9 +56,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         if (loginId != null) {
 
-            Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true).orElseThrow(
-                    () -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다.")
-            );
+            Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
+                    .orElseThrow(ManagersNotFoundException::new);
 
             //인증은 토큰 검증시 끝. 인증을 하기 위해서가 아닌 스프링 시큐리티가 수행해주는 권한 처리를 위해
             //아래와 같이 토큰을 만들어서 Authentication 객체를 강제로 만들고 그걸 세션에 저장
