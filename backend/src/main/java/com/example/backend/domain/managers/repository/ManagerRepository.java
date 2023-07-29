@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ManagerRepository extends JpaRepository<Managers, Long> {
 
-    Optional<Managers> findByLoginIdAndIsActivated(String loginId, boolean stauts);
+    Optional<Managers> findByLoginIdAndIsActivated(String loginId, boolean status);
 
     boolean existsByLoginId(String loginId);
 }
