@@ -20,10 +20,10 @@ export const SignUpInputBox = (props) => {
     <div class="centered">
       <IdInputField
         label="아이디 입력"
-        value={userData.login_id}
+        value={userData.loginId}
         lock={props.idLock}
         onClick={props.onClickIdCheck}
-        onChange={handleInput("login_id")}
+        onChange={handleInput("loginId")}
       />
       <TaggedInputField
         label="비밀번호 입력"

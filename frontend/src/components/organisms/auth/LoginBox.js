@@ -20,8 +20,8 @@ export const LoginBox = (props) => {
       <div>
         <LoginInputField
           label="아이디"
-          value={loginData.login_id}
-          onChange={handleInput("login_id")}
+          value={loginData.loginId}
+          onChange={handleInput("loginId")}
         />
         <LoginInputField
           label="비밀번호"
