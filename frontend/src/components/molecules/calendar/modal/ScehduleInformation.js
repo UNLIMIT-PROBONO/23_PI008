@@ -19,13 +19,6 @@ export const ScheduleInformation = (props) => {
           onChange={props.onChange}
         />
       </Row>
-      <Row>
-        <TaggedInputField
-          label="장소"
-          value={props.value}
-          onChange={props.onChange}
-        />
-      </Row>
     </>
   );
 };
