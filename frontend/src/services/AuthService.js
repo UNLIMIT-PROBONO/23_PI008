@@ -38,7 +38,7 @@ export const sendSignUpForm = async (userData) => {
   await RestAPI.post(uri, userData)
     .then((res) => {
       if (res.status === 201) {
-        console.log(userData.login_id + "님이 회원가입 했습니다.");
+        console.log(userData.loginId + "님이 회원가입 했습니다.");
       }
     })
     .catch((error) => console.log(error));

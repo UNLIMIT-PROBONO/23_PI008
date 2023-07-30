@@ -8,10 +8,10 @@ export const SignUpPage = () => {
   var [idLock, setIdLock] = useState(false);
 
   const [userData, setUserData] = useState({
-    login_id: "",
+    loginId: "",
     password: "",
     name: "",
-    phone_number: "",
+    phoneNumber: "",
     area: "",
   });
 
@@ -23,13 +23,13 @@ export const SignUpPage = () => {
     if (!permittedToUseId()) return;
     if (!inputedSamePassword()) return;
     if (haveBlankFields()) return;
-    console.log(userData.login_id + "님이 회원가입");
+    console.log(userData.loginId + "님이 회원가입");
     await sendSignUpForm(userData);
     // 라우팅
   };
 
   const onClickIdCheck = async () => {
-    setIdLock(await checkIdVerification(userData.login_id));
+    setIdLock(await checkIdVerification(userData.loginId));
     if (!idLock) {
       alert("사용 가능한 아이디입니다.");
       return;
@@ -39,7 +39,6 @@ export const SignUpPage = () => {
 
   const haveBlankFields = () => {
     if (Object.values(userData).filter((v) => isBlank(v)).length > 0) {
-      console.log("assda");
       alert("모든 값을 입력해주세요.");
       return true;
     }

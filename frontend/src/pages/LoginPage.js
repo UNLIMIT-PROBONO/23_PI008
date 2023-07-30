@@ -7,7 +7,7 @@ import { Col, Row } from "antd";
 
 export const LoginPage = () => {
   const [loginData, setLoginData] = useState({
-    login_id: "",
+    loginId: "",
     password: "",
   });
 
@@ -18,12 +18,11 @@ export const LoginPage = () => {
   const onClickLoginBtn = async () => {
     var loginSuccess = await sendLoginForm(loginData);
     if (loginSuccess) {
-      console.log(loginData.login_id + "님이 로그인 했습니다.");
+      console.log(loginData.loginId + "님이 로그인 했습니다.");
       toasting("로그인 성공!", "success");
       // 메인 화면으로 라우팅
       return;
     }
-    console.log(loginData);
     toasting("다시 확인해 주세요", "error");
   };
 

@@ -49,9 +49,9 @@ export const SignUpInputBox = (props) => {
       />
       <TaggedInputField
         label="전화번호 입력"
-        value={userData.phone_number}
+        value={userData.phoneNumber}
         holder="' - ' 없이 입력해 주세요."
-        onChange={handleInput("phone_number")}
+        onChange={handleInput("phoneNumber")}
       />
 
       <SubmitButton label="회원가입 하기" onClick={props.onClickSubmitBtn} />
