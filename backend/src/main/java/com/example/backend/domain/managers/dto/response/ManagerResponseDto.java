@@ -1,17 +1,17 @@
 package com.example.backend.domain.managers.dto.response;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
 public class ManagerResponseDto {
 
     private String name;
 
     private String adminArea;
 
-    private String phoneNum;
+    private String phoneNumber;
 
     private String createdAt;
 

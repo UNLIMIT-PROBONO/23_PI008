@@ -15,5 +15,5 @@ public class SignupRequestDto {
 
     private String adminArea;
 
-    private String phoneNum;
+    private String phoneNumber;
 }
