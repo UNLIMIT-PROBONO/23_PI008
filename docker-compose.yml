@@ -1,8 +1,8 @@
-version: "1"
+version: "2"
 services:
   back:
     build:
-      context: /backend
+      context: ./backend
       dockerfile: Dockerfile
     restart: always
     # depends_on:
@@ -10,10 +10,11 @@ services:
     ports:
       - 8080:8080
   
-  front:
+  nginx:
     build:
-      context: /frontend
+      context: ./nginx
       dockerfile: Dockerfile
-    restart: always
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html
     ports:
-      - 3000:80
+      - 80:80
