@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScheduleCalendarTemplate } from "./templates/ScheduleCalendarTemplate";
 import { BasicFrame } from "../components/organisms/layout/BasicFrame";
 import { getScheduleOfMonth, getScheduleOfThisWeek } from "../services/ScheduleService";
 
 export const ScheduleCalendarPage = (props) => {
-  var [loading, setLoading] = useState(false);
-  var [data, setData] = useState({});
+  var [loading, setLoading] = useState(true);
+  var [data, setData] = useState({
+    scheduleOfMonth:[],
+    scheduleOfThisWeek:[],
+  });
   var [selectedMonth, setSelectedMonth] = useState(new Date());
 
   const fetchCalendar = async () => {
-    var month = await getScheduleOfMonth(
+    data.scheduleOfMonth = await getScheduleOfMonth(
       selectedMonth.getFullYear(),
       selectedMonth.getMonth + 1
     );
-
-    var thisWeek = await getScheduleOfThisWeek();
-
-    data["scheduleOfMonth"] = month;
-    data["scheduleOfThisWeek"] = thisWeek;
   };
 
+  const fetchThisWeek = async () => {
+    data.scheduleOfThisWeek = await getScheduleOfThisWeek();    
+  }
+
+  const fetchData = () => {
+    fetchCalendar();
+    fetchThisWeek();
+  }
+
+  useEffect(async () => {
+    setLoading(true);
+    await fetchData();
+    setLoading(false);
+  }, []);
 
   return (
     <>

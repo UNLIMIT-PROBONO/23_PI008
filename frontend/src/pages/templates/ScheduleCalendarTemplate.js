@@ -3,8 +3,8 @@ import { TgtCalendar } from "../../components/molecules/calendar/TgtCalendar";
 import { WeekSchedule } from "../../components/organisms/calendar/WeekSchedule";
 
 export const ScheduleCalendarTemplate = (props) => {
-  const scheduleOfMonth = props.scheduleOfMonth;
-  const scheduleOfThisWeek = props.scheduleOfThisWeek;
+  const scheduleOfMonth = props.data.scheduleOfMonth;
+  const scheduleOfThisWeek = props.data.scheduleOfThisWeek;
 
   return (
     <>

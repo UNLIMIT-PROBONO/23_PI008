@@ -25,7 +25,7 @@ export const getHistoryOfSchedule = async (targetId) => {
       }
     })
     .catch((e) => {
-      console.log(e);
+      return [];
     });
 
   return result;
@@ -45,6 +45,7 @@ export const getScheduleOfMonth = async (year, month) => {
     })
     .catch((e) => {
       console.log(e);
+      return [];
     });
 
   return result;
@@ -59,6 +60,7 @@ export const getScheduleOfThisWeek = async () => {
     })
     .catch((e) => {
       console.log(e);
+      return [];
     });
 };
 
@@ -66,3 +68,15 @@ export const classifyTodays = (schedules) => {
   var today = new Date();
   return schedules.filter((s) => s.startDate <= today && s.endDate >= today);
 };
+
+export const addNewSchedule = async (data) => {
+    return await RestAPI.post(URI.SCHEDULE, data)
+    .then((res) => {
+      if(res.status === 200) {
+        return true;
+      }
+    })
+    .catch((e)=>{
+      return false;
+    });
+}
