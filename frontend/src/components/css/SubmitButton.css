@@ -1,14 +1,15 @@
 .btn-outline-primary {
-    height: 45px;
-    width: 300px;
-    background-color: #DAEBFF;
-    border: 2px solid rgba(0, 0, 0, 0.23);
-    border-radius: 15px;
-    font-size: 20px;
-    align-content: center;
-    text-align: center;
+  height: 3.2rem; /* 45px */
+  width: 22rem; /* 300px */
+  background-color: #daebff;
+  border: 0.125rem solid rgba(0, 0, 0, 0.23); /* 2px */
+  border-radius: 0.9375rem; /* 15px */
+  font-size: 1.25rem; /* 20px */
+  align-content: center;
+  text-align: center;
+  font-weight: bold;
 }
 
 .btn-outline-primary:hover {
-    background-color: #b0d5ff;
+  background-color: #b0d5ff;
 }

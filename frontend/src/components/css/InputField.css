@@ -1,39 +1,37 @@
 .inputField {
-    background-color: transparent;
-    height: 40px;
-    width: 300px;
-    border: 2px solid rgba(0, 0, 0, 0.23);
-    border-radius: 15px;
-    z-index: 1;
+  background-color: transparent;
+  height: 3rem; /* 40px */
+  width: 20rem; /* 300px */
+  border: 0.125rem solid rgba(0, 0, 0, 0.23); /* 2px */
+  border-radius: 0.9375rem; /* 15px */
+  z-index: 1;
 }
 
 .inputField:hover {
-    border: 2px solid black;
+  border: 0.125rem solid black; /* 2px */
 }
 
 .inputField:focus-visible {
-    outline: none !important;
-    border: 2px solid #1976d2;
+  outline: none !important;
+  border: 0.125rem solid #1976d2; /* 2px */
 }
 
 .signUp {
-    margin: 25px;
-    font-size: 16px;
+  margin: 1.5625rem; /* 25px */
+  font-size: 1rem; /* 16px */
 }
 
-.signup~span {
-    font-size: 18px;
-    transition: all ease-in-out 0.5s;
-    /* align-items: center; */
+.signup ~ span {
+  font-size: 1.125rem; /* 18px */
+  transition: all ease-in-out 0.5s;
 }
 
-.signUp:focus~span {
-    z-index: 10;
-    font-size: 18px;
-    transition: all ease-in-out 0.5s;
+.signUp:focus ~ span {
+  z-index: 10;
+  font-size: 1.125rem; /* 18px */
+  transition: all ease-in-out 0.5s;
 }
 
 .tag {
-    align-items: start;
-
+  align-items: start;
 }
