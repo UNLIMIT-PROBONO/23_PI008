@@ -10,3 +10,20 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+springdoc:
+  version: v1
+  packages-to-scan: com.example.backend # swagger 적용 위해 스캔할 패키지
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: swagger-ui.html # swagger-ui 연결할 주소
+    tags-sorter: alpha # alpha: 알파벳 순 정렬, method: HTTP method 순 정렬
+    operations-sorter: alpha
+    doc-expansion: none
+  api-docs:
+    path: /api-docs/json
+    groups:
+      enabled: true
+  cache:
+    disabled: true
