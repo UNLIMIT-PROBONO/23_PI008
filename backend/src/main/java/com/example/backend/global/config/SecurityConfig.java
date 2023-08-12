@@ -1,6 +1,8 @@
-package com.example.backend.global.jwt;
+package com.example.backend.global.config;
 
 import com.example.backend.domain.managers.repository.ManagerRepository;
+import com.example.backend.global.jwt.JwtAuthenticationEntryPoint;
+import com.example.backend.global.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.http.LegacyCookieProcessor;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -46,7 +48,7 @@ public class SecurityConfig {
                 .apply(new CustomAbstractHttpConfigurer())
                 .and()
                 .authorizeHttpRequests(
-                        requests -> requests.antMatchers("/api/manager/signup/**", "/api/manager/login").permitAll()
+                        requests -> requests.antMatchers("/api/manager/signup/**", "/api/manager/login", "/swagger-ui/**", "/api-docs/**").permitAll()
                                 .anyRequest().authenticated() //회원가입, 로그인 이외에는 권한 필요
                 )
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint);
