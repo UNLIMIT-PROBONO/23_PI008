@@ -1,12 +1,12 @@
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export function toasting(message, type) {
+export const toasting = (message, type) => {
   // 1. 커스텀 훅을 import 했을 때 실행될 함수를 만든다.
   // 1-1. 해당 함수의 매개변수로 message와 type을 지정한다.
   const config = {
     // 2. config 값을 설정해서 기본 커스터마이징을 한다.
-    position: 'top-center',
+    position: "top-center",
     // 2-1. 위치: 위쪽 중간
     autoClose: 2000,
     // 2-2. 2초 후 사라짐
@@ -24,13 +24,13 @@ export function toasting(message, type) {
 
   switch (type) {
     // 3. type 설정 시, 해당 type에 맞춰 switch case가 걸리고, 해당하는 case의 토스트 메세지가 생성된다.
-    case 'success':
+    case "success":
       toast.success(message, config);
       break;
-    case 'error':
+    case "error":
       toast.error(message, config);
       break;
-    case 'warning':
+    case "warning":
       toast.warning(message, config);
       break;
     default:

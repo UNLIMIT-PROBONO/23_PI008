@@ -1,23 +1,21 @@
-import React from 'react';
-import InputField from '../../atoms/InputField';
+import React from "react";
 import "../../css/InputField.css";
+import { InputField } from "../../atoms/InputField";
 
-const TaggedInputField = (props) => {
-    return (
-        <div class="signUp">
-            <div class="tag">
-                <label >{props.label}</label>
-            </div>
-            <div class="row">
-                <InputField
-                    value={props.value}
-                    inputType={props.inputType}
-                    holder={props.holder}
-                    onChange={props.onChange}
-                />
-            </div>
-        </div>
-    );
-}
-
-export default TaggedInputField;
+export const TaggedInputField = (props) => {
+  return (
+    <div class="signUp">
+      <div class="tag">
+        <label>{props.label}</label>
+      </div>
+      <div class="row">
+        <InputField
+          value={props.value}
+          inputType={props.inputType}
+          holder={props.holder}
+          onChange={props.onChange}
+        />
+      </div>
+    </div>
+  );
+};
