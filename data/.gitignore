@@ -1,2 +1,38 @@
-.env
+### 환경 관련 파일 ###
 .DS_Store
+.env
+.env.local
+.env.*.local
+
+### Python Stack ###
+
+### 가상환경 관련 파일 및 디렉토리 ###
+myenv/
+env/
+.myenv/
+.env/
+
+### 로컬 개발 서버 설정
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+
+
+### 민감한 정보 
+settings.py
+secret_key.py
+
+
+### IDE나 편집기 설정 
+.vscode/
+.idea/
+.vs/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+
+
