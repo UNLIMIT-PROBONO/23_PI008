@@ -44,8 +44,8 @@ export const SignUpInputBox = (props) => {
       />
       <TaggedInputField
         label="주소 입력"
-        value={userData.area}
-        onChange={handleInput("area")}
+        value={userData.adminArea}
+        onChange={handleInput("adminArea")}
       />
       <TaggedInputField
         label="전화번호 입력"

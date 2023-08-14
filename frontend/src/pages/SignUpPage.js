@@ -12,7 +12,7 @@ export const SignUpPage = () => {
     password: "",
     name: "",
     phoneNumber: "",
-    area: "",
+    adminArea: "",
   });
 
   const userDataHandler = (data) => {
