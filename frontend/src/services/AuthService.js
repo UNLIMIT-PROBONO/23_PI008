@@ -2,9 +2,7 @@ import { URI } from "../utils/config";
 import RestAPI from "../utils/AxiosApi";
 
 export const sendLoginForm = async (data) => {
-  var result = false;
-
-  result = await RestAPI.post(URI.LOGIN, data)
+  return await RestAPI.post(URI.LOGIN, data)
     .then((res) => {
       if (res.status === 200) {
         return true;
