@@ -17,9 +17,8 @@ export const sendLoginForm = async (data) => {
 
 export const checkIdVerification = async (loginId) => {
   var uri = URI.CHECK_ID;
-  var result = false;
 
-  result = await RestAPI.get(uri + `${loginId}`)
+  return await RestAPI.get(uri + `${loginId}`)
     .then((response) => {
       if (response.status === 200) return true;
       else if (response.status === 409) return false;
@@ -27,20 +26,20 @@ export const checkIdVerification = async (loginId) => {
     .catch((error) => {
       return false;
     });
-
-  return result;
 };
 
 export const sendSignUpForm = async (userData) => {
   var uri = URI.SIGNUP;
 
-  await RestAPI.post(uri, userData)
+  return await RestAPI.post(uri, userData)
     .then((res) => {
       if (res.status === 201) {
         console.log(userData.loginId + "님이 회원가입 했습니다.");
+        return true;
       }
+      return false;
     })
     .catch((error) => {
-
+      return false;
     });
 };
