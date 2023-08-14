@@ -42,7 +42,7 @@ export function LoginPage() {
           padding: '1rem 0 0 0',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5rem' }}>
           <img id="mainLogo" src={MainLogo} alt="메인로고" style={{ marginRight: '0.5rem' }}></img>
           <div>
             <div style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>아울러</div>
