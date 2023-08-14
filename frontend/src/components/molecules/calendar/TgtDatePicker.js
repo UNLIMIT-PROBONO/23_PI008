@@ -6,7 +6,7 @@ const { RangePicker } = DatePicker;
 export const TgtDatePicker = (props) => {
   return (
     <>
-      <RangePicker />
+      <RangePicker onChange={props.onChange} />
     </>
   );
-}
+};

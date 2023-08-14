@@ -7,15 +7,14 @@ export const sendLoginForm = async (data) => {
   result = await RestAPI.post(URI.LOGIN, data)
     .then((res) => {
       if (res.status === 200) {
-        console.log(data.login_id + "님이 로그인 했습니다.");
         return true;
       } else if (res.status === 400) {
         return false;
       }
     })
-    .catch((error) => console.log(error));
-
-  return result;
+    .catch((error) => {
+      return false;
+    });
 };
 
 export const checkIdVerification = async (loginId) => {
@@ -27,7 +26,9 @@ export const checkIdVerification = async (loginId) => {
       if (response.status === 200) return true;
       else if (response.status === 409) return false;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      return false;
+    });
 
   return result;
 };
@@ -41,5 +42,7 @@ export const sendSignUpForm = async (userData) => {
         console.log(userData.loginId + "님이 회원가입 했습니다.");
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+
+    });
 };

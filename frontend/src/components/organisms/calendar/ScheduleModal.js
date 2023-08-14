@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "../../atoms/Text";
 import { TgtDatePicker } from "../../molecules/calendar/TgtDatePicker";
 import InputField from "../../atoms/InputField";
@@ -6,6 +6,10 @@ import { Col, Row } from "antd";
 import { ModalButton } from "../../atoms/ModalButton";
 import { ScheduleInformation } from "../../molecules/calendar/modal/ScehduleInformation";
 import styled from "styled-components";
+import { addNewSchedule } from "../../../services/ScheduleService";
+import { getAllInfo } from "../../../services/TargetService";
+import { toasting } from "../../../hook/UseToast";
+import { ToastContainer } from "react-toastify";
 
 const ModalWrap = styled.div`
   width: 100vw;
@@ -42,7 +46,52 @@ const ModalContainer = styled.div`
 export const ScheduleModal = (props) => {
   var isOpen = props.isOpen;
   const closeModal = props.closeModal;
-  const sendForm = props.sendForm;
+  var [targetInfos, setTargetInfo] = useState([
+    {
+      targetId: 1,
+      tgName: "",
+    },
+  ]);
+  var [form, setForm] = useState({
+    targetId: null,
+    title: "",
+    content: "",
+    startDate: null,
+    endDate: null,
+  });
+
+  const sendForm = () => {
+    const result = addNewSchedule(form);
+    if (result == true) {
+      closeModal();
+      toasting("일정을 추가하였습니다", "success");
+    }
+    toasting("일정 추가에 실패했습니다.", "warning");
+  };
+
+  const fetchTargetInfo = async () => {
+    const result = await getAllInfo();
+    setTargetInfo(result);
+  };
+
+  const setDateRange = (date, dateString) => {
+    form.startDate = new Date(date[0]);
+    form.endDate = new Date(date[1]);
+  };
+
+  const inputHandler = (data) => {
+    form.title = data.title;
+    form.content = data.content;
+    form.targetId = data.targetId;
+  };
+
+  const fetch = () => {
+    fetchTargetInfo();
+  };
+
+  useEffect(async () => {
+    await fetch();
+  }, []);
 
   return (
     <>
@@ -50,20 +99,27 @@ export const ScheduleModal = (props) => {
         <ModalWrap>
           <ModalBackGround>
             <ModalContainer>
+            <ToastContainer />
               <Row>
                 <Text label="일정 추가" />
               </Row>
 
               <Row>
-                <TgtDatePicker />
+                <TgtDatePicker onChange={setDateRange} />
               </Row>
-              <ScheduleInformation />
+
+              <ScheduleInformation
+                targetInfos={targetInfos}
+                values={form}
+                inputHandler={inputHandler}
+              />
+
               <Row>
                 <Col>
-                  <ModalButton label="생성" onClick={sendForm} />
+                  <ModalButton label="취소" onClick={closeModal} />
                 </Col>
                 <Col>
-                  <ModalButton label="취소" onClick={closeModal} />
+                  <ModalButton label="생성" onClick={sendForm} />
                 </Col>
               </Row>
             </ModalContainer>

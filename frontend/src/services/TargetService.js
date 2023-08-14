@@ -13,7 +13,10 @@ export const getAllInfo = async () => {
         jsonToAllTaregetInfomation(res.data);
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      return [];
+    });
   return result;
 };
 
@@ -24,7 +27,10 @@ export const getTargetInfo = async (targetId) => {
         return jsonToTargetInfomation(res.data);
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      return [];
+    });
 
   return result;
 };
