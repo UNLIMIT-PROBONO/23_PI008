@@ -6,7 +6,6 @@ import com.example.backend.domain.managers.dto.request.SignupRequestDto;
 import com.example.backend.domain.managers.dto.response.LoginResponseDto;
 import com.example.backend.domain.managers.dto.response.ManagerResponseDto;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface ManagersService {
@@ -17,9 +16,9 @@ public interface ManagersService {
 
     LoginResponseDto login(HttpServletResponse response, LoginRequestDto loginRequestDto);
 
-    ManagerResponseDto getManager(HttpServletRequest request);
+    ManagerResponseDto getManager(String loginId);
 
-    ManagerResponseDto updateManager(HttpServletRequest request, UpdateRequestDto updateRequestDto);
+    ManagerResponseDto updateManager(String loginId, UpdateRequestDto updateRequestDto);
 
-    void deleteManager(HttpServletRequest request);
+    void deleteManager(String loginId);
 }
