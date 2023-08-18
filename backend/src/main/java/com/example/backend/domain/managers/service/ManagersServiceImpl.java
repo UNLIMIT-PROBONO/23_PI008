@@ -79,10 +79,7 @@ public class ManagersServiceImpl implements ManagersService{
     }
 
     //매니저 정보 조회
-    public ManagerResponseDto getManager(HttpServletRequest request) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(request);
+    public ManagerResponseDto getManager(String loginId) {
 
         Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
                 .orElseThrow(ManagersNotFoundException::new);
@@ -92,10 +89,7 @@ public class ManagersServiceImpl implements ManagersService{
 
     //매니저 정보 수정
     @Transactional
-    public ManagerResponseDto updateManager(HttpServletRequest request, UpdateRequestDto updateRequestDto) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(request);
+    public ManagerResponseDto updateManager(String loginId, UpdateRequestDto updateRequestDto) {
 
         Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
                 .orElseThrow(ManagersNotFoundException::new);
@@ -111,10 +105,7 @@ public class ManagersServiceImpl implements ManagersService{
 
     //회원탈퇴
     @Transactional
-    public void deleteManager(HttpServletRequest request) {
-
-        //토큰 값 중 로그인 아이디 추출
-        String loginId = extractLoginId(request);
+    public void deleteManager(String loginId) {
 
         Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(loginId, true)
                 .orElseThrow(ManagersNotFoundException::new);
