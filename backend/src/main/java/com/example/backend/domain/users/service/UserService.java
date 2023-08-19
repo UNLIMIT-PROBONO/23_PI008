@@ -4,8 +4,10 @@ import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.managers.exception.ManagersNotFoundException;
 import com.example.backend.domain.managers.repository.ManagerRepository;
 import com.example.backend.domain.users.dto.request.UserRequestDto;
+import com.example.backend.domain.users.dto.response.UserResponseDto;
 import com.example.backend.domain.users.entity.Gender;
 import com.example.backend.domain.users.entity.Users;
+import com.example.backend.domain.users.exception.UserNotFoundException;
 import com.example.backend.domain.users.mapper.UserMapper;
 import com.example.backend.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +36,12 @@ public class UserService {
         userRepository.save(user);
     }
 
+    // 단일 유저(관리대상자) 조회
+    public UserResponseDto getUser(Long userId) {
 
+        Users user = userRepository.findByIdAndIsActivated(userId, true)
+                .orElseThrow(UserNotFoundException::new);
+
+        return userMapper.fromEntity(user);
+    }
 }
