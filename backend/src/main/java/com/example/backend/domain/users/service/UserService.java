@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +45,22 @@ public class UserService {
                 .orElseThrow(UserNotFoundException::new);
 
         return userMapper.fromEntity(user);
+    }
+
+    // 유저(관리대상자) 전체 조회
+    public List<UserResponseDto> getAllUser(String loginId) {
+
+        Managers manager = managerRepository.findByLoginIdAndIsActivated(loginId, true)
+                .orElseThrow(ManagersNotFoundException::new);
+
+        List<Users> usersList = userRepository.findAllByManagersAndIsActivated(manager, true);
+        if (usersList.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        List<UserResponseDto> userResponseDtoList = usersList.stream()
+                .map(userMapper::fromEntity)
+                .collect(Collectors.toList());
+
+        return userResponseDtoList;
     }
 }

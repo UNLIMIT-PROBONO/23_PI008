@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user")
@@ -25,5 +27,10 @@ public class UserController {
     @GetMapping("/{user_id}")
     public ResponseEntity<UserResponseDto> getUser(@PathVariable("user_id") Long userId) {
         return ResponseEntity.ok(userService.getUser(userId));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserResponseDto>> getAllUser(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        return ResponseEntity.ok(userService.getAllUser(customUserDetails.getUsername()));
     }
 }
