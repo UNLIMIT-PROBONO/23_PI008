@@ -7,6 +7,5 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<Users, Long> {
 
-    Optional<Users> findById(Long Id);
-
+    Optional<Users> findByIdAndIsActivated(Long Id, boolean status);
 }
