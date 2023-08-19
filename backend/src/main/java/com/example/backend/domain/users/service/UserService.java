@@ -1,6 +1,10 @@
 package com.example.backend.domain.users.service;
 
+import com.example.backend.domain.managers.entity.Managers;
+import com.example.backend.domain.managers.exception.ManagersNotFoundException;
+import com.example.backend.domain.managers.repository.ManagerRepository;
 import com.example.backend.domain.users.dto.request.UserRequestDto;
+import com.example.backend.domain.users.entity.Gender;
 import com.example.backend.domain.users.entity.Users;
 import com.example.backend.domain.users.mapper.UserMapper;
 import com.example.backend.domain.users.repository.UserRepository;
@@ -13,15 +17,21 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
-    public final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserRepository userRepository;
+    private final ManagerRepository managerRepository;
 
+    private final UserMapper userMapper;
 
     // 유저(관리대상자) 저장
     @Transactional
-    public Users addUser(UserRequestDto userRequestDto) {
-        Users user = userMapper.toEntity(userRequestDto);
-        return userRepository.save(user);
+    public void addUser(String adminId, UserRequestDto userRequestDto) {
+
+        Managers manager = managerRepository.findByLoginIdAndIsActivated(adminId, true)
+                .orElseThrow(ManagersNotFoundException::new);
+        Gender gender = Gender.getGenderByName(userRequestDto.getGender());
+
+        Users user = userMapper.toEntity(userRequestDto, manager, gender);
+        userRepository.save(user);
     }
 
 
