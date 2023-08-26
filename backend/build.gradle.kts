@@ -23,8 +23,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+    // jwt
     implementation("com.auth0:java-jwt:4.3.0")
+    // swagger
     implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
+    // redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
