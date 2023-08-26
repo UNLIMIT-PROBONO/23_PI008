@@ -36,7 +36,7 @@ public class UserMapper {
                 .check(user.getCheck())
                 .createdAt(user.getCreatedAt())
                 .updatedAt(user.getUpdatedAt())
-                .isActivated(user.isActivated())
+                .activated(user.isActivated())
                 .build();
     }
 }
