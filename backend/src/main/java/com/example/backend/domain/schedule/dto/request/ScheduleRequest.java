@@ -1,16 +1,22 @@
 package com.example.backend.domain.schedule.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.example.backend.domain.managers.entity.Managers;
+import com.example.backend.domain.users.entity.Users;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleRequest {
+    private Long managerId;
     private Long userId;
     private String title;
     private String content;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private Users user;
+    private Managers manager;
 }
