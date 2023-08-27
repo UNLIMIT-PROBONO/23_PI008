@@ -3,7 +3,6 @@ package com.example.backend.domain.schedule.dto.request;
 import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.users.entity.Users;
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Data
