@@ -1,10 +1,8 @@
 package com.example.backend.domain.users.entity;
 
+import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.global.common.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="users")
 public class Users extends BaseEntity {
 
@@ -21,8 +19,9 @@ public class Users extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-//    @Column(name = "admin_id", nullable = false)
-//    private Long adminId ;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "admin_id", referencedColumnName = "id")
+    private Managers managers;
 
     @Column(name = "name", nullable = false)
     private String name ;
@@ -33,16 +32,17 @@ public class Users extends BaseEntity {
     @Column(name = "address", nullable = false)
     private String address ;
 
+    @Enumerated(EnumType.STRING) //enum 이름을 db에 저장
     @Column(name = "gender", nullable = false)
-    private String gender ;
+    private Gender gender ;
 
     @Column(name = "birth", nullable = false)
     private String birth ;
 
-    @Column(name = "health", nullable = false)
+    @Column(name = "health")
     private String health ;
 
-    @Column(name = "user_check", nullable = false)
+    @Column(name = "user_check")
     private String check ;
 
 }
