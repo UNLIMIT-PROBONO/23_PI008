@@ -11,6 +11,8 @@ import com.example.backend.domain.users.exception.UserNotFoundException;
 import com.example.backend.domain.users.mapper.UserMapper;
 import com.example.backend.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,6 +29,7 @@ public class UserService {
     private final UserMapper userMapper;
 
     // 유저(관리대상자) 저장
+    @CacheEvict(value = "userList", key = "#adminId") //관리대상자가 추가되었으므로 기존 캐시 제거
     @Transactional
     public void addUser(String adminId, UserRequestDto userRequestDto) {
 
@@ -48,6 +51,7 @@ public class UserService {
     }
 
     // 유저(관리대상자) 전체 조회
+    @Cacheable(value = "userList", key = "#loginId") //userList라는 이름의 캐시에 loginId를 key, userResponseDtoList를 value로 저장
     public List<UserResponseDto> getAllUser(String loginId) {
 
         Managers manager = managerRepository.findByLoginIdAndIsActivated(loginId, true)
