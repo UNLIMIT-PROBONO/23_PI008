@@ -52,7 +52,7 @@ export const getScheduleOfMonth = async (year, month) => {
 };
 
 export const getScheduleOfThisWeek = async () => {
-  var result = await RestAPI.get(URI.THIS_WEEK)
+  return await RestAPI.get(URI.THIS_WEEK)
     .then((res) => {
       if (res.status === 200) {
         return jsonArrayToSchedule(res.data);
