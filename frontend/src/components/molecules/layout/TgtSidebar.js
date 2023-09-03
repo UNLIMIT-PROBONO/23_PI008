@@ -9,16 +9,19 @@ import {
 import { Menu, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
+import { MainHomePage } from "../../../pages/MainHomePage";
+import { Link, useNavigate, useRoutes } from "react-router-dom";
 
 export const TgtSidebar = (props) => {
   var collapsed = props.collapsed;
+  const router = useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const sideItems = [
     {
-      key: "home",
+      key: "main",
       icon: <HomeOutlined />,
       label: "메인",
     },
@@ -33,7 +36,7 @@ export const TgtSidebar = (props) => {
       label: "관리 대상자",
       children: [
         {
-          key: "target-all",
+          key: "target-list",
           icon: <BarsOutlined />,
           label: "전체 보기",
         },
@@ -51,16 +54,31 @@ export const TgtSidebar = (props) => {
     },
   ];
 
+  const routePage = (path) => {
+    router(`../${path}`);
+    console.log(path);
+  }
+
   return (
     <div>
       <Sider
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{ height: "100%" }}
+        style={{
+          height: "100vh",
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
       >
         <div className="demo-logo-vertical" />
-        <Menu mode="inline" defaultSelectedKeys={["1"]} items={sideItems} />
+        <Menu
+          onClick={({key})=> routePage(key)}
+          mode="inline" 
+          defaultSelectedKeys={["1"]}
+          items={sideItems} 
+        />
       </Sider>
     </div>
   );
