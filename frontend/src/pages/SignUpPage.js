@@ -3,9 +3,11 @@ import { SignUpInputBox } from "../components/organisms/auth/SignUpInputBox";
 import { TogetherLogo } from "../components/molecules/TogetherLogo";
 import { checkIdVerification, sendSignUpForm } from "../services/AuthService";
 import { isBlank } from "../utils/validator";
+import { useNavigate } from "react-router";
 
 export const SignUpPage = () => {
-  var [idLock, setIdLock] = useState(false);
+  const [idLock, setIdLock] = useState(false);
+  const router = useNavigate();
 
   const [userData, setUserData] = useState({
     loginId: "",
@@ -25,12 +27,14 @@ export const SignUpPage = () => {
     if (haveBlankFields()) return;
     console.log(userData.loginId + "님이 회원가입");
     await sendSignUpForm(userData);
-    // 라우팅
+    
+    router("../login");
   };
 
   const onClickIdCheck = async () => {
-    setIdLock(await checkIdVerification(userData.loginId));
-    if (!idLock) {
+    const result = await checkIdVerification(userData.loginId);
+    if (result) {
+      setIdLock(true);
       alert("사용 가능한 아이디입니다.");
       return;
     }

@@ -9,8 +9,7 @@ import {
 import { Menu, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
-import { MainHomePage } from "../../../pages/MainHomePage";
-import { Link, useNavigate, useRoutes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const TgtSidebar = (props) => {
   var collapsed = props.collapsed;
@@ -56,7 +55,6 @@ export const TgtSidebar = (props) => {
 
   const routePage = (path) => {
     router(`../${path}`);
-    console.log(path);
   }
 
   return (
