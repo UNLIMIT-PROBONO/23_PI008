@@ -1,4 +1,4 @@
-const SERVER_HOST = "localhost";
+const SERVER_HOST = "13.124.113.135";
 const SERVER_PORT = "8080";
 
 // rest api URI 관리
