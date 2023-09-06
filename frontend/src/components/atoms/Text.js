@@ -8,7 +8,7 @@ export const Text = (props) => {
 export const HrefText = (props) => {
   return (
     <div class="text-href">
-      <a href="#"> {props.label} </a>
+      <a href={props.to}> {props.label} </a>
     </div>
   );
 };
