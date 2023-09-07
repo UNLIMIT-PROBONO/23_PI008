@@ -20,16 +20,16 @@ export const ScheduleCalendarPage = (props) => {
 
   const fetchThisWeek = async () => {
     data.scheduleOfThisWeek = await getScheduleOfThisWeek();    
-  }
+  } 
 
-  const fetchData = () => {
-    fetchCalendar();
-    fetchThisWeek();
-  }
-
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
-    await fetchData();
+    const loadData = async () => {
+      fetchCalendar();
+      fetchThisWeek();
+    }
+
+    loadData();
     setLoading(false);
   }, []);
 

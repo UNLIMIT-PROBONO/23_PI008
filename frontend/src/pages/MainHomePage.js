@@ -17,14 +17,14 @@ export const MainHomePage = (props) => {
     data["afterTodaysSchedules"] = afterTodaysSchedules;
   };
 
-  var fetchData = () => {
-    fetchAfterTodaysSchedules();
-    fetchDangerousTargetsUsage();
-  };
-
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
-    await fetchData();
+    const loadData = async () => {
+      fetchAfterTodaysSchedules();
+      fetchDangerousTargetsUsage();
+    };
+
+    loadData();
     setLoading(false);
   }, []);
 

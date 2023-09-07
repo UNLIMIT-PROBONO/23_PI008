@@ -85,12 +85,12 @@ export const ScheduleModal = (props) => {
     form.targetId = data.targetId;
   };
 
-  const fetch = () => {
-    fetchTargetInfo();
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      fetchTargetInfo();
+    }
 
-  useEffect(async () => {
-    await fetch();
+    loadData();
   }, []);
 
   return (
