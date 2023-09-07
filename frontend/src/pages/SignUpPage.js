@@ -28,7 +28,7 @@ export const SignUpPage = () => {
     console.log(userData.loginId + "님이 회원가입");
     await sendSignUpForm(userData);
     
-    router("../login");
+    router("../");
   };
 
   const onClickIdCheck = async () => {
