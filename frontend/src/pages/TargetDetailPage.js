@@ -24,16 +24,16 @@ export const TargetDetailPage = (props) => {
     data["managementHistory"] = history;
   };
 
-  var fetchData = () => {
-    fetchTargetInfomation();
-    fetchTargetUsage();
-    fetchHistory();
-  };
-
   // 생성한 함수를 컴포넌트가 mount 됐을 때 실행
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
-    await fetchData();
+    const loadData = async () => {
+      fetchTargetInfomation();
+      fetchTargetUsage();
+      fetchHistory();
+    };
+
+    loadData();
     setLoading(false);
   }, []);
 

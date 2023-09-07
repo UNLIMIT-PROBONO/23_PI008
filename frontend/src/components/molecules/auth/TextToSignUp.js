@@ -9,7 +9,7 @@ export const TextToSignUp = () => {
         <Text label="회원이 아니십니까?" />
       </Col>
       <Col>
-        <HrefText label="회원가입 하기" />
+        <HrefText label="회원가입 하기" to="signup" />
       </Col>
     </Row>
   );
