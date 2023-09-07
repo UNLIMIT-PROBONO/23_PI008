@@ -10,6 +10,7 @@ import { TargetListPage } from "./pages/TargetListPage";
 import { TargetDetailPage } from './pages/TargetDetailPage';
 import { ScheduleCalendarPage } from './pages/ScheduleCalendarPage';
 import { MyPage } from "./pages/MyPage";
+import { TargetStatisticPage } from "./pages/TargetStatisticPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/main" element={<MainHomePage />} />
       <Route path="/target-list" element={<TargetListPage />} />
+      <Route path="/target-statistic" element={<TargetStatisticPage />} />
       <Route path="/target/:id" element={<TargetDetailPage />} />
       <Route path="/schedule" element={<ScheduleCalendarPage />} />
       <Route path="/my-page" element={<MyPage />} />
