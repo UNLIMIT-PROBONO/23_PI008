@@ -17,6 +17,7 @@ public class ScheduleRequest {
     private String content;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+
     @Getter
     private Users user;
     @Getter
