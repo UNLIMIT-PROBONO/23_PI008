@@ -71,7 +71,7 @@ public class ManagersServiceImpl implements ManagersService{
         Cookie cookie = new Cookie("accessToken", "Bearer " + accessToken);
         cookie.setMaxAge(60 * 60 * 6); //유효시간 6시간
         cookie.setPath("/"); //모든 경로에서 접근 가능
-        cookie.setHttpOnly(true); //서버만 쿠키에 접근 가능
+        cookie.setHttpOnly(false); //서버만 쿠키에 접근 가능
 
         response.addCookie(cookie);
 
