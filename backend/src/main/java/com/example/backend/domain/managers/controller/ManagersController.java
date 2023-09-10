@@ -52,7 +52,7 @@ public class ManagersController {
         return ResponseEntity.ok(managersService.getManager(customUserDetails.getUsername()));
     }
 
-    //매니저 정보 수정
+    //매니저 정보  수정
     @PutMapping("/")
     public ResponseEntity<ManagerResponseDto> updateManager(@AuthenticationPrincipal CustomUserDetails customUserDetails, @RequestBody UpdateRequestDto updateRequestDto) {
         return ResponseEntity.ok(managersService.updateManager(customUserDetails.getUsername(), updateRequestDto));
