@@ -4,21 +4,22 @@ import com.example.backend.domain.schedule.dto.request.ScheduleRequest;
 import com.example.backend.domain.schedule.dto.response.ScheduleResponse;
 import com.example.backend.domain.schedule.entity.Schedule;
 import com.example.backend.domain.schedule.repository.ScheduleRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Builder
 public class ScheduleServiceImpl implements ScheduleService {
     private final ScheduleRepository scheduleRepository;
 
     @Override
-    @Transactional
-    public ScheduleResponse createSchedule(ScheduleRequest request) {
+    public ScheduleResponse createSchedule(String username, ScheduleRequest request) {
         Schedule schedule = Schedule.builder()
                 .user(request.getUser())
                 .manager(request.getManager())
@@ -36,7 +37,6 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    @Transactional
     public ScheduleResponse updateSchedule(Long scheduleId, ScheduleRequest request) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElse(null);
         if (schedule == null) {
@@ -56,21 +56,18 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    @Transactional
     public ScheduleResponse getSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElse(null);
         return convertToResponse(schedule);
     }
 
     @Override
-    @Transactional
-    public List<ScheduleResponse> getAllSchedules() {
+    public List<ScheduleResponse> getAllSchedules(String username) {
         List<Schedule> schedules = scheduleRepository.findAll();
         return schedules.stream().map(this::convertToResponse).collect(Collectors.toList());
     }
 
     @Override
-    @Transactional
     public void deleteSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElse(null);
         if (schedule == null) {
@@ -78,13 +75,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
 
         scheduleRepository.delete(schedule);
-    }
-
-    @Override
-    @Transactional
-    public List<ScheduleResponse> getHistory(Long userId) {
-        List<Schedule> schedules = scheduleRepository.findByUserId(userId);
-        return schedules.stream().map(this::convertToResponse).collect(Collectors.toList());
     }
 
     private ScheduleResponse convertToResponse(Schedule schedule) {

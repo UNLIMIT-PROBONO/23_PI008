@@ -3,6 +3,7 @@ package com.example.backend.domain.schedule.dto.request;
 import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.users.entity.Users;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -16,6 +17,9 @@ public class ScheduleRequest {
     private String content;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    @Getter
     private Users user;
+    @Getter
     private Managers manager;
+
 }
