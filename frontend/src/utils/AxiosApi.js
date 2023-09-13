@@ -7,6 +7,8 @@ const RestAPI = axios.create({
     "Content-Type": "application/json",
   },
   timeout:1000,
+  withCredentials: true,
+  AllowOrigins: ["http://13.124.113.135:8080", "http://localhost:3000"],
 });
 
 export default RestAPI;
