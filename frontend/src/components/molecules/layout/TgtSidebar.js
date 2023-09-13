@@ -35,12 +35,12 @@ export const TgtSidebar = (props) => {
       label: "관리 대상자",
       children: [
         {
-          key: "target-list",
+          key: "target",
           icon: <BarsOutlined />,
           label: "전체 보기",
         },
         {
-          key: "target-statistic",
+          key: "target/statistic",
           icon: <BarChartOutlined />,
           label: "통계",
         },

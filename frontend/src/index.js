@@ -19,9 +19,9 @@ root.render(
       <Route path="/" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/main" element={<MainHomePage />} />
-      <Route path="/target-list" element={<TargetListPage />} />
-      <Route path="/target-statistic" element={<TargetStatisticPage />} />
-      <Route path="/target/:id" element={<TargetDetailPage />} />
+      <Route path="/target" element={<TargetListPage />} />
+      <Route path="/target/statistic" element={<TargetStatisticPage />} />
+      <Route path="/target/:targetId" element={<TargetDetailPage />} />
       <Route path="/schedule" element={<ScheduleCalendarPage />} />
       <Route path="/my-page" element={<MyPage />} />
     </Routes>

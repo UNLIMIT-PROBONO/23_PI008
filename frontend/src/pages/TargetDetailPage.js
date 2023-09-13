@@ -3,9 +3,10 @@ import { BasicFrame } from "../components/organisms/layout/BasicFrame";
 import { TargetDetailTemplate } from "./templates/TargetDetailTemplate";
 import { getTargetInfo, getTargetUsage } from "../services/TargetService";
 import { getHistoryOfSchedule } from "../services/ScheduleService";
+import { useParams } from "react-router";
 
 export const TargetDetailPage = (props) => {
-  const targetId = props.targetId;
+  const {targetId} = useParams();
   var [loading, setLoading] = useState(true);
   var [data, setData] = useState({});
 
