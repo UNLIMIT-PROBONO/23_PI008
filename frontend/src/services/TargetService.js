@@ -6,22 +6,23 @@ import {
   jsonToUsageForm,
 } from "../mapper/managementTargetMapper";
 
-export const getAllInfo = async () => {
-  var result = await RestAPI.get(URI.MANAGEMENT_TARGET)
+export const getAllTargetInfo = async () => {
+  return await RestAPI.get(URI.MANAGEMENT_TARGET)
     .then((res) => {
       if (res.status === 200) {
-        jsonToAllTaregetInfomation(res.data);
+        return jsonToAllTaregetInfomation(res.data);
+      } else if(res.status === 401){
+        return []
       }
     })
     .catch((error) => {
       console.log(error);
       return [];
     });
-  return result;
 };
 
 export const getTargetInfo = async (targetId) => {
-  var result = await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}`)
+  return await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}`)
     .then((res) => {
       if (res.status === 200) {
         return jsonToTargetInfomation(res.data);
@@ -31,12 +32,10 @@ export const getTargetInfo = async (targetId) => {
       console.log(error);
       return [];
     });
-
-  return result;
 };
 
 export const getTargetUsage = async (targetId) => {
-  var result = await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}/usage`)
+  return await RestAPI.get(URI.MANAGEMENT_TARGET + `/${targetId}/usage`)
     .then((res) => {
       if (res.status === 200) {
         return jsonToUsageForm(res.data);
@@ -45,8 +44,6 @@ export const getTargetUsage = async (targetId) => {
     .catch((error) => {
       console.log(error);
     });
-
-  return result;
 };
 
 export const getOriginalAge = (birth) => {

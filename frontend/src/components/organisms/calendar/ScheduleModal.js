@@ -7,7 +7,7 @@ import { ModalButton } from "../../atoms/ModalButton";
 import { ScheduleInformation } from "../../molecules/calendar/modal/ScehduleInformation";
 import styled from "styled-components";
 import { addNewSchedule } from "../../../services/ScheduleService";
-import { getAllInfo } from "../../../services/TargetService";
+import { getAllInfo, getAllTargetInfo } from "../../../services/TargetService";
 import { toasting } from "../../../hook/UseToast";
 import { ToastContainer } from "react-toastify";
 
@@ -70,7 +70,7 @@ export const ScheduleModal = (props) => {
   };
 
   const fetchTargetInfo = async () => {
-    const result = await getAllInfo();
+    const result = await getAllTargetInfo();
     setTargetInfo(result);
   };
 
