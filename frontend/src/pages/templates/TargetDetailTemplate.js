@@ -5,12 +5,12 @@ import { UsageComparison } from "../../components/organisms/management-target/Us
 
 export const TargetDetailTemplate = (props) => {
   const managementHistory = props.data.managementHistory;
-  const targetInfomation = props.data.targetInfomation;
+  const targetInformation = props.data.targetInformation;
   const targetUsage = props.data.targetUsage;
 
   return (
     <>
-      <PrivacyInformation data={targetInfomation} />
+      <PrivacyInformation data={targetInformation} />
       <UsageComparison data={targetUsage} />
       <ManagementHistory data={managementHistory} />
     </>

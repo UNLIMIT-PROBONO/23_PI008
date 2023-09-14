@@ -4,23 +4,23 @@ import { Col, Row } from "antd";
 import { Age } from "../../molecules/management-target/Age";
 
 export const PrivacyInformation = (props) => {
-  var { tgName, birth, address, phoneNumber } = props.data;
+  const data = props.data;
 
   return (
     <>
       <Row>
         <Col>
-          <Information content={tgName} />
+          <Information content={data.tgName} />
         </Col>
         <Col>
-          <Age birth={birth} />
+          <Age birth={data.birth} />
         </Col>
       </Row>
       <Row>
-        <Information label="주소" content={address} />
+        <Information label="주소" content={data.address} />
       </Row>
       <Row>
-        <Information label="번호" content={phoneNumber} />
+        <Information label="번호" content={data.phoneNumber} />
       </Row>
     </>
   );

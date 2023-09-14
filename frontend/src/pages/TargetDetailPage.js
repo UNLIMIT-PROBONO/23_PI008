@@ -12,7 +12,7 @@ export const TargetDetailPage = (props) => {
 
   const fetchTargetInfomation = async () => {
     const targetInfo = await getTargetInfo(targetId);
-    data["targetInfomation"] = targetInfo;
+    data["targetInformation"] = targetInfo;
   };
 
   const fetchTargetUsage = async () => {
