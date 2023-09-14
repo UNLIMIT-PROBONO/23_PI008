@@ -1,5 +1,5 @@
-// const SERVER_HOST = "3.38.92.143";
-const SERVER_HOST = "localhost";
+const SERVER_HOST = "3.38.92.143";
+// const SERVER_HOST = "localhost";
 const SERVER_PORT = "8080";
 
 // rest api URI 관리
