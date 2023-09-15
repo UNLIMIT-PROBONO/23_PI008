@@ -2,11 +2,10 @@ import React from "react";
 import { TargetList } from "../../components/molecules/management-target/TargetList";
 
 export const TargetListTemplate = (props) => {
-  const targetList = props.data.targetList;
-
+  console.log(props.targetList)
   return (
     <>
-      <TargetList sources={targetList} />
+      <TargetList sources={props.targetList} />
     </> 
   );
 };

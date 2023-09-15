@@ -4,21 +4,21 @@ import { getAllTargetInfo } from "../services/TargetService";
 import { BasicFrame } from "../components/organisms/layout/BasicFrame";
 
 export const TargetListPage = () => {
-  var [loading, setLoading] = useState(true);
-  var [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [targetList, setTargetList] = useState([]);
 
-  const fetchData = async () => {
-    const targets = await getAllTargetInfo();
-    data["targetList"] = targets;
+  const fetchTargetList = async () => {
+    const result = await getAllTargetInfo();
+    if (result) setTargetList(result);
   };
 
   useEffect(() => {
     setLoading(true);
-    const loadData = async () => {
-      fetchData();
+    const fetchData = async () => {
+      fetchTargetList();
     };
 
-    loadData();
+    fetchData();
     setLoading(false);
   }, []);
 
@@ -27,7 +27,9 @@ export const TargetListPage = () => {
       {loading ? (
         <div>로딩중</div>
       ) : (
-        <BasicFrame content={() => <TargetListTemplate data={data} />} />
+        <BasicFrame
+          content={() => <TargetListTemplate targetList={targetList} />}
+        />
       )}
     </>
   );
