@@ -1,6 +1,6 @@
 import React from "react";
-import { returnComparisonRatio } from "../../../services/TargetService";
 import { ResponsiveBar } from "@nivo/bar";
+import { returnComparisonRatio } from "../../../mapper/simpleMapper";
 
 export const UsageBarChart = (props) => {
   var showLegends = props.showLegends;

@@ -1,6 +1,5 @@
 import React from "react";
-import { dateFormatting } from "../../../mapper/simpleMapper";
-import { getOriginalAge } from "../../../services/TargetService";
+import { dateFormatting, getOriginalAge } from "../../../mapper/simpleMapper";
 import { Text } from "../../atoms/Text";
 
 export const Age = (props) => {
