@@ -4,9 +4,9 @@ import { ManagementHistory } from "../../components/organisms/management-target/
 import { UsageComparison } from "../../components/organisms/management-target/UsageComparison";
 
 export const TargetDetailTemplate = (props) => {
-  const managementHistory = props.data.managementHistory;
-  const targetInformation = props.data.targetInformation;
-  const targetUsage = props.data.targetUsage;
+  const managementHistory = props.managementHistory;
+  const targetInformation = props.targetInformation;
+  const targetUsage = props.targetUsage;
 
   return (
     <>

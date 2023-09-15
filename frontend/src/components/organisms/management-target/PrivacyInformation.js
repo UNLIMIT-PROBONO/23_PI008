@@ -13,14 +13,14 @@ export const PrivacyInformation = (props) => {
           <Information content={data.tgName} />
         </Col>
         <Col>
-          <Age birth={data.birth} />
+          <Age birth={data.birth} age={data.age} />
         </Col>
       </Row>
       <Row>
-        <Information label="주소" content={data.address} />
+        <Information label="주소 : " content={data.address} />
       </Row>
       <Row>
-        <Information label="번호" content={data.phoneNumber} />
+        <Information label="번호 : " content={data.phoneNumber} />
       </Row>
     </>
   );
