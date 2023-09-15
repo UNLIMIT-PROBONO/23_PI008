@@ -20,6 +20,7 @@ public class Schedule {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
+
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Managers manager;

@@ -7,27 +7,34 @@ import com.example.backend.domain.schedule.repository.ScheduleRepository;
 import com.example.backend.domain.managers.entity.Managers;
 import com.example.backend.domain.managers.repository.ManagerRepository;
 import com.example.backend.domain.managers.exception.ManagersNotFoundException;
+import com.example.backend.domain.users.entity.Users;
+import com.example.backend.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ScheduleServiceImpl implements ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
     private final ManagerRepository managerRepository;
+    private final UserRepository userRepository;
 
     @Override
     public ScheduleResponse createSchedule(String username, ScheduleRequest request) {
         Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(username, true)
                 .orElseThrow(ManagersNotFoundException::new);
 
+        Users userEntity = userRepository.findByIdAndIsActivated(request.getUserId(), true)
+                .orElseThrow(() -> new RuntimeException("User not found: " + request.getUserId()));
+
         Schedule schedule = Schedule.builder()
                 .manager(managerEntity)
-                .user(request.getUser())
+                .user(userEntity)
                 .title(request.getTitle())
                 .content(request.getContent())
                 .startDate(request.getStartDate())
@@ -46,9 +53,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new RuntimeException("Schedule not found: " + scheduleId));
 
-        schedule.setManager(request.getManager());
+        schedule.setUser(userRepository.findByIdAndIsActivated(request.getUserId(), true)
+                .orElseThrow(() -> new RuntimeException("User not found: " + request.getUserId())));
 
-        schedule.setUser(request.getUser());
         schedule.setTitle(request.getTitle());
         schedule.setContent(request.getContent());
         schedule.setStartDate(request.getStartDate());
@@ -61,7 +68,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public ScheduleResponse getSchedule(Long scheduleId) {
-
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new RuntimeException("Schedule not found: " + scheduleId));
 
@@ -70,7 +76,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<ScheduleResponse> getAllSchedules(String username) {
-
         Managers managerEntity = managerRepository.findByLoginIdAndIsActivated(username, true)
                 .orElseThrow(ManagersNotFoundException::new);
 
@@ -83,7 +88,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public void deleteSchedule(Long scheduleId) {
-
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new RuntimeException("Schedule not found: " + scheduleId));
 
