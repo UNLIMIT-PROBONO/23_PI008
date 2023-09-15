@@ -6,7 +6,7 @@ export const TargetListTemplate = (props) => {
 
   return (
     <>
-      <TargetList source={targetList} />
-    </>
+      <TargetList sources={targetList} />
+    </> 
   );
 };
