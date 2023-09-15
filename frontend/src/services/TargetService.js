@@ -43,6 +43,7 @@ export const getTargetUsage = async (targetId) => {
     })
     .catch((error) => {
       console.log(error);
+      return {}
     });
 };
 
