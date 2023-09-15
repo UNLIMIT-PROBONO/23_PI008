@@ -41,8 +41,8 @@ export const jsonToUsageForm = (data) => {
     elec: [
       {
         id: "elec",
-        todayUsage: data.elec,
-        weekAvg: data.elecAvg,
+        todayUsage: data.electricity,
+        weekAvg: data.electricityAvg,
       },
     ],
   };
