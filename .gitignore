@@ -1,4 +1,7 @@
 .env
 backend/.env
+.idea/**
+.idea/
+.idea
 
 *.DS_Stroe
