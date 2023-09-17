@@ -14,7 +14,7 @@ export const ScheduleCalendarPage = (props) => {
   const fetchCalendar = async () => {
     data.scheduleOfMonth = await getScheduleOfMonth(
       selectedMonth.getFullYear(),
-      selectedMonth.getMonth + 1
+      selectedMonth.getMonth() + 1
     );
   };
 

@@ -7,6 +7,7 @@ const MANAGER = "manager";
 const SCHEDULE = "schedule";
 const MANAGEMENT_TARGET = "user";
 const CALENDAR = "calendar";
+const DATA = "data";
 
 export const URI = {
   BASE_URL: `http://${SERVER_HOST}:${SERVER_PORT}/api/`,
@@ -17,6 +18,8 @@ export const URI = {
   CHECK_ID: `${MANAGER}/signup/`,
 
   MANAGEMENT_TARGET: `${MANAGEMENT_TARGET}`,
+
+  DATA: `${DATA}`,
 
   SCHEDULE: `${SCHEDULE}`,
   SCHEDULE_HISTORY: `${SCHEDULE}/history`,

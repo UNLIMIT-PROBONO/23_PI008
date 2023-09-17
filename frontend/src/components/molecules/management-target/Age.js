@@ -1,12 +1,11 @@
 import React from "react";
 import { dateFormatting } from "../../../mapper/simpleMapper";
-import { getOriginalAge } from "../../../services/TargetService";
 import { Text } from "../../atoms/Text";
 
 export const Age = (props) => {
-  var age = getOriginalAge(props.birth);
-  var formatted = dateFormatting(props.birth);
-  const result = formatted + " (만 " + age + "세)";
+  const birth = (props.birth)? props.birth : new Date();
+  const formatted = dateFormatting(birth);
+  const result = formatted + " (만 " + props.age + "세)";
 
   return (
     <>

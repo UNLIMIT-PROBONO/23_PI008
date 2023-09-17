@@ -4,7 +4,9 @@ import { dateFormatting } from "../../../utils/mapper";
 import { Text } from "../../atoms/Text";
 
 export const LabeledDate = (props) => {
-  var formatted = dateFormatting(props.date);
+  const date = (props.date)? props.date : new Date();
+  const formatted = dateFormatting(date);
+  
   return (
     <Row>
       <Col>

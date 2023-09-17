@@ -1,4 +1,4 @@
-import { jsonToDatetime } from "./simpleMapper";
+import { getOriginalAge, jsonToDatetime } from "./simpleMapper";
 
 // react object name : json name
 export const jsonToTargetInfomation = (data) => {
@@ -8,6 +8,7 @@ export const jsonToTargetInfomation = (data) => {
     phoneNumber: data.phoneNumber,
     address: data.address,
     birth: jsonToDatetime(data.birth),
+    age: getOriginalAge(data.birth),
     gender: data.gender,
     health: data.health,
     check: data.check,
@@ -40,8 +41,8 @@ export const jsonToUsageForm = (data) => {
     elec: [
       {
         id: "elec",
-        todayUsage: data.elec,
-        weekAvg: data.elecAvg,
+        todayUsage: data.electricity,
+        weekAvg: data.electricityAvg,
       },
     ],
   };

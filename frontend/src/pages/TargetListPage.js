@@ -2,23 +2,29 @@ import React, { useEffect, useState } from "react";
 import { TargetListTemplate } from "./templates/TargetListTemplate";
 import { getAllTargetInfo } from "../services/TargetService";
 import { BasicFrame } from "../components/organisms/layout/BasicFrame";
+import { useNavigate } from "react-router";
 
 export const TargetListPage = () => {
-  var [loading, setLoading] = useState(true);
-  var [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [targetList, setTargetList] = useState([]);
+  const router = useNavigate();
 
-  const fetchData = async () => {
-    const targets = await getAllTargetInfo();
-    data["targetList"] = targets;
+  const fetchTargetList = async () => {
+    const result = await getAllTargetInfo();
+    if (result) setTargetList(result);
+  };
+
+  const onClickRow = (index) => {
+    router(`${index}`);
   };
 
   useEffect(() => {
     setLoading(true);
-    const loadData = async () => {
-      fetchData();
+    const fetchData = async () => {
+      fetchTargetList();
     };
 
-    loadData();
+    fetchData();
     setLoading(false);
   }, []);
 
@@ -27,7 +33,14 @@ export const TargetListPage = () => {
       {loading ? (
         <div>로딩중</div>
       ) : (
-        <BasicFrame content={() => <TargetListTemplate data={data} />} />
+        <BasicFrame
+          content={() => (
+            <TargetListTemplate
+              targetList={targetList}
+              onClickRow={onClickRow}
+            />
+          )}
+        />
       )}
     </>
   );

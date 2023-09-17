@@ -37,7 +37,15 @@ export const TargetList = (props) => {
 
   return (
     <>
-      <Table dataSource={dataSource} columns={colums} />
+      <Table
+        dataSource={dataSource}
+        columns={colums}
+        onRow={(record, index) => {
+          return {
+            onClick: () => props.onClickRow(record.targetId),
+          };
+        }}
+      />
     </>
   );
 };

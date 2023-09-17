@@ -6,7 +6,7 @@ export const jsonToSimpleSchedule = (jsonArray) => {
 
 const mapToSimpleScheduleObject = (data) => {
   return {
-    scheduleId: data.schedulId,
+    scheduleId: data.scheduleId,
     tgName: data.userName,
     content: data.title,
     activated: data.activated,
@@ -19,7 +19,7 @@ export const jsonArrayToSchedule = (jsonArray) => {
 
 const mapToScheduleObject = (data) => {
   return {
-    scheduleId: data.schedulId,
+    scheduleId: data.scheduleId,
     title: data.title,
     content: data.content,
     startDate: jsonToDatetime(data.startDate),
