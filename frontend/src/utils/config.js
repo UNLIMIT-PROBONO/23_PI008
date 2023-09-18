@@ -18,6 +18,7 @@ export const URI = {
   CHECK_ID: `${MANAGER}/signup/`,
 
   MANAGEMENT_TARGET: `${MANAGEMENT_TARGET}`,
+  USER_DANGER: `${MANAGEMENT_TARGET}/danger`,
 
   DATA: `${DATA}`,
 
@@ -27,6 +28,3 @@ export const URI = {
   CALENDAR: `${CALENDAR}`,
   THIS_WEEK: `${CALENDAR}/week`,
 };
-
-// 페이지 라우팅 URI 관리
-export const ROUTE = {};

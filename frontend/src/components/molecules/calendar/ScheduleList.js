@@ -4,7 +4,7 @@ import { Text } from '../../atoms/Text';
 import styled from 'styled-components';
 
 const ListBox = styled.div`
-  width: 100vw;
+  width: 100%;
   flex-wrap: wrap;
 `
 
