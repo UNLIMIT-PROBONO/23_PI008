@@ -96,6 +96,24 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduleRepository.save(schedule);
     }
 
+
+    @Override
+    public List<ScheduleResponse> getSchedulesByYearAndMonth(int year, int month) {
+        List<Schedule> schedules = scheduleRepository.findByYearAndMonth(year, month);
+
+        return schedules.stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<ScheduleResponse> getThisWeekSchedules() {
+        List<Schedule> schedules = scheduleRepository.findThisWeekSchedules();
+
+        return schedules.stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
+    }
+
     private ScheduleResponse convertToResponse(Schedule schedule) {
         return ScheduleResponse.builder()
                 .scheduleId(schedule.getScheduleId())
