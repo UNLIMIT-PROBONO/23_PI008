@@ -7,9 +7,9 @@ import { useModal } from "../../../hook/useModal";
 import styled from "styled-components";
 
 const CalendarWrap = styled.div`
-  width: 100vw;
-  height: 100vw;
-`
+  width: 100%;
+  // height: 100vh;
+`;
 export const TgtCalendar = (props) => {
   var [data, setData] = useState({});
   var [isModalOpen, openModal, closeModal] = useModal(false);
@@ -18,15 +18,18 @@ export const TgtCalendar = (props) => {
   const schedules = props.schedules;
 
   return (
-    <CalendarWrap>
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={schedules}
-        dateClick={openModal}
-      />
+    <>
+      <CalendarWrap>
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          events={schedules}
+          dateClick={openModal}
+          height={"70vh"}
+        />
+      </CalendarWrap>
 
       <ScheduleModal isOpen={isModalOpen} closeModal={closeModal} />
-    </CalendarWrap>
+    </>
   );
-}
+};

@@ -17,11 +17,12 @@ const ModalWrap = styled.div`
 `;
 
 const ModalBackGround = styled.div`
-  width: 50%;
-  height: 120vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  align-content: center;
-  bottom: 0;
+  align-content: middle;
+  justify-content: middle;
+  top: 0;
   left: 0;
   z-index: 2;
 `;
@@ -36,10 +37,10 @@ const ModalContainer = styled.div`
   padding: 3.6rem 0;
   border: 1px solid var(--color-white);
   background-color: white;
-  position: absolute;
-  left: 2rem;
-  top: 30rem;
-  width: 90%;
+  // position: absolute;
+  // left: 2rem;
+  // top: 30rem;
+  width: 30%;
   z-index: 10000;
 `;
 

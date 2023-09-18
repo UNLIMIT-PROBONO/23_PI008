@@ -1,6 +1,7 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import { returnComparisonRatio } from "../../../mapper/simpleMapper";
+import styled from "styled-components";
 
 export const UsageBarChart = (props) => {
   var showLegends = props.showLegends;
@@ -13,11 +14,11 @@ export const UsageBarChart = (props) => {
     "오늘 사용량 : " + props.value + " / 전주 사용량 평균 : " + props.weekAvg;
 
   return (
-    <div style={{ width: 350, height: 300 }}>
+    <BarChartWrapper>
       <ResponsiveBar
         data={data}
         keys={keys}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
         padding={0.3}
         groupMode={props.groupMode}
         valueScale={{ type: "linear" }}
@@ -72,7 +73,16 @@ export const UsageBarChart = (props) => {
         animate={true}
         colors={{ scheme: "nivo" }}
       />
-    </div>
+    </BarChartWrapper>
   );
 };
 // axis 축, legend 라벨(?), data 차트 값,
+
+const BarChartWrapper = styled.div`
+  background: pink;
+  padding: 20px;
+  width: 100%;
+  height: 40vh;
+  align-items: center;
+  justify-content: center;
+`;
