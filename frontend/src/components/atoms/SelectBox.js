@@ -4,9 +4,9 @@ import React from "react";
 export const SelectBox = (props) => {
   const handlerParent = props.targetHandler;
   const options = props.targetInfos.map(
-      (targetId, tgName) => ({
-      value: targetId,
-      label: tgName,
+      (v) => ({
+      value: v.targetId,
+      label: v.tgName,
     })
   );
 

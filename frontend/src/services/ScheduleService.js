@@ -75,6 +75,7 @@ export const addNewSchedule = async (data) => {
       if(res.status === 200) {
         return true;
       }
+      return false;
     })
     .catch((e)=>{
       return false;

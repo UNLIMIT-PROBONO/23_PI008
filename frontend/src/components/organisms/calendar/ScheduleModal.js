@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "../../atoms/Text";
 import { TgtDatePicker } from "../../molecules/calendar/TgtDatePicker";
-import InputField from "../../atoms/InputField";
 import { Col, Row } from "antd";
 import { ModalButton } from "../../atoms/ModalButton";
 import { ScheduleInformation } from "../../molecules/calendar/modal/ScehduleInformation";
 import styled from "styled-components";
 import { addNewSchedule } from "../../../services/ScheduleService";
-import { getAllInfo, getAllTargetInfo } from "../../../services/TargetService";
+import { getAllTargetInfo } from "../../../services/TargetService";
 import { toasting } from "../../../hook/UseToast";
 import { ToastContainer } from "react-toastify";
 
@@ -47,12 +46,7 @@ const ModalContainer = styled.div`
 export const ScheduleModal = (props) => {
   var isOpen = props.isOpen;
   const closeModal = props.closeModal;
-  var [targetInfos, setTargetInfo] = useState([
-    {
-      targetId: 1,
-      tgName: "",
-    },
-  ]);
+  var [targetInfos, setTargetInfo] = useState([]);
   var [form, setForm] = useState({
     targetId: null,
     title: "",
@@ -61,9 +55,9 @@ export const ScheduleModal = (props) => {
     endDate: null,
   });
 
-  const sendForm = () => {
-    const result = addNewSchedule(form);
-    if (result == true) {
+  const sendForm = async () => {
+    const result = await addNewSchedule(form);
+    if (result) {
       closeModal();
       toasting("일정을 추가하였습니다", "success");
     }
@@ -99,8 +93,8 @@ export const ScheduleModal = (props) => {
       {isOpen && (
         <ModalWrap>
           <ModalBackGround>
-            <ModalContainer>
             <ToastContainer />
+            <ModalContainer>
               <Row>
                 <Text label="일정 추가" />
               </Row>
