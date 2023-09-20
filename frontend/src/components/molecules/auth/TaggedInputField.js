@@ -1,12 +1,13 @@
 import React from "react";
 import "../../css/InputField.css";
 import { InputField } from "../../atoms/InputField";
+import { Text } from "../../atoms/Text";
 
 export const TaggedInputField = (props) => {
   return (
     <div class="signUp">
       <div class="tag">
-        <label>{props.label}</label>
+        <Text label={props.label} />
       </div>
       <div class="row">
         <InputField

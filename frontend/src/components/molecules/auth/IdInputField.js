@@ -1,10 +1,11 @@
 import React from "react";
 import "../../css/InputField.css";
+import { Text } from "../../atoms/Text";
 
 export const IdInputField = (props) => {
   return (
     <div style={{ margin: "10px" }}>
-      <span>{props.label}</span>
+      <Text label={props.label} />
       <div>
         <input
           class="inputField"

@@ -17,8 +17,8 @@ export const LoginBox = (props) => {
   };
 
   return (
-    <div>
-        <TogetherLogo />
+    <div style={{ width: "400px", margin: "10px" }}>
+      <TogetherLogo />
       <div style={{ alignItems: "center", justifyContent: "center" }}>
         <LoginInputField
           label="아이디"
