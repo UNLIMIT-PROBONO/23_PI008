@@ -2,19 +2,29 @@ import React, { useEffect, useState } from "react";
 import { BasicFrame } from "../components/organisms/layout/BasicFrame";
 import { MainHomeTemplate } from "./templates/MainHomeTemplate";
 import { getAfterTodaysSchedules } from "../services/ScheduleService";
+import { getDangerousTargetsUsage } from "../services/DataService";
+import { getTodayWeather } from "../services/WeatherService";
 
-export const MainHomePage = (props) => {
-  var [data, setData] = useState({});
+export const MainHomePage = () => {
   var [loading, setLoading] = useState(true);
+  const [dangerousTargetUsage, setDangerousTargetUsage] = useState({});
+  const [afterTodaysSchedules, setAfterTodaysSchedules] = useState([]);
+  const [todaysWeather, setTodaysWeather] = useState({});
 
   const fetchDangerousTargetsUsage = async () => {
     // TODO 위험한 대상자들 api
-    data["dangerousTargetUsage"] = {};
+    const result = await getDangerousTargetsUsage()
+    setDangerousTargetUsage(result);
   };
 
   const fetchAfterTodaysSchedules = async () => {
-    const afterTodaysSchedules = await getAfterTodaysSchedules();
-    data["afterTodaysSchedules"] = afterTodaysSchedules;
+    const result = await getAfterTodaysSchedules();
+    setAfterTodaysSchedules(result);
+  };
+
+  const fetchCurrentWeather = async () => {
+    const result = await getTodayWeather();
+    setTodaysWeather(result);
   };
 
   useEffect(() => {
@@ -22,6 +32,7 @@ export const MainHomePage = (props) => {
     const loadData = async () => {
       fetchAfterTodaysSchedules();
       fetchDangerousTargetsUsage();
+      fetchCurrentWeather();
     };
 
     loadData();
@@ -33,7 +44,15 @@ export const MainHomePage = (props) => {
       {loading ? (
         <div>로딩중</div>
       ) : (
-        <BasicFrame content={() => <MainHomeTemplate data={data} />} />
+        <BasicFrame
+          content={() => (
+            <MainHomeTemplate
+              dangerousTargetUsage={dangerousTargetUsage}
+              afterTodaysSchedules={afterTodaysSchedules}
+              todaysWeather={todaysWeather}
+            />
+          )}
+        />
       )}
     </>
   );
