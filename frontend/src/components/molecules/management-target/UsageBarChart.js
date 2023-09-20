@@ -79,10 +79,10 @@ export const UsageBarChart = (props) => {
 // axis 축, legend 라벨(?), data 차트 값,
 
 const BarChartWrapper = styled.div`
-  background: pink;
-  padding: 20px;
-  width: 100%;
-  height: 40vh;
-  align-items: center;
-  justify-content: center;
+  background: #FDFDFD;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 10px;
+  width: 90%;
+  height: 50vh;
 `;

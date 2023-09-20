@@ -7,7 +7,7 @@ export const ManagementHistory = (props) => {
   return (
     <>
       <Row>
-        <Text label="과거 관리 내역" />
+        <Text label="과거 관리 내역" fontSize={"24px"}/>
       </Row>
       <Row>
         <HistoryTable history={props.data} />

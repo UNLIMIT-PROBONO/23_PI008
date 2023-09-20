@@ -12,9 +12,9 @@ export const getTodayWeather = async () => {
       if (res.status === 200) {
         const body = res.data;
         return {
-          temp: body.main.temp,
-          tempMax: body.main.temp_max,
-          tempMin: body.main.temp_min,
+          temp: transferTemperature(body.main.temp),
+          tempMax: transferTemperature(body.main.temp_max),
+          tempMin: transferTemperature(body.main.temp_min),
           humidity: body.main.humidity,
           desc: body.weather[0].description,
           icon: body.weather[0].icon,
@@ -27,3 +27,7 @@ export const getTodayWeather = async () => {
       console.log(error);
     });
 };
+
+const transferTemperature = (temp) => {
+  return Math.round(temp - 273.15);
+}

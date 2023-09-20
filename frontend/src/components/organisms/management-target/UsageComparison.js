@@ -10,7 +10,7 @@ export const UsageComparison = (props) => {
 
   return (
     <>
-      <Text label="전주 대비 사용량 증감" />
+      <Text label="전주 대비 사용량 증감" fontSize={"24px"}/>
       <Row>
         <Col>
           <UsageBarChart

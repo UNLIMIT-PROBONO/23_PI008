@@ -1,6 +1,5 @@
 import React from "react";
 import { UsageBarChart } from "../../molecules/management-target/UsageBarChart";
-import { SoundFilled } from "@ant-design/icons";
 
 export const MainBarChart = (props) => {
   const managementTargets = props.managementTargets;
