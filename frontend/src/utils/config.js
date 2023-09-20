@@ -1,6 +1,5 @@
-const SERVER_HOST = "3.38.92.143";
-// const SERVER_HOST = "localhost";
-const SERVER_PORT = "8080";
+const SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
+const SERVER_PORT = process.env.REACT_APP_API_SERVER_PORT;
 
 // rest api URI 관리
 const MANAGER = "manager";
