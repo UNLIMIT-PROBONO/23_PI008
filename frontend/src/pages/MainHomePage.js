@@ -12,7 +12,6 @@ export const MainHomePage = () => {
   const [todaysWeather, setTodaysWeather] = useState({});
 
   const fetchDangerousTargetsUsage = async () => {
-    // TODO 위험한 대상자들 api
     const result = await getDangerousTargetsUsage()
     setDangerousTargetUsage(result);
   };

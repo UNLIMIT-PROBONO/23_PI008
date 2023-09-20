@@ -4,34 +4,7 @@ import { Text } from "../../atoms/Text";
 import { Col, Divider, Row } from "antd";
 
 export const AfterTodaysSchedule = (props) => {
-  const data = props.data; // 배열
-
-  const dummy = [
-    {
-      index: 1,
-      scheduleId: 123,
-      content: "have lunch",
-      activated: true,
-    },
-    {
-      index: 2,
-      scheduleId: 123,
-      content: "call kim grandma",
-      activated: false,
-    },
-    {
-      index: 3,
-      scheduleId: 123,
-      content: "hi hello",
-      activated: true,
-    },
-    {
-      index: 4,
-      scheduleId: 123,
-      content: "sorry",
-      activated: false,
-    },
-  ];
+  const data = props.data;
 
   return (
     <>
@@ -40,12 +13,12 @@ export const AfterTodaysSchedule = (props) => {
       </Row>
       <Row>
         <Col>
-          {dummy.map((item) => (
+          {data.map((item) => (
             <Row>
               <SimpleSchedule
                 index={item.index}
                 scheduleId={item.scheduleId}
-                content={item.content}
+                title={item.title}
                 activated={item.activated}
               />
             </Row>

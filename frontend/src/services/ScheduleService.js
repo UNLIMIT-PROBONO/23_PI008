@@ -4,9 +4,9 @@ import { URI } from "../utils/config";
 
 export const getAfterTodaysSchedules = async () => {
   const result = await RestAPI.get(URI.SCHEDULE)
-    .then((res) => {
-      if (res.status === 200) {
-        return res.data;
+  .then((res) => {
+    if (res.status === 200) {
+        return jsonArrayToSchedule(res.data);
       }
     })
     .catch((e) => console.log(e));
