@@ -23,6 +23,7 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
+
     private Managers manager;
     private String title;
     private String content;
