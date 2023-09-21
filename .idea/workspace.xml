@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eee3fe18-2b1c-4fec-ad78-403e2139fc65" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/domain/schedule/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/domain/schedule/controller/ScheduleController.java" afterDir="false" />
-    </list>
+    <list default="true" id="eee3fe18-2b1c-4fec-ad78-403e2139fc65" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
