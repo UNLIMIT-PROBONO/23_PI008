@@ -3,17 +3,24 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { Text } from "../../atoms/Text";
+import { useNavigate } from "react-router";
+import { sendLogout } from "../../../services/AuthService";
 
 export const TgtHeader = (props) => {
-  var collapsed = props.collapsed;
-  var setCollapsed = props.setCollapsed;
-  var handleCollapsing = () => {
+  const collapsed = props.collapsed;
+  const setCollapsed = props.setCollapsed;
+  const handleCollapsing = () => {
     setCollapsed(!collapsed);
   };
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  // 로그아웃 왜 안 뜸?
+
+  const router = useNavigate();
+  const onClickLogout = () => {
+    sendLogout();
+    router("../");
+  };
 
   return (
     <div>
@@ -30,7 +37,12 @@ export const TgtHeader = (props) => {
             height: 64,
           }}
         />
-        <Text label="로그아웃" />
+        <button
+          style={{ float: "right", marginRight: "40px" }}
+          onClick={onClickLogout}
+        >
+          <Text label="로그아웃" />
+        </button>
       </Header>
     </div>
   );
