@@ -48,7 +48,7 @@ export const ScheduleModal = (props) => {
   const closeModal = props.closeModal;
   var [targetInfos, setTargetInfo] = useState([]);
   var [form, setForm] = useState({
-    targetId: null,
+    userId: null,
     title: "",
     content: "",
     startDate: null,
@@ -77,7 +77,7 @@ export const ScheduleModal = (props) => {
   const inputHandler = (data) => {
     form.title = data.title;
     form.content = data.content;
-    form.targetId = data.targetId;
+    form.userId = data.targetId;
   };
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { getTodayWeather } from "../services/WeatherService";
 
 export const MainHomePage = () => {
   var [loading, setLoading] = useState(true);
-  const [dangerousTargetUsage, setDangerousTargetUsage] = useState({});
+  const [dangerousTargetUsage, setDangerousTargetUsage] = useState([]);
   const [afterTodaysSchedules, setAfterTodaysSchedules] = useState([]);
   const [todaysWeather, setTodaysWeather] = useState({});
 

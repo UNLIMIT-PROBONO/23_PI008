@@ -9,7 +9,10 @@ export const getAfterTodaysSchedules = async () => {
         return jsonArrayToSchedule(res.data);
       }
     })
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+      return [];
+    });
   return result;
 };
 
@@ -70,9 +73,10 @@ export const classifyTodays = (schedules) => {
 };
 
 export const addNewSchedule = async (data) => {
+  console.log(data);
     return await RestAPI.post(URI.SCHEDULE, data)
     .then((res) => {
-      if(res.status === 200) {
+      if(res.status === 201) {
         return true;
       }
       return false;

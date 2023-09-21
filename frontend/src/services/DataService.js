@@ -20,9 +20,10 @@ export const getDangerousTargetsUsage = async () => {
   .then((res)=> {
     if(res.status === 200){
       // FIXME
-      return "FIXME";
+      return [];
     }
   }).catch((error)=>{
     console.log(error);
+    return [];
   })
 }
