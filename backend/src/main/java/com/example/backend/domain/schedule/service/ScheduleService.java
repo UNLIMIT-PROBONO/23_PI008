@@ -9,7 +9,6 @@ public interface ScheduleService {
     ScheduleResponse getSchedule(Long scheduleId);
     List<ScheduleResponse> getAllSchedules(String username);
     void deleteSchedule(Long scheduleId);
-
     List<ScheduleResponse> getSchedulesByYearAndMonth(int year, int month);
     List<ScheduleResponse> getThisWeekSchedules();
 }

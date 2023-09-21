@@ -96,7 +96,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduleRepository.save(schedule);
     }
 
-
     @Override
     public List<ScheduleResponse> getSchedulesByYearAndMonth(int year, int month) {
         List<Schedule> schedules = scheduleRepository.findByYearAndMonth(year, month);

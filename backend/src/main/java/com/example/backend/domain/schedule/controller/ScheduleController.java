@@ -55,7 +55,6 @@ public class ScheduleController {
         scheduleService.deleteSchedule(scheduleId);
         return ResponseEntity.ok().build();
     }
-
     @GetMapping("/year-month")
     public ResponseEntity<List<ScheduleResponse>> getSchedulesByYearAndMonth(
             @RequestParam int year,
