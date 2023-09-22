@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { LoginInputField } from "../../molecules/auth/LoginInputField";
 import { SubmitButton } from "../../atoms/SubmitButton";
 import { TextToSignUp } from "../../molecules/auth/TextToSignUp";
+import { TogetherLogo } from "./../../molecules/TogetherLogo";
 
 export const LoginBox = (props) => {
   const [loginData, setLoginData] = useState(props.values);
@@ -16,8 +17,9 @@ export const LoginBox = (props) => {
   };
 
   return (
-    <div>
-      <div>
+    <div style={{ width: "400px", margin: "10px" }}>
+      <TogetherLogo />
+      <div style={{ alignItems: "center", justifyContent: "center" }}>
         <LoginInputField
           label="아이디"
           value={loginData.loginId}
@@ -31,7 +33,10 @@ export const LoginBox = (props) => {
         />
         <SubmitButton label="로그인" onClick={props.onClickLoginBtn} />
       </div>
-      <TextToSignUp />
+
+      <div style={{ marginTop: "20px", marginLeft: "15px" }}>
+        <TextToSignUp />
+      </div>
     </div>
   );
 };

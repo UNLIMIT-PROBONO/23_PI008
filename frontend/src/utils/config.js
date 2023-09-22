@@ -13,6 +13,7 @@ export const URI = {
 
   MANAGER: `${MANAGER}`,
   LOGIN: `${MANAGER}/login`,
+  LOGOUT: `${MANAGER}/logout`,
   SIGNUP: `${MANAGER}/signup`,
   CHECK_ID: `${MANAGER}/signup/`,
 

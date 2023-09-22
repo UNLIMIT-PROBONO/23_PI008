@@ -4,6 +4,9 @@ import { TogetherLogo } from "../components/molecules/TogetherLogo";
 import { checkIdVerification, sendSignUpForm } from "../services/AuthService";
 import { isBlank } from "../utils/validator";
 import { useNavigate } from "react-router";
+import { Col, Row } from "antd";
+import seniorCouple from "../assets/Senior-Couple.png";
+import styled from "styled-components";
 
 export const SignUpPage = () => {
   const [idLock, setIdLock] = useState(false);
@@ -27,7 +30,7 @@ export const SignUpPage = () => {
     if (haveBlankFields()) return;
     console.log(userData.loginId + "님이 회원가입");
     await sendSignUpForm(userData);
-    
+
     router("../");
   };
 
@@ -66,15 +69,38 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div>
-      <TogetherLogo />
-      <SignUpInputBox
-        values={userData}
-        idLock={idLock}
-        userDataHandler={userDataHandler}
-        onClickIdCheck={onClickIdCheck}
-        onClickSubmitBtn={onClickSubmitBtn}
-      />
-    </div>
+    <Row style={{ alignItems: "center", justifyContent: "center" }}>
+      <Col>
+        <CenterWrap>
+          <TogetherLogo />
+          <SignUpInputBox
+            values={userData}
+            idLock={idLock}
+            userDataHandler={userDataHandler}
+            onClickIdCheck={onClickIdCheck}
+            onClickSubmitBtn={onClickSubmitBtn}
+          />
+        </CenterWrap>
+      </Col>
+      <Col>
+        <img
+          src={seniorCouple}
+          style={{
+            width: "auto",
+            height: "90vh",
+            objectFit: "cover",
+            objectPosition: "0 50 0 0",
+            overflow: "hidden",
+          }}
+        />
+      </Col>
+    </Row>
   );
 };
+
+const CenterWrap = styled.div`
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+`;

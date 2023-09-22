@@ -11,22 +11,22 @@ export const UsageComparison = (props) => {
   return (
     <>
       <Text label="전주 대비 사용량 증감" fontSize={"24px"}/>
-      <Row>
-        <Col>
+      <Row gutter={[16, 16]}>
+        <Col span={"8"}>
           <UsageBarChart
             data={data.call}
             keys={chartKeys}
             groupMode={groupMode}
           />
         </Col>
-        <Col>
+        <Col span={"8"}>
           <UsageBarChart
             data={data.water}
             keys={chartKeys}
             groupMode={groupMode}
           />
         </Col>
-        <Col>
+        <Col span={"8"}>
           <UsageBarChart
             data={data.elec}
             keys={chartKeys}

@@ -5,12 +5,11 @@ export const Text = (props) => {
   return (
     <div
       style={{
-        fontSize: (props.fontSize)? props.fontSize : "16px",
+        fontSize: props.fontSize ? props.fontSize : "16px",
         margin: "4px",
         alignContent: "center",
         justifyItems: "center",
-        textAlign: "center",
-        whiteSpace:"pre-line",
+        whiteSpace: "pre-line",
       }}
     >
       {props.label}
@@ -20,7 +19,17 @@ export const Text = (props) => {
 
 export const HrefText = (props) => {
   return (
-    <div class="text-href">
+    <div
+      class="text-href"
+      style={{
+        fontSize: props.fontSize ? props.fontSize : "16px",
+        margin: "4px",
+        alignContent: "center",
+        justifyItems: "center",
+        textAlign: "center",
+        whiteSpace: "pre-line",
+      }}
+    >
       <a href={props.to}> {props.label} </a>
     </div>
   );

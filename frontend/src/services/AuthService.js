@@ -43,3 +43,14 @@ export const sendSignUpForm = async (userData) => {
       return false;
     });
 };
+
+export const sendLogout = async () => {
+  return await RestAPI.post(URI.LOGOUT)
+    .then((res) => {
+      if (res.status === 200) return true;
+      return false;
+    })
+    .catch((error) => {
+      return false;
+    });
+};

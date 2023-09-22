@@ -5,6 +5,8 @@ import { toasting } from "../hook/UseToast";
 import { ToastContainer } from "react-toastify";
 import { Col, Row } from "antd";
 import { useNavigate } from "react-router";
+import seniorCouple from "../assets/Senior-Couple.png";
+import styled from "styled-components";
 
 export const LoginPage = () => {
   const [loginData, setLoginData] = useState({
@@ -32,15 +34,36 @@ export const LoginPage = () => {
   return (
     <Row>
       <ToastContainer />
-      <Col>
-        <LoginBox
-          values={loginData}
-          loginDataHandler={loginDataHandler}
-          onClickLoginBtn={onClickLoginBtn}
-        />
-      </Col>
-      <Col>홍보 사진</Col>
+      <CenterWrap>
+        <Col>
+          <LoginBox
+            values={loginData}
+            loginDataHandler={loginDataHandler}
+            onClickLoginBtn={onClickLoginBtn}
+          />
+        </Col>
+        <Col>
+          <img
+            src={seniorCouple}
+            style={{
+              width: "auto",
+              height: "90vh",
+              marginLeft: "10px",
+              objectFit: "cover",
+              objectPosition: "0 50 0 0",
+              overflow: "hidden",
+            }}
+          />
+        </Col>
+      </CenterWrap>
     </Row>
   );
 };
-//https://ant.design/components/grid
+
+const CenterWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  // margin-top: 100px;
+`;
