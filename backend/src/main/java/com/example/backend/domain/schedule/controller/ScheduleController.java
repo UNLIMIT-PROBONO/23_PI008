@@ -55,4 +55,19 @@ public class ScheduleController {
         scheduleService.deleteSchedule(scheduleId);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/year-month")
+    public ResponseEntity<List<ScheduleResponse>> getSchedulesByYearAndMonth(
+            @RequestParam int year,
+            @RequestParam int month
+    ) {
+        List<ScheduleResponse> responseList = scheduleService.getSchedulesByYearAndMonth(year, month);
+        return ResponseEntity.ok(responseList);
+    }
+
+    @GetMapping("/week")
+    public ResponseEntity<List<ScheduleResponse>> getThisWeekSchedules() {
+        List<ScheduleResponse> responseList = scheduleService.getThisWeekSchedules();
+        return ResponseEntity.ok(responseList);
+    }
+
 }
